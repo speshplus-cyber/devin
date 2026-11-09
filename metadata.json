@@ -1,0 +1,6 @@
+{
+  "name": "Criadero Gracia Divina",
+  "description": "Cría ética, familiar y de élite de razas felinas excepcionales: Maine Coon, British Shorthair, Ragdoll y Bengalí con pedigrí oficial y trazabilidad veterinaria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

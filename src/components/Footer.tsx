@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
           <a
             className="btn btn-wa btn-sm"
-            href="https://wa.me/34692881430?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20gatitos%20de%20raza%20de%20criaderograciadivina."
+            href="https://wa.me/34632968208?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20gatitos%20de%20raza%20de%20criaderograciadivina."
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -289,8 +289,8 @@ export const Footer: React.FC<FooterProps> = ({
               <svg viewBox="0 0 24 24">
                 <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
               </svg>
-              <a href="https://wa.me/34692881430" target="_blank" rel="noopener noreferrer">
-                +34 692 88 14 30
+              <a href="https://wa.me/34632968208" target="_blank" rel="noopener noreferrer">
+                +34 632 96 82 08
               </a>
             </li>
           </ul>

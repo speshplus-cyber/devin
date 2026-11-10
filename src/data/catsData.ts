@@ -2702,7 +2702,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   heroHeadline: 'Nobleza, Pureza de Linaje y Crianza Familiar.',
   heroSubtitle: 'Criadero de élite especializado en Maine Coon (700 €), British Shorthair (650 €), Ragdoll (600 €) y Sphynx (600 €).',
   contactEmail: 'Criaderograciadivina@gmail.com',
-  whatsappNumber: '+34 692 88 14 30',
+  whatsappNumber: '+34 632 96 82 08',
   catteryLocation: '',
   defaultPrice: 'Desde 600 €',
   wcfAffiliation: 'Afiliado WCF Nº 41289',

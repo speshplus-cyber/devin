@@ -9,7 +9,7 @@ interface WhatsAppFloatingButtonProps {
 export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
   onClick,
   selectedKittenName,
-  phoneNumber = '34692881430',
+  phoneNumber = '34632968208',
 }) => {
   const handleClick = (e: React.MouseEvent) => {
     if (onClick) {

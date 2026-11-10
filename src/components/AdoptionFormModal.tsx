@@ -96,7 +96,7 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
         selectedKitten ? ` (${selectedKitten.name})` : ''
       }. Mi ciudad es ${formData.city}. ¡Me gustaría dar seguimiento!`
     );
-    window.open(`https://wa.me/34692881430?text=${text}`, '_blank');
+    window.open(`https://wa.me/34632968208?text=${text}`, '_blank');
   };
 
   return (

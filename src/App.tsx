@@ -126,7 +126,7 @@ export default function App() {
       ? `Hola criaderograciadivina, estoy interesado/a en la adopción del cachorro ${selectedKitten.name} (${selectedKitten.breed}, precio ${selectedKitten.price}). ¿Podrían facilitarme más detalles, fotos o vídeos?`
       : 'Hola criaderograciadivina, he visitado su página web y me gustaría recibir información sobre los cachorros disponibles y próximas camadas.';
     const text = encodeURIComponent(customMessage || defaultMsg);
-    const cleanNumber = (settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '');
+    const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${text}`, '_blank');
   };
 
@@ -315,6 +315,7 @@ export default function App() {
       <WhatsAppFloatingButton
         onClick={() => handleOpenWhatsApp()}
         selectedKittenName={selectedKitten?.name}
+        phoneNumber={(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}
       />
 
       {/* Kitten Details & Pedigree Modal */}

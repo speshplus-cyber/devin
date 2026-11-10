@@ -141,7 +141,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       `• Email: ${contactEmail || '-'}\n` +
       `• Mensaje: ${contactMessage || 'Quisiera conocer disponibilidad y próximos pasos para la reserva.'}`;
 
-    const cleanNumber = (settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '');
+    const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`, '_blank');
     setFormSentMessage('¡Abriendo WhatsApp para enviar tu consulta directamente al criador!');
   };
@@ -209,7 +209,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 Ver los 55 Gatitos Disponibles (Desde 600 €) ↓
               </a>
               <a
-                href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola criaderograciadivina! Me gustaría consultar sobre los gatitos disponibles.')}`}
+                href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola criaderograciadivina! Me gustaría consultar sobre los gatitos disponibles.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-wa"
@@ -217,7 +217,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 <svg viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
                   <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
                 </svg>
-                <span>WhatsApp Directo (+34 692 88 14 30)</span>
+                <span>WhatsApp Directo ({settings.whatsappNumber || '+34 632 96 82 08'})</span>
               </a>
             </div>
 
@@ -394,7 +394,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               const waText = encodeURIComponent(
                 `¡Hola criaderograciadivina! Me interesa el gatito ${kitten.name} (${kitten.breed}, ${kitten.gender}, precio ${kitten.price || '600 €'}). ¿Sigue disponible para reserva?`
               );
-              const waLink = `https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${waText}`;
+              const waLink = `https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${waText}`;
 
               return (
                 <article key={kitten.id} className="kmini" data-breed={kitten.breed.toLowerCase()} data-sex={kitten.gender === 'Hembra' ? 'F' : 'M'}>
@@ -835,11 +835,11 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 <div>
                   <strong>WhatsApp Oficial</strong>
                   <a
-                    href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}`}
+                    href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    +34 692 88 14 30
+                    {settings.whatsappNumber || '+34 632 96 82 08'}
                   </a>
                 </div>
               </div>

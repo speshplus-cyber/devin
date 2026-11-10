@@ -256,7 +256,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({
 
       {/* Footer */}
       <div className="max-w-6xl w-full mx-auto text-center py-2 text-xs text-red-200/60">
-        © 2026 Criadero Gracia Divina · Sistema de Gestión Privado · Todos los accesos son auditados
+        © 2026 criaderograciadivina · Sistema de Gestión Privado · Todos los accesos son auditados
       </div>
     </div>
   );

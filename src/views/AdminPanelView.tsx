@@ -737,7 +737,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
             <div className="space-y-8 max-w-6xl">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold font-serif text-neutral-900">
-                  Panel de Administración de Criadero Gracia Divina
+                  Panel de Administración de criaderograciadivina
                 </h1>
                 <p className="text-xs sm:text-sm text-neutral-600 mt-1">
                   Control total sobre cachorros, camadas, reseñas y parámetros del sitio web en tiempo real.
@@ -1287,14 +1287,14 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                       {/* Action buttons */}
                       <div className="flex flex-wrap items-center gap-3 pt-2">
                         <a
-                          href={`mailto:${lead.email}?cc=${settings.contactEmail}&subject=Criadero Gracia Divina - Solicitud de Adopción de Cachorro`}
+                          href={`mailto:${lead.email}?cc=${settings.contactEmail}&subject=criaderograciadivina - Solicitud de Adopción de Cachorro`}
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#b91c1c] hover:bg-[#991b1b] text-white rounded transition-colors"
                         >
                           <Mail className="w-3.5 h-3.5" />
                           <span>Responder por Email ({lead.email})</span>
                         </a>
                         <a
-                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(lead.fullName)},%20le%20escribimos%20desde%20Criadero%20Gracia%20Divina%20en%20referencia%20a%20su%20solicitud%20de%20adopci%C3%B3n.`}
+                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(lead.fullName)},%20le%20escribimos%20desde%20criaderograciadivina%20en%20referencia%20a%20su%20solicitud%20de%20adopci%C3%B3n.`}
                           target="_blank"
                           rel="noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#25D366] hover:bg-[#20ba5a] text-white rounded transition-colors"

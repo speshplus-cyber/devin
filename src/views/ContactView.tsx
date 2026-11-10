@@ -32,7 +32,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
   const handleSendVisitEmail = () => {
     const subject = encodeURIComponent(`Solicitud de Cita / Visita - ${visitForm.name} - ${visitForm.breed}`);
     const body = encodeURIComponent(
-      `Hola Criadero Gracia Divina,\n\n` +
+      `Hola criaderograciadivina,\n\n` +
       `Deseo concertar una visita presencial para conocer a los cachorros de ${visitForm.breed}:\n\n` +
       `• Nombre: ${visitForm.name}\n` +
       `• Correo: ${visitForm.email}\n` +
@@ -93,17 +93,17 @@ export const ContactView: React.FC<ContactViewProps> = ({
 
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-[#b91c1c] shrink-0 border border-red-100">
-                  <MapPin className="w-5 h-5 text-[#b91c1c]" />
+                  <CheckCircle2 className="w-5 h-5 text-[#b91c1c]" />
                 </div>
                 <div>
                   <span className="text-[11px] uppercase font-bold text-[#b91c1c] block">
-                    Ubicación del Criadero
+                    Entregas y Envíos
                   </span>
                   <p className="font-semibold text-sm text-[#111827]">
-                    Sierra de Guadarrama, Madrid (España)
+                    Envíos Seguros a Domicilio en Toda España
                   </p>
                   <p className="text-xs text-neutral-500 mt-0.5">
-                    Entorno natural a 35 minutos de Madrid centro. Dirección exacta facilitada al concertar cita previa.
+                    Transporte climatizado de alta seguridad o videollamadas en directo para conocer a los cachorros.
                   </p>
                 </div>
               </div>

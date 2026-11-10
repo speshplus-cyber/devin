@@ -72,7 +72,7 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
       }`
     );
     const body = encodeURIComponent(
-      `Hola Criadero Gracia Divina,\n\n` +
+      `Hola criaderograciadivina,\n\n` +
       `He completado el cuestionario de adopción responsable:\n\n` +
       `• Nombre del Solicitante: ${formData.fullName}\n` +
       `• Correo de Contacto: ${formData.email}\n` +
@@ -84,7 +84,7 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
       `• Experiencia con Gatos: ${formData.experience}\n` +
       `• Otras Mascotas: ${formData.otherPets}\n` +
       `• Notas adicionales: ${formData.notes || 'Ninguna'}\n\n` +
-      `Quedo a la espera de sus indicaciones para la reserva y visita concertada.\n\n` +
+      `Quedo a la espera de sus indicaciones para la reserva.\n\n` +
       `Atentamente,\n${formData.fullName}`
     );
     window.open(`mailto:Criaderograciadivina@gmail.com?subject=${subject}&body=${body}`, '_blank');
@@ -92,7 +92,7 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
 
   const handleWhatsAppFollowUp = () => {
     const text = encodeURIComponent(
-      `Hola Criadero Gracia Divina, he enviado el formulario de solicitud de adopción a nombre de ${formData.fullName} para la raza ${formData.breed}${
+      `Hola criaderograciadivina, he enviado el formulario de solicitud de adopción a nombre de ${formData.fullName} para la raza ${formData.breed}${
         selectedKitten ? ` (${selectedKitten.name})` : ''
       }. Mi ciudad es ${formData.city}. ¡Me gustaría dar seguimiento!`
     );

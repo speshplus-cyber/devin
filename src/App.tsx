@@ -102,20 +102,20 @@ export default function App() {
   // Official Email Concierge helper (exclusively using Criaderograciadivina@gmail.com)
   const handleOpenEmail = (customMessage?: string, customSubject?: string) => {
     const emailTo = settings.contactEmail || 'Criaderograciadivina@gmail.com';
-    const subject = encodeURIComponent(customSubject || 'Consulta de Adopción - Criadero Gracia Divina');
+    const subject = encodeURIComponent(customSubject || 'Consulta de Adopción - criaderograciadivina');
     const body = encodeURIComponent(
       customMessage ||
-        'Hola Criadero Gracia Divina,\n\nHe visitado su página web y me gustaría recibir información sobre los cachorros disponibles (precio 600 €) y próximas camadas.\n\nAtentamente,'
+        'Hola criaderograciadivina,\n\nHe visitado su página web y me gustaría recibir información sobre los cachorros disponibles y próximas camadas.\n\nAtentamente,'
     );
     window.open(`mailto:${emailTo}?subject=${subject}&body=${body}`, '_blank');
   };
 
   const handleKittenEmailInquiry = (kitten: Kitten) => {
-    const subject = `Interés en Cachorro: ${kitten.name} (${kitten.breed}) - 600 €`;
+    const subject = `Interés en Cachorro: ${kitten.name} (${kitten.breed}) - ${kitten.price}`;
     const message =
-      `Hola Criadero Gracia Divina,\n\n` +
+      `Hola criaderograciadivina,\n\n` +
       `Estoy muy interesado/a en la adopción del cachorro ${kitten.name} (${kitten.breed}, color ${kitten.colorManto}, precio ${kitten.price}).\n\n` +
-      `¿Podrían indicarme si sigue disponible y los pasos para la reserva y visita concertada?\n\n` +
+      `¿Podrían indicarme si sigue disponible y los pasos para la reserva?\n\n` +
       `Un cordial saludo,`;
     handleOpenEmail(message, subject);
   };
@@ -123,8 +123,8 @@ export default function App() {
   // WhatsApp concierge helper for clients who prefer WhatsApp
   const handleOpenWhatsApp = (customMessage?: string) => {
     const defaultMsg = selectedKitten
-      ? `Hola, estoy interesado/a en la adopción del cachorro ${selectedKitten.name} (${selectedKitten.breed}, precio 600 €). ¿Podrían facilitarme más detalles, fotos o vídeos?`
-      : 'Hola, he visitado su página web y me gustaría recibir información sobre los cachorros disponibles (precio 600 €) y próximas camadas.';
+      ? `Hola criaderograciadivina, estoy interesado/a en la adopción del cachorro ${selectedKitten.name} (${selectedKitten.breed}, precio ${selectedKitten.price}). ¿Podrían facilitarme más detalles, fotos o vídeos?`
+      : 'Hola criaderograciadivina, he visitado su página web y me gustaría recibir información sobre los cachorros disponibles y próximas camadas.';
     const text = encodeURIComponent(customMessage || defaultMsg);
     const cleanNumber = (settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${text}`, '_blank');

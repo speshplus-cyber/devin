@@ -12,7 +12,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid (Gris Británico Clásico)",
     "eyeColor": "Cobre Brillante",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-astrid-01.jpg"
@@ -58,7 +58,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Bicolor con Blanco",
     "eyeColor": "Ámbar Profundo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-babushka-02.jpg"
@@ -104,7 +104,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Lilac Solid Suave",
     "eyeColor": "Cobre Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-bambi-03.jpg"
@@ -150,7 +150,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Tortie Mitted",
     "eyeColor": "Dorado Ámbar",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-fanny-04.jpg"
@@ -196,7 +196,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid Tradicional",
     "eyeColor": "Cobre Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-gunner-05.jpg"
@@ -242,7 +242,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Cream / Lilac Bicolor",
     "eyeColor": "Ámbar Cálido",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-maggie-06.png"
@@ -288,7 +288,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Red / Cream Tabby",
     "eyeColor": "Cobre Dorado",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-marmalade-07.jpg"
@@ -334,7 +334,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Golden Shaded",
     "eyeColor": "Cobre Brillante",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-mickey-08.png"
@@ -380,7 +380,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid de Felpa Densa",
     "eyeColor": "Ámbar Espléndido",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-milo-09.jpg"
@@ -426,7 +426,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Chocolate Solid Satinado",
     "eyeColor": "Cobre Profundo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-nutella-10.jpg"
@@ -472,7 +472,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Bicolor Británico",
     "eyeColor": "Ámbar Luminoso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-pablo-11.jpg"
@@ -518,7 +518,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Silver Tabby Shaded",
     "eyeColor": "Cobre Cautivador",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-popie-12.png"
@@ -564,7 +564,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Golden Ticked Tabby",
     "eyeColor": "Ámbar Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-raji-13.png"
@@ -610,7 +610,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid Clásico",
     "eyeColor": "Cobre Real",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-renzo-14.jpg"
@@ -656,7 +656,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Cream Solid Aterciopelado",
     "eyeColor": "Ámbar Profundo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-ricky-15.jpg"
@@ -702,7 +702,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid Aristocrático",
     "eyeColor": "Cobre Cálido",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-robert-16.jpg"
@@ -748,7 +748,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Bicolor Elegante",
     "eyeColor": "Cobre Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-romeo-17.jpg"
@@ -794,7 +794,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Lilac Bicolor con Blanco",
     "eyeColor": "Ámbar Vivo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-ruda-18.jpg"
@@ -840,7 +840,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Smoke Británico",
     "eyeColor": "Cobre Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-smokey-19.png"
@@ -886,7 +886,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid Mofletes Marcados",
     "eyeColor": "Cobre Radiante",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "650 €",
     "featured": true,
     "images": [
       "/photos/bsh-toni-20.jpg"
@@ -1668,7 +1668,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Silver Classic Tabby",
     "eyeColor": "Verde Dorado",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-anna-01.jpg"
@@ -1714,7 +1714,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Red Solid de Osamenta Fuerte",
     "eyeColor": "Ámbar Cálido",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-bravo-02.jpg"
@@ -1760,7 +1760,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Brown Mackerel Tabby con Blanco",
     "eyeColor": "Cobre Brillante",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-brucie-03.jpg"
@@ -1806,7 +1806,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Smoke con Collarín Blanco",
     "eyeColor": "Verde Esmeralda",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-catty-04.jpg"
@@ -1852,7 +1852,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Solid Gigante Americano",
     "eyeColor": "Dorado Ámbar",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-chuco-05.jpg"
@@ -1898,7 +1898,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Tabby Classic con Penachos",
     "eyeColor": "Ámbar Luminoso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-jacki-06.jpg"
@@ -1944,7 +1944,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Tortie Bicolor con Blanco",
     "eyeColor": "Verde Jade",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-lola-07.jpg"
@@ -1990,7 +1990,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Red Tabby con Cola de Zorro",
     "eyeColor": "Cobre Dorado",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-lolita-08.jpg"
@@ -2036,7 +2036,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Solid de Porte Majestuoso",
     "eyeColor": "Ámbar Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-louie-09.jpg"
@@ -2082,7 +2082,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Silver Torbie con Ojos Grandes",
     "eyeColor": "Verde Brillante",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-luna-10.jpg"
@@ -2128,7 +2128,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Cream Smoke Colosal",
     "eyeColor": "Cobre Profundo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-milo-11.jpg"
@@ -2174,7 +2174,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Classic Tabby Elegante",
     "eyeColor": "Verde Esmeralda",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-nikita-12.png"
@@ -2220,7 +2220,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Brown Torbie con Blanco",
     "eyeColor": "Ámbar Dorado",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-pamela-13.jpg"
@@ -2266,7 +2266,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Red Silver Classic Tabby",
     "eyeColor": "Cobre Cálido",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-pringles-14.jpg"
@@ -2312,7 +2312,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Black Silver Mackerel Tabby",
     "eyeColor": "Dorado Intenso",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-rico-15.jpg"
@@ -2358,7 +2358,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "White Solid de Pelaje Nieve",
     "eyeColor": "Ámbar Suave",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-snowy-16.jpg"
@@ -2404,7 +2404,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Blue Tortie Smoke",
     "eyeColor": "Verde Jade",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-sonia-17.jpg"
@@ -2450,7 +2450,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Brown Classic Tabby Gigante",
     "eyeColor": "Cobre Profundo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-spartacus-18.jpg"
@@ -2496,7 +2496,7 @@ export const KITTENS_DATA: Kitten[] = [
     "colorManto": "Red Classic Tabby con Lynx Tips",
     "eyeColor": "Ámbar Vivo",
     "status": "Disponible",
-    "price": "600 €",
+    "price": "700 €",
     "featured": true,
     "images": [
       "/photos/mc-stan-19.jpg"
@@ -2696,96 +2696,234 @@ export const LITTERS_DATA: Litter[] = [
 ];
 
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
-  siteTitle: 'Gracia Divina',
+  siteTitle: 'criaderograciadivina',
   siteSubtitle: 'Criadero Felino de Alta Cuna',
   announcementText: 'Criadero Ético Federado WCF & FIFe · Camadas 2026 Abiertas para Reserva',
   heroHeadline: 'Nobleza, Pureza de Linaje y Crianza Familiar.',
-  heroSubtitle: 'Criadero de élite en España especializado en Maine Coon, British Shorthair, Ragdoll y Sphynx, con líneas de campeones internacionales.',
+  heroSubtitle: 'Criadero de élite especializado en Maine Coon (700 €), British Shorthair (650 €), Ragdoll (600 €) y Sphynx (600 €).',
   contactEmail: 'Criaderograciadivina@gmail.com',
   whatsappNumber: '+34 692 88 14 30',
-  catteryLocation: 'España',
-  defaultPrice: '600 €',
+  catteryLocation: '',
+  defaultPrice: 'Desde 600 €',
   wcfAffiliation: 'Afiliado WCF Nº 41289',
   asfeAffiliation: 'Registro ASFE / FIFe'
 };
 
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
-    id: 't-1',
-    author: 'Laura P.',
-    location: 'Madrid',
-    avatar: 'LP',
-    kittenName: 'Spartacus · Maine Coon',
-    rating: 5,
-    text: 'Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Spartacus a casa se adaptó en cuestión de horas. Es enorme, cariñoso como un perro y equilibrado, se nota muchísimo que se crían en familia.',
-    verified: true,
-    date: 'Febrero 2026'
+    "id": "t-1",
+    "adopterName": "Laura P.",
+    "author": "Laura P.",
+    "city": "Madrid",
+    "location": "Madrid",
+    "catName": "Spartacus",
+    "kittenName": "Spartacus · Maine Coon",
+    "breed": "Maine Coon",
+    "adoptionYear": "2026",
+    "date": "Febrero 2026",
+    "rating": 5,
+    "avatar": "LP",
+    "image": "/photos/mc-spartacus-18.jpg",
+    "text": "Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Spartacus a casa se adaptó en cuestión de horas. Es enorme, cariñoso como un perro y equilibrado, se nota muchísimo que se crían en familia.",
+    "verified": true
   },
   {
-    id: 't-2',
-    author: 'Carlos y Marta G.',
-    location: 'Barcelona',
-    avatar: 'CM',
-    kittenName: 'Jason · Ragdoll',
-    rating: 5,
-    text: 'Buscábamos un Ragdoll tranquilo para convivir con nuestros dos hijos pequeños y no podríamos estar más felices. Vino con su cartilla al día, microchip, revisión veterinaria perfecta y un carácter dulce que enamora a todo el que viene a casa.',
-    verified: true,
-    date: 'Enero 2026'
+    "id": "t-2",
+    "adopterName": "Carlos y Marta G.",
+    "author": "Carlos y Marta G.",
+    "city": "Barcelona",
+    "location": "Barcelona",
+    "catName": "Jason",
+    "kittenName": "Jason · Ragdoll",
+    "breed": "Ragdoll",
+    "adoptionYear": "2026",
+    "date": "Enero 2026",
+    "rating": 5,
+    "avatar": "CM",
+    "image": "/photos/rag-jason-24.jpg",
+    "text": "Buscábamos un Ragdoll tranquilo para convivir con nuestros dos hijos pequeños y no podríamos estar más felices. Vino con su cartilla al día, microchip, revisión veterinaria perfecta y un carácter dulce que enamora a todo el que viene a casa.",
+    "verified": true
   },
   {
-    id: 't-3',
-    author: 'Elena R.',
-    location: 'Valencia',
-    avatar: 'ER',
-    kittenName: 'Desmond · Sphynx',
-    rating: 5,
-    text: 'Nuestro Sphynx llegó a Valencia mediante transporte especializado en perfecto estado. Su piel es como terciopelo cálido y su personalidad no puede ser más cariñosa. Además, el criadero sigue pendiente de nosotros ante cualquier duda.',
-    verified: true,
-    date: 'Febrero 2026'
+    "id": "t-3",
+    "adopterName": "Elena R.",
+    "author": "Elena R.",
+    "city": "Valencia",
+    "location": "Valencia",
+    "catName": "Desmond",
+    "kittenName": "Desmond · Sphynx",
+    "breed": "Sphynx",
+    "adoptionYear": "2026",
+    "date": "Febrero 2026",
+    "rating": 5,
+    "avatar": "ER",
+    "image": "/photos/sph-desmond-32.png",
+    "text": "Nuestro Sphynx llegó a Valencia mediante transporte especializado en perfecto estado. Su piel es como terciopelo cálido y su personalidad no puede ser más cariñosa. Además, criaderograciadivina sigue pendiente de nosotros ante cualquier duda.",
+    "verified": true
   },
   {
-    id: 't-4',
-    author: 'Javier M.',
-    location: 'Sevilla',
-    avatar: 'JM',
-    kittenName: 'Milo · British Shorthair',
-    rating: 5,
-    text: 'Una experiencia de diez. Milo es una belleza de pelaje denso y carácter sosegado. Todo el proceso de reserva y entrega fue transparente y profesional.',
-    verified: true,
-    date: 'Enero 2026'
+    "id": "t-4",
+    "adopterName": "Javier M.",
+    "author": "Javier M.",
+    "city": "Sevilla",
+    "location": "Sevilla",
+    "catName": "Milo",
+    "kittenName": "Milo · British Shorthair",
+    "breed": "British Shorthair",
+    "adoptionYear": "2026",
+    "date": "Enero 2026",
+    "rating": 5,
+    "avatar": "JM",
+    "image": "/photos/bsh-milo-09.jpg",
+    "text": "Una experiencia de diez. Milo es una belleza de pelaje denso y carácter sosegado. Todo el proceso de reserva y entrega fue transparente y profesional. Superó todas nuestras expectativas.",
+    "verified": true
   },
   {
-    id: 't-5',
-    author: 'Beatriz S.',
-    location: 'Bilbao',
-    avatar: 'BS',
-    kittenName: 'Luna · Maine Coon',
-    rating: 5,
-    text: 'Luna es el amor de nuestra casa. Ojos esmeralda y unos penachos de lince impresionantes. Muy agradecida al Criadero Gracia Divina por el trato y la dedicación.',
-    verified: true,
-    date: 'Diciembre 2025'
+    "id": "t-5",
+    "adopterName": "Beatriz S.",
+    "author": "Beatriz S.",
+    "city": "Bilbao",
+    "location": "Bilbao",
+    "catName": "Luna",
+    "kittenName": "Luna · Maine Coon",
+    "breed": "Maine Coon",
+    "adoptionYear": "2025",
+    "date": "Diciembre 2025",
+    "rating": 5,
+    "avatar": "BS",
+    "image": "/photos/mc-luna-10.jpg",
+    "text": "Luna es el amor de nuestra casa. Ojos esmeralda y unos penachos de lince impresionantes. Muy agradecida a criaderograciadivina por el trato tan humano y la dedicación.",
+    "verified": true
   },
   {
-    id: 't-6',
-    author: 'Marc y Clara',
-    location: 'Zaragoza',
-    avatar: 'MC',
-    kittenName: 'Bambino · Sphynx',
-    rating: 5,
-    text: 'Queríamos un Sphynx sano y bien socializado y superó con creces lo esperado. Juguetona, limpia y sumamente inteligente. Recomendable 100%.',
-    verified: true,
-    date: 'Febrero 2026'
+    "id": "t-6",
+    "adopterName": "Marc y Clara",
+    "author": "Marc y Clara",
+    "city": "Zaragoza",
+    "location": "Zaragoza",
+    "catName": "Bambino",
+    "kittenName": "Bambino · Sphynx",
+    "breed": "Sphynx",
+    "adoptionYear": "2026",
+    "date": "Febrero 2026",
+    "rating": 5,
+    "avatar": "MC",
+    "image": "/photos/sph-bambino-30.jpg",
+    "text": "Queríamos un Sphynx sano y bien socializado y superó con creces lo esperado. Juguetona, limpia y sumamente inteligente. Recomendable al 100%.",
+    "verified": true
+  },
+  {
+    "id": "t-7",
+    "adopterName": "Rocío A.",
+    "author": "Rocío A.",
+    "city": "Málaga",
+    "location": "Málaga",
+    "catName": "Astrid",
+    "kittenName": "Astrid · British Shorthair",
+    "breed": "British Shorthair",
+    "adoptionYear": "2026",
+    "date": "Febrero 2026",
+    "rating": 5,
+    "avatar": "RA",
+    "image": "/photos/bsh-astrid-01.jpg",
+    "text": "Astrid es una muñeca de peluche. Desde el primer día usó el arenero sin problema y se tumba a nuestro lado en el sofá. El kit de bienvenida y el pienso que nos enviaron nos ayudaron muchísimo con su adaptación.",
+    "verified": true
+  },
+  {
+    "id": "t-8",
+    "adopterName": "Pablo T.",
+    "author": "Pablo T.",
+    "city": "Alicante",
+    "location": "Alicante",
+    "catName": "Alulu",
+    "kittenName": "Alulu · Ragdoll",
+    "breed": "Ragdoll",
+    "adoptionYear": "2026",
+    "date": "Enero 2026",
+    "rating": 5,
+    "avatar": "PT",
+    "image": "/photos/rag-alulu-21.jpg",
+    "text": "Es increíble lo dócil que es Alulu. La coges en brazos y parece que se derrite de relax. El asesoramiento genético y las pruebas veterinarias que nos entregaron nos dieron una seguridad total.",
+    "verified": true
+  },
+  {
+    "id": "t-9",
+    "adopterName": "Sofía G.",
+    "author": "Sofía G.",
+    "city": "Santander",
+    "location": "Santander",
+    "catName": "Louie",
+    "kittenName": "Louie · Maine Coon",
+    "breed": "Maine Coon",
+    "adoptionYear": "2026",
+    "date": "Enero 2026",
+    "rating": 5,
+    "avatar": "SG",
+    "image": "/photos/mc-louie-09.jpg",
+    "text": "Louie es impresionante, con solo unos meses ya tiene una presencia majestuosa. Come fenomenal y es el compañero inseparable de mi hijo. La comunicación por WhatsApp con criaderograciadivina fue impecable.",
+    "verified": true
+  },
+  {
+    "id": "t-10",
+    "adopterName": "David R.",
+    "author": "David R.",
+    "city": "A Coruña",
+    "location": "A Coruña",
+    "catName": "Layla",
+    "kittenName": "Layla · Sphynx",
+    "breed": "Sphynx",
+    "adoptionYear": "2026",
+    "date": "Febrero 2026",
+    "rating": 5,
+    "avatar": "DR",
+    "image": "/photos/sph-layla-33.png",
+    "text": "Llegó al norte en transporte con climatización perfecta y súper despierta. Le encanta dormir acurrucada bajo las mantas con nosotros. Se nota que han recibido cariño y atención desde que nacieron.",
+    "verified": true
+  },
+  {
+    "id": "t-11",
+    "adopterName": "Valentina N.",
+    "author": "Valentina N.",
+    "city": "Palma de Mallorca",
+    "location": "Palma de Mallorca",
+    "catName": "Cleo",
+    "kittenName": "Cleo · Ragdoll",
+    "breed": "Ragdoll",
+    "adoptionYear": "2025",
+    "date": "Noviembre 2025",
+    "rating": 5,
+    "avatar": "VN",
+    "image": "/photos/rag-cleo-23.jpg",
+    "text": "La adopción de Cleo fue el mejor acierto del año. Ojos de un azul zafiro cautivador y un ronroneo constante. Un criadero honesto, familiar y apasionado por el bienestar de los felinos.",
+    "verified": true
+  },
+  {
+    "id": "t-12",
+    "adopterName": "Alberto y Lucía",
+    "author": "Alberto y Lucía",
+    "city": "Granada",
+    "location": "Granada",
+    "catName": "Babushka",
+    "kittenName": "Babushka · British Shorthair",
+    "breed": "British Shorthair",
+    "adoptionYear": "2026",
+    "date": "Enero 2026",
+    "rating": 5,
+    "avatar": "AL",
+    "image": "/photos/bsh-babushka-02.jpg",
+    "text": "Buscábamos un British Shorthair auténtico de línea europea y Babushka tiene una morfología impecable. Las vacunas, el chip y el contrato estaban perfectos. 100% de confianza.",
+    "verified": true
   }
 ];
 
 export const FAQ_DATA: FAQItem[] = [
   {
-    question: '¿Qué incluye la adopción de cada gatito por 600 €?',
-    answer: 'Todos nuestros cachorros se entregan a partir de las 10-12 semanas con: cartilla sanitaria oficial europea, microchip ya implantado a nombre del adoptante, vacunación completa (trivalente felina), desparasitaciones internas y externas al día, pedigrí oficial de raza, contrato de garantía vírica y genética de 2 años, y kit de bienvenida con pienso de alta gama y juguete con el aroma de su camada.'
+    question: '¿Qué incluye la adopción de cada gatito?',
+    answer: 'Todos nuestros cachorros (Sphynx y Ragdoll a 600 €, British Shorthair a 650 € y Maine Coon a 700 €) se entregan con: cartilla sanitaria oficial europea, microchip ya implantado a nombre del adoptante, vacunación completa (trivalente felina), desparasitaciones internas y externas al día, pedigrí oficial de raza, contrato de garantía vírica y genética de 2 años, y kit de bienvenida con pienso de alta gama y juguete con el aroma de su camada.'
   },
   {
     question: '¿Realizáis envíos a toda España?',
-    answer: 'Sí. Los gatitos pueden recogerse personalmente en nuestras instalaciones en España mediante visita concertada, o bien entregarse directamente en tu domicilio a través de transporte veterinario especializado puerta a puerta con climatización controlada y monitorización en tiempo real.'
+    answer: 'Sí. Realizamos entregas seguras en cualquier punto de España a través de transporte veterinario especializado puerta a puerta con climatización controlada y monitorización en tiempo real, garantizando la total tranquilidad del cachorro.'
   },
   {
     question: '¿Cómo funciona el proceso de reserva?',

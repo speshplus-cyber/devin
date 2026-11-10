@@ -260,7 +260,7 @@ export const BreedsView: React.FC<BreedsViewProps> = ({
                   <div className="kmini-body">
                     <div className="kmini-top">
                       <h3>{kitten.name}</h3>
-                      <span className="price">{kitten.price || '600 €'}</span>
+                      <span className="price">{kitten.price}</span>
                     </div>
                     <div className="kmini-meta">
                       <span className={`sex sex-${kitten.gender === 'Hembra' ? 'F' : 'M'}`}>

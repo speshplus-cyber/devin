@@ -35,7 +35,7 @@ export const PolicyView: React.FC<PolicyViewProps> = ({ onOpenAdoptionModal }) =
 
         <div className="bg-red-50/30 rounded-2xl border border-red-100 p-6 sm:p-8 space-y-4 text-xs sm:text-sm text-neutral-700 leading-relaxed">
           <p>
-            Criadero Gracia Divina entrega cachorros exclusivamente a hogares definitivos que compartan nuestra visión de respeto y cuidado. Para formalizar cualquier entrega, la parte adoptante se compromete a:
+            criaderograciadivina entrega cachorros exclusivamente a hogares definitivos que compartan nuestra visión de respeto y cuidado. Para formalizar cualquier entrega, la parte adoptante se compromete a:
           </p>
           <ul className="space-y-2.5">
             <li className="flex items-start gap-2.5">
@@ -138,7 +138,7 @@ export const PolicyView: React.FC<PolicyViewProps> = ({ onOpenAdoptionModal }) =
             De conformidad con el Reglamento General de Protección de Datos (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), le informamos de que los datos personales facilitados en las solicitudes de adopción serán tratados bajo la responsabilidad de:
           </p>
           <div className="p-3 bg-white rounded-xl border border-red-100 text-xs space-y-1">
-            <p><strong>Responsable:</strong> Criadero Gracia Divina</p>
+            <p><strong>Responsable:</strong> criaderograciadivina</p>
             <p><strong>Finalidad:</strong> Gestión y tramitación de solicitudes de adopción, elaboración del contrato de cesión y registro oficial del microchip.</p>
             <p><strong>Legitimación:</strong> Consentimiento del interesado y ejecución de la relación contractual pre-adoptiva.</p>
             <p><strong>Correo para ejercer derechos ARCO:</strong> <a href="mailto:Criaderograciadivina@gmail.com" className="text-[#b91c1c] underline font-semibold">Criaderograciadivina@gmail.com</a></p>

@@ -50,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({
     <>
       {/* Top Announcement Bar */}
       <div className="topbar">
-        Bienvenido a Criadero Gracia Divina — Tu familia felina comienza aquí
+        Bienvenido a criaderograciadivina — Tu familia felina comienza aquí
         <a
           href="#contacto"
           onClick={(e) => {
@@ -92,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </svg>
             <span>
-              Gracia<b>Divina</b>
+              criadero<b>graciadivina</b>
             </span>
           </a>
 

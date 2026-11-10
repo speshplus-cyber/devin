@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
               />
             </svg>
             <span>
-              Gracia<b>Divina</b>
+              criadero<b>graciadivina</b>
             </span>
           </a>
           <p>
@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
           <a
             className="btn btn-wa btn-sm"
-            href="https://wa.me/34692881430?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20gatitos%20de%20raza%20de%20Criadero%20Gracia%20Divina."
+            href="https://wa.me/34692881430?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20gatitos%20de%20raza%20de%20criaderograciadivina."
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -298,7 +298,7 @@ export const Footer: React.FC<FooterProps> = ({
       </div>
 
       <div className="footer-bottom container">
-        © 2026 Criadero Gracia Divina. Todos los derechos reservados.
+        © 2026 criaderograciadivina. Todos los derechos reservados.
       </div>
     </footer>
   );

@@ -77,7 +77,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       name: 'Maine Coon',
       tagline: 'El gigante dócil del reino felino',
       desc: 'Imponente, noble y de carácter paciente y sociable. Con penachos de lince y manto majestuoso.',
-      avail: '19 gatitos disponibles · 600 € →',
+      avail: '19 gatitos disponibles · 700 € →',
       image: '/photos/mc-spartacus-18.jpg',
       count: 19,
     },
@@ -85,7 +85,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       name: 'British Shorthair',
       tagline: 'El osito de terciopelo sereno',
       desc: 'Carita redonda, mofletes tiernos y pelaje crisp sumamente denso. Temperamento dulce y tranquilo.',
-      avail: '20 gatitos disponibles · 600 € →',
+      avail: '20 gatitos disponibles · 650 € →',
       image: '/photos/bsh-milo-09.jpg',
       count: 20,
     },
@@ -132,7 +132,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     e.preventDefault();
     const fullName = `${contactName} ${contactSurname}`.trim() || 'Interesado';
     const text =
-      `¡Hola Criadero Gracia Divina! Mi nombre es ${fullName}.\n` +
+      `¡Hola criaderograciadivina! Mi nombre es ${fullName}.\n` +
       `Me gustaría solicitar información sobre la adopción de un gatito de raza.\n` +
       `• Raza: ${contactBreed || 'Cualquiera'}\n` +
       `• Gatito de interés: ${contactKitten || 'General'}\n` +
@@ -149,16 +149,16 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   const handleContactEmail = (e: React.FormEvent) => {
     e.preventDefault();
     const fullName = `${contactName} ${contactSurname}`.trim() || 'Familia interesada';
-    const subject = `Consulta de Adopción - ${contactBreed || 'Gatito de Raza'} - ${fullName}`;
+    const subject = `Consulta de Adopción - criaderograciadivina - ${contactBreed || 'Gatito de Raza'} - ${fullName}`;
     const body =
-      `Hola Criadero Gracia Divina,\n\n` +
+      `Hola criaderograciadivina,\n\n` +
       `Mi nombre es ${fullName}.\n` +
       `Estoy interesado/a en la adopción de un gatito:\n\n` +
       `• Raza: ${contactBreed || 'No especificada'}\n` +
       `• Gatito de interés: ${contactKitten || 'Sin preferencia'}\n` +
       `• Ciudad de residencia: ${contactCity || '-'}\n` +
       `• Teléfono de contacto: ${contactPhone || '-'}\n\n` +
-      `Mensaje:\n${contactMessage || 'Agradecería información sobre disponibilidad, reserva y visita concertada.'}\n\n` +
+      `Mensaje:\n${contactMessage || 'Agradecería información sobre disponibilidad, reserva y entrega.'}\n\n` +
       `Atentamente,\n${fullName}`;
 
     const emailTo = settings.contactEmail || 'Criaderograciadivina@gmail.com';
@@ -175,7 +175,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       */}
       <section
         className="lux-hero"
-        style={{ '--hero': `url('/photos/IMG_4505.jpeg')` } as React.CSSProperties}
+        style={{ '--hero': `url('/photos/mc-spartacus-18.jpg')` } as React.CSSProperties}
       >
         <div className="container">
           <div className="lux-hero-content">
@@ -192,8 +192,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </h1>
 
             <p>
-              Criadero familiar de referencia especializado en 4 selectas razas: <strong>Maine Coon</strong>,{' '}
-              <strong>British Shorthair</strong>, <strong>Ragdoll</strong> y <strong>Sphynx</strong>.
+              Criadero familiar especializado en 4 selectas razas: <strong>Maine Coon</strong> (700 €),{' '}
+              <strong>British Shorthair</strong> (650 €), <strong>Ragdoll</strong> (600 €) y <strong>Sphynx</strong> (600 €).
               Criados dentro del hogar, con 2 años de garantía sanitaria por escrito y entrega personalizada en toda España.
             </p>
 
@@ -206,10 +206,10 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   document.getElementById('camadas-disponibles')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Ver los 55 Gatitos Disponibles (600 €) ↓
+                Ver los 55 Gatitos Disponibles (Desde 600 €) ↓
               </a>
               <a
-                href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola Criadero Gracia Divina! Me gustaría consultar sobre los gatitos disponibles.')}`}
+                href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola criaderograciadivina! Me gustaría consultar sobre los gatitos disponibles.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-wa"
@@ -236,7 +236,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     <img src={breed.image} alt={breed.name} loading="lazy" />
                     <div className="breed-card-info">
                       <h4>{breed.name}</h4>
-                      <span>{breed.count} Disponibles</span>
+                      <span>{breed.avail}</span>
                     </div>
                   </div>
                 ))}
@@ -298,7 +298,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               </div>
               <div className="trust-text">
                 <h4>Entrega en España</h4>
-                <p>Transporte especializado directo a tu puerta o recogida en mano.</p>
+                <p>Transporte especializado climatizado directo a tu domicilio.</p>
               </div>
             </div>
           </div>
@@ -317,7 +317,9 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               Camadas 2026 Abiertas
             </span>
             <h2>Nuestros 55 Gatitos Disponibles 🐾</h2>
-            <p>Precio único cerrado de <strong>600 €</strong> con microchip, vacunas, desparasitación y garantías incluidas</p>
+            <p>
+              Tarifas transparentes: <strong>Sphynx y Ragdoll (600 €)</strong> · <strong>British Shorthair (650 €)</strong> · <strong>Maine Coon (700 €)</strong> con microchip, vacunas y garantías incluidas
+            </p>
           </div>
 
           {/* Interactive Filter Pills */}
@@ -388,9 +390,9 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
           {/* Kitten Mini Cards Grid */}
           <div className="kgrid">
             {displayedKittens.map((kitten) => {
-              const mainPhoto = kitten.images && kitten.images.length > 0 ? kitten.images[0] : '/photos/IMG_4505.jpeg';
+              const mainPhoto = kitten.images && kitten.images.length > 0 ? kitten.images[0] : '/photos/mc-spartacus-18.jpg';
               const waText = encodeURIComponent(
-                `¡Hola Criadero Gracia Divina! Me interesa el gatito ${kitten.name} (${kitten.breed}, ${kitten.gender}, ${kitten.price || '600 €'}). ¿Sigue disponible para reserva?`
+                `¡Hola criaderograciadivina! Me interesa el gatito ${kitten.name} (${kitten.breed}, ${kitten.gender}, precio ${kitten.price || '600 €'}). ¿Sigue disponible para reserva?`
               );
               const waLink = `https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${waText}`;
 
@@ -404,7 +406,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   <div className="kmini-body">
                     <div className="kmini-top">
                       <h3>{kitten.name}</h3>
-                      <span className="price">{kitten.price || '600 €'}</span>
+                      <span className="price">{kitten.price}</span>
                     </div>
                     <div className="kmini-meta">
                       <span className={`sex sex-${kitten.gender === 'Hembra' ? 'F' : 'M'}`}>
@@ -500,7 +502,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <span className="badge">Nuestra Filosofía</span>
             <h2>Crianza Familiar con Alma y Transparencia</h2>
             <p>
-              En <strong>Criadero Gracia Divina</strong> entendemos la crianza como una vocación de vida. Cada cachorro nace y crece en el corazón de nuestro hogar, rodeado del cariño de nuestra familia, ruidos cotidianos y atención veterinaria individualizada.
+              En <strong>criaderograciadivina</strong> entendemos la crianza como una vocación de vida. Cada cachorro nace y crece en el corazón de nuestro hogar, rodeado del cariño de nuestra familia, ruidos cotidianos y atención veterinaria individualizada.
             </p>
             <p>
               Nos enfocamos exclusivamente en <strong>Maine Coon, British Shorthair, Ragdoll y Sphynx</strong>, garantizando que cada ejemplar represente la cúspide de belleza, salud y temperamento dócil de su estándar oficial.
@@ -582,7 +584,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <div className="step-card">
               <div className="step-number">3</div>
               <h3>Bienvenida a Casa</h3>
-              <p>Formalizamos el contrato y garantía de 2 años. Te lo entregamos en mano o con transporte climatizado en tu ciudad.</p>
+              <p>Formalizamos el contrato y garantía de 2 años. Te lo entregamos directamente con transporte climatizado en tu ciudad.</p>
             </div>
           </div>
 
@@ -603,7 +605,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        7. VERIFIED TESTIMONIALS SECTION
+        7. VERIFIED TESTIMONIALS SECTION (AUTHENTIC KITTEN PHOTOS - NO AI PEOPLE)
         ========================================================================
       */}
       <section className="section section-green" id="testimonios">
@@ -613,120 +615,48 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               Testimonios Reales
             </span>
             <h2>Opiniones de Nuestras Familias</h2>
-            <p>Más de 280 adopciones felices en toda España avalan nuestra dedicación y cuidado.</p>
+            <p>Más de 280 adopciones felices avalan nuestra dedicación y cuidado en criaderograciadivina.</p>
           </div>
 
           <div className="tgrid">
-            <article className="tcard">
-              <div className="tcard-body">
-                <div className="tcard-rating-row">
-                  <div className="stars" aria-label="5 de 5 estrellas">
-                    ★★★★★
+            {testimonials.slice(0, 6).map((t) => (
+              <article key={t.id} className="tcard">
+                <div className="tcard-body">
+                  <div className="tcard-rating-row">
+                    <div className="stars" aria-label="5 de 5 estrellas">
+                      ★★★★★
+                    </div>
+                    <span className="badge-verified">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                      </svg>
+                      <span>Verificada</span>
+                    </span>
                   </div>
-                  <span className="badge-verified">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                    </svg>
-                    <span>Verificada</span>
-                  </span>
-                </div>
-                <blockquote>
-                  «Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Spartacus a casa se adaptó en cuestión de horas. Es enorme, cariñoso como un perro y equilibrado, se nota muchísimo que se crían en familia.»
-                </blockquote>
-                <figcaption>
-                  <span className="avatar">LP</span>
-                  <div className="who">
-                    <strong>Laura P.</strong>
-                    <small>Madrid</small>
-                  </div>
-                </figcaption>
-                <div className="tcard-kitten">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"
+                  <blockquote>
+                    «{t.text}»
+                  </blockquote>
+                  <figcaption>
+                    <span className="avatar">{t.avatar || 'FA'}</span>
+                    <div className="who">
+                      <strong>{t.adopterName || t.author}</strong>
+                      <small>{t.city || t.location}</small>
+                    </div>
+                  </figcaption>
+                  <div className="tcard-kitten">
+                    <img
+                      src={t.image}
+                      alt={t.catName || t.kittenName}
+                      style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--gold)' }}
+                      loading="lazy"
                     />
-                  </svg>
-                  <span>
-                    Gatito adoptado: <strong>Spartacus · Maine Coon</strong>
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <article className="tcard">
-              <div className="tcard-body">
-                <div className="tcard-rating-row">
-                  <div className="stars" aria-label="5 de 5 estrellas">
-                    ★★★★★
+                    <span>
+                      Gatito adoptado: <strong>{t.catName || t.kittenName} · {t.breed}</strong>
+                    </span>
                   </div>
-                  <span className="badge-verified">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                    </svg>
-                    <span>Verificada</span>
-                  </span>
                 </div>
-                <blockquote>
-                  «Buscábamos un Ragdoll tranquilo para convivir con nuestros dos hijos pequeños y no podríamos estar más felices. Vino con su cartilla al día, microchip, revisión veterinaria perfecta y un carácter dulce que enamora a todo el que viene a casa.»
-                </blockquote>
-                <figcaption>
-                  <span className="avatar">CM</span>
-                  <div className="who">
-                    <strong>Carlos y Marta G.</strong>
-                    <small>Barcelona</small>
-                  </div>
-                </figcaption>
-                <div className="tcard-kitten">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"
-                    />
-                  </svg>
-                  <span>
-                    Gatito adoptado: <strong>Jason · Ragdoll</strong>
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <article className="tcard">
-              <div className="tcard-body">
-                <div className="tcard-rating-row">
-                  <div className="stars" aria-label="5 de 5 estrellas">
-                    ★★★★★
-                  </div>
-                  <span className="badge-verified">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                    </svg>
-                    <span>Verificada</span>
-                  </span>
-                </div>
-                <blockquote>
-                  «Nuestro British Shorthair llegó a Valencia mediante transporte especializado en perfecto estado. Nuestro veterinario nos felicitó por lo bien cuidado y socializado que venía. Además, siguen pendientes de cualquier duda que tenemos.»
-                </blockquote>
-                <figcaption>
-                  <span className="avatar">ER</span>
-                  <div className="who">
-                    <strong>Elena R.</strong>
-                    <small>Valencia</small>
-                  </div>
-                </figcaption>
-                <div className="tcard-kitten">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"
-                    />
-                  </svg>
-                  <span>
-                    Gatito adoptado: <strong>Milo · British Shorthair</strong>
-                  </span>
-                </div>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
 
           <div className="center" style={{ marginTop: '38px' }}>
@@ -734,7 +664,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               onClick={() => onNavigateToTestimonials && onNavigateToTestimonials()}
               className="btn btn-gold"
             >
-              Ver Todas las Opiniones (+280) →
+              Ver Todas las Opiniones ({testimonials.length > 0 ? testimonials.length : '12'}) →
             </button>
           </div>
         </div>
@@ -742,7 +672,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        8. VIP RESERVATION & CONTACT SECTION (MOBILE-FIRST FORM)
+        8. VIP RESERVATION & CONTACT SECTION (MOBILE-FIRST FORM - NO ADDRESS)
         ========================================================================
       */}
       <section className="section section-cream" id="contacto">
@@ -831,10 +761,10 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     onChange={(e) => setContactBreed(e.target.value)}
                   >
                     <option value="">Seleccionar raza...</option>
-                    <option value="Maine Coon">Maine Coon (19 disponibles)</option>
-                    <option value="British Shorthair">British Shorthair (20 disponibles)</option>
-                    <option value="Ragdoll">Ragdoll (9 disponibles)</option>
-                    <option value="Sphynx">Sphynx (7 disponibles)</option>
+                    <option value="Maine Coon">Maine Coon (19 disponibles · 700 €)</option>
+                    <option value="British Shorthair">British Shorthair (20 disponibles · 650 €)</option>
+                    <option value="Ragdoll">Ragdoll (9 disponibles · 600 €)</option>
+                    <option value="Sphynx">Sphynx (7 disponibles · 600 €)</option>
                     <option value="No estoy seguro">No estoy seguro / Cualquier raza</option>
                   </select>
                 </label>
@@ -887,7 +817,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </form>
 
             <aside className="contact-info">
-              <h3>Criadero Gracia Divina</h3>
+              <h3>criaderograciadivina</h3>
 
               <div className="ci">
                 <svg viewBox="0 0 24 24">
@@ -929,18 +859,18 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
               <div className="ci">
                 <svg viewBox="0 0 24 24">
-                  <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                  <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9 1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
                 </svg>
                 <div>
-                  <strong>Ubicación y Entregas</strong>
-                  <span>Criadero en España · Entrega personal a domicilio</span>
+                  <strong>Entregas y Envíos</strong>
+                  <span>Envíos seguros a domicilio en toda España o videollamadas en directo</span>
                 </div>
               </div>
 
               <div className="note">
-                <strong>Garantía de Privacidad y Bienestar</strong>
+                <strong>Garantía de Bienestar y Privacidad</strong>
                 <p>
-                  Por la seguridad y tranquilidad de nuestros animales y familia, las visitas presenciales se conciertan con cita previa tras una primera toma de contacto. También ofrecemos videollamadas en directo para conocer a los cachorros.
+                  Para preservar la tranquilidad y el bienestar sanitario de nuestras camadas y madres reproductoras, priorizamos la atención personalizada por WhatsApp, videollamadas en directo y entrega segura a domicilio con seguimiento permanente.
                 </p>
               </div>
 

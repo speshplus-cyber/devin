@@ -25,7 +25,7 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({
           Experiencias Reales de Familias Adoptantes
         </h1>
         <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
-          Nuestra mayor satisfacción es ver cómo nuestros cachorros llenan de alegría y armonía hogares en toda España. Estas son algunas de las opiniones compartidas por nuestras familias con sus gatitos en brazos.
+          Nuestra mayor satisfacción en criaderograciadivina es ver cómo nuestros cachorros llenan de alegría y armonía hogares en toda España. Estas son algunas de las opiniones compartidas por nuestras familias con sus gatitos en brazos.
         </p>
       </div>
 
@@ -44,8 +44,8 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({
           <span className="text-xs text-neutral-600 font-medium">Garantía Genética</span>
         </div>
         <div>
-          <span className="font-serif text-3xl font-bold text-[#b91c1c] block">600 €</span>
-          <span className="text-xs text-neutral-600 font-medium">Tarifa Transparente</span>
+          <span className="font-serif text-3xl font-bold text-[#b91c1c] block">Desde 600 €</span>
+          <span className="text-xs text-neutral-600 font-medium">Tarifas Claras y Cerradas</span>
         </div>
       </div>
 
@@ -61,12 +61,13 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({
               <div className="relative aspect-[16/11] rounded-xl overflow-hidden bg-neutral-100 border border-red-100">
                 <img
                   src={t.image}
-                  alt={`${t.adopterName} con ${t.catName}`}
+                  alt={`${t.adopterName || t.author} con ${t.catName || t.kittenName}`}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <span className="absolute bottom-2.5 left-2.5 px-3 py-1 text-[11px] font-bold bg-[#111827]/85 backdrop-blur-xs text-white rounded-md uppercase tracking-wider">
-                  {t.catName}
+                  {t.catName || t.kittenName}
                 </span>
                 <span className="absolute top-2.5 right-2.5 px-2.5 py-1 text-[10px] font-semibold bg-white/95 text-[#b91c1c] rounded-full shadow-xs flex items-center gap-1">
                   <CheckCircle className="w-3 h-3 text-[#b91c1c]" />
@@ -90,10 +91,10 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({
             {/* Adopter Info Strip */}
             <div className="pt-4 mt-4 border-t border-red-100 flex items-center justify-between">
               <div>
-                <h4 className="font-bold text-xs sm:text-sm text-[#111827]">{t.adopterName}</h4>
+                <h4 className="font-bold text-xs sm:text-sm text-[#111827]">{t.adopterName || t.author}</h4>
                 <div className="flex items-center gap-1 text-[11px] text-neutral-500">
                   <MapPin className="w-3 h-3 text-[#b91c1c]" />
-                  <span>{t.city} (Adopción {t.adoptionYear || '2025'})</span>
+                  <span>{t.city || t.location} (Adopción {t.adoptionYear || t.date || '2026'})</span>
                 </div>
               </div>
               <span className="text-[11px] font-semibold text-[#b91c1c] bg-red-50 px-2.5 py-1 rounded-full border border-red-200">

@@ -55,7 +55,7 @@ export const HealthPedigreeView: React.FC<HealthPedigreeViewProps> = ({
           Garantías Sanitarias y Certificación Oficial
         </h1>
         <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
-          En Criadero Gracia Divina la salud no es una promesa verbal: se acredita mediante documentación clínica veterinaria, pruebas de laboratorio certificadas y contratos legales con 2 años de cobertura.
+          En criaderograciadivina la salud no es una promesa verbal: se acredita mediante documentación clínica veterinaria, pruebas de laboratorio certificadas y contratos legales con 2 años de cobertura.
         </p>
       </div>
 
@@ -176,7 +176,7 @@ export const HealthPedigreeView: React.FC<HealthPedigreeViewProps> = ({
         </div>
         <div className="flex flex-col sm:flex-row gap-3 shrink-0">
           <button
-            onClick={() => onOpenEmail('Hola Criadero Gracia Divina, me gustaría solicitar los informes clínicos y un modelo de contrato para adopción.')}
+            onClick={() => onOpenEmail('Hola criaderograciadivina, me gustaría solicitar los informes clínicos y un modelo de contrato para adopción.')}
             className="px-5 py-2.5 text-xs sm:text-sm font-semibold text-[#b91c1c] bg-white hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
           >
             Solicitar Informes por Email

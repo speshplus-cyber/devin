@@ -14,7 +14,7 @@ export const PhilosophyView: React.FC<PhilosophyViewProps> = ({
     {
       title: 'Hogar 100% Libre de Jaulas',
       icon: Home,
-      desc: 'Nuestros gatos y gatitos no conocen el confinamiento. Viven, duermen, juegan y exploran con libertad en nuestro hogar en la Sierra de Madrid, compartiendo sofás, camas y espacios de juego enriquecidos.',
+      desc: 'Nuestros gatos y gatitos no conocen el confinamiento. Viven, duermen, juegan y exploran con libertad en nuestro hogar, compartiendo sofás, camas y espacios de juego enriquecidos.',
     },
     {
       title: 'Socialización Afectiva Temprana',
@@ -34,10 +34,10 @@ export const PhilosophyView: React.FC<PhilosophyViewProps> = ({
   ];
 
   const galleryImages = [
-    { src: '/photos/IMG_4511.jpeg', caption: 'Hamacas ergonómicas y torres de escalada en nuestro salón' },
-    { src: '/photos/IMG_4504.jpeg', caption: 'Reconocimiento en exposiciones felinas de morfología' },
-    { src: '/photos/IMG_4615.jpeg', caption: 'Momentos de relax y mimos en familia los domingos' },
-    { src: '/photos/IMG_4465.jpeg', caption: 'Crecimiento saludable en un entorno higiénico y luminoso' },
+    { src: '/photos/mc-spartacus-18.jpg', caption: 'Hamacas ergonómicas y torres de escalada en nuestro salón' },
+    { src: '/photos/bsh-milo-09.jpg', caption: 'Reconocimiento en exposiciones felinas de morfología' },
+    { src: '/photos/rag-jason-24.jpg', caption: 'Momentos de relax y mimos en familia los domingos' },
+    { src: '/photos/sph-desmond-32.png', caption: 'Crecimiento saludable en un entorno higiénico y luminoso' },
   ];
 
   return (

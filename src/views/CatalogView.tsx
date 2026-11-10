@@ -130,16 +130,9 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
   const handleContactWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    const fullName = `${contactName} ${contactSurname}`.trim() || 'Interesado';
-    const text =
-      `¡Hola criaderograciadivina! Mi nombre es ${fullName}.\n` +
-      `Me gustaría solicitar información sobre la adopción de un gatito de raza.\n` +
-      `• Raza: ${contactBreed || 'Cualquiera'}\n` +
-      `• Gatito de interés: ${contactKitten || 'General'}\n` +
-      `• Ciudad: ${contactCity || 'España'}\n` +
-      `• Teléfono: ${contactPhone || '-'}\n` +
-      `• Email: ${contactEmail || '-'}\n` +
-      `• Mensaje: ${contactMessage || 'Quisiera conocer disponibilidad y próximos pasos para la reserva.'}`;
+    const text = contactKitten
+      ? `¡Hola! Me interesa la adopción del gatito ${contactKitten}.`
+      : '¡Hola! Me gustaría información para la adopción de un gatito.';
 
     const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`, '_blank');
@@ -209,7 +202,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 Ver los 55 Gatitos Disponibles (Desde 600 €) ↓
               </a>
               <a
-                href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola criaderograciadivina! Me gustaría consultar sobre los gatitos disponibles.')}`}
+                href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola! Me gustaría información para la adopción de un gatito.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-wa"
@@ -392,7 +385,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             {displayedKittens.map((kitten) => {
               const mainPhoto = kitten.images && kitten.images.length > 0 ? kitten.images[0] : '/photos/mc-spartacus-18.jpg';
               const waText = encodeURIComponent(
-                `¡Hola criaderograciadivina! Me interesa el gatito ${kitten.name} (${kitten.breed}, ${kitten.gender}, precio ${kitten.price || '600 €'}). ¿Sigue disponible para reserva?`
+                `¡Hola! Me interesa la adopción del gatito ${kitten.name}.`
               );
               const waLink = `https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${waText}`;
 
@@ -835,7 +828,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 <div>
                   <strong>WhatsApp Oficial</strong>
                   <a
-                    href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}`}
+                    href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola! Me gustaría información para la adopción de un gatito.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

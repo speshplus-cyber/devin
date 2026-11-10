@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
           <a
             className="btn btn-wa btn-sm"
-            href="https://wa.me/34632968208?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20gatitos%20de%20raza%20de%20criaderograciadivina."
+            href={`https://wa.me/34632968208?text=${encodeURIComponent('¡Hola! Me gustaría información para la adopción de un gatito.')}`}
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -123,8 +123,8 @@ export default function App() {
   // WhatsApp concierge helper for clients who prefer WhatsApp
   const handleOpenWhatsApp = (customMessage?: string) => {
     const defaultMsg = selectedKitten
-      ? `Hola criaderograciadivina, estoy interesado/a en la adopción del cachorro ${selectedKitten.name} (${selectedKitten.breed}, precio ${selectedKitten.price}). ¿Podrían facilitarme más detalles, fotos o vídeos?`
-      : 'Hola criaderograciadivina, he visitado su página web y me gustaría recibir información sobre los cachorros disponibles y próximas camadas.';
+      ? `¡Hola! Me interesa la adopción del gatito ${selectedKitten.name}.`
+      : '¡Hola! Me gustaría información para la adopción de un gatito.';
     const text = encodeURIComponent(customMessage || defaultMsg);
     const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${text}`, '_blank');

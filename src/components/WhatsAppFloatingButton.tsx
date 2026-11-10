@@ -19,8 +19,8 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
   };
 
   const defaultMsg = selectedKittenName
-    ? `¡Hola! Me interesa ${selectedKittenName}. ¿Sigue disponible?`
-    : '¡Hola! Estoy interesado en los gatitos de raza de criaderograciadivina.';
+    ? `¡Hola! Me interesa la adopción del gatito ${selectedKittenName}.`
+    : '¡Hola! Me gustaría información para la adopción de un gatito.';
 
   return (
     <a

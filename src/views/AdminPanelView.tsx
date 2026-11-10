@@ -1292,7 +1292,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                           <span>Responder por Email ({lead.email})</span>
                         </a>
                         <a
-                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(lead.fullName)},%20le%20escribimos%20desde%20criaderograciadivina%20en%20referencia%20a%20su%20solicitud%20de%20adopci%C3%B3n.`}
+                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola ${lead.fullName}, le escribimos en referencia a la adopción del gatito.`)}`}
                           target="_blank"
                           rel="noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#25D366] hover:bg-[#20ba5a] text-white rounded transition-colors"

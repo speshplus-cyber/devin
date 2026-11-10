@@ -92,9 +92,9 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
 
   const handleWhatsAppFollowUp = () => {
     const text = encodeURIComponent(
-      `Hola criaderograciadivina, he enviado el formulario de solicitud de adopción a nombre de ${formData.fullName} para la raza ${formData.breed}${
-        selectedKitten ? ` (${selectedKitten.name})` : ''
-      }. Mi ciudad es ${formData.city}. ¡Me gustaría dar seguimiento!`
+      selectedKitten
+        ? `¡Hola! Me interesa la adopción del gatito ${selectedKitten.name}.`
+        : '¡Hola! Me gustaría información para la adopción de un gatito.'
     );
     window.open(`https://wa.me/34632968208?text=${text}`, '_blank');
   };

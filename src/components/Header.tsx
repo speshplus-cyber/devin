@@ -1,259 +1,340 @@
 import React, { useState } from 'react';
-import { Menu, X, Mail, ShieldCheck, Star, Sliders, ChevronRight } from 'lucide-react';
-import { CatteryLogo } from './CatteryLogo';
 
 interface HeaderProps {
   currentView: string;
   announcementText?: string;
   onNavigate: (view: string) => void;
   onOpenAdoptionModal: () => void;
-  onOpenEmail: (message?: string) => void;
-  onOpenAdmin: () => void;
+  onOpenEmail?: (message?: string) => void;
+  onOpenAdmin?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   currentView,
-  announcementText = 'Criadero Ético Federado WCF & FIFe · Camadas Primavera 2026 Abiertas para Reserva',
   onNavigate,
   onOpenAdoptionModal,
-  onOpenEmail,
   onOpenAdmin,
 }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const menuSections = [
-    { id: 'catalog', label: 'Inicio & Cachorros', desc: 'Explorar cachorros disponibles y camadas (600 €)' },
-    { id: 'breeds', label: 'Nuestras 9 Razas', desc: 'Maine Coon, Bengalí, Siberiano, Ragdoll, British, Persa...' },
-    { id: 'testimonials', label: 'Testimonios & Opiniones', desc: 'Experiencias reales de familias en toda España (5.0 ★)' },
-    { id: 'health', label: 'Garantías & Salud', desc: '2 Años de garantía genética, vacunas, chip y pedigrí oficial' },
-    { id: 'philosophy', label: 'Sobre Nosotros', desc: 'Crianza ética y familiar libre de jaulas en España' },
-    { id: 'policy', label: 'Políticas & Contrato', desc: 'Condiciones de adopción, reserva y protección de datos' },
-    { id: 'contact', label: 'Contacto & Cita Previa', desc: 'Visitas concertadas y atención por correo electrónico' },
-  ];
-
-  const handleNavClick = (viewId: string) => {
+  const handleNavClick = (viewId: string, anchorId?: string) => {
     onNavigate(viewId);
-    setDrawerOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileMenuOpen(false);
+
+    if (anchorId) {
+      setTimeout(() => {
+        const elem = document.getElementById(anchorId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 50);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white border-b border-red-100 transition-all shadow-xs">
-        {/* Top Announcement Bar in Red & White */}
-        <div className="bg-[#b91c1c] text-white px-4 py-1.5 text-xs font-semibold text-center flex items-center justify-center gap-2">
-          <ShieldCheck className="w-3.5 h-3.5 text-red-200" />
-          <span>{announcementText}</span>
-        </div>
+      {/* Top Announcement Bar */}
+      <div className="topbar">
+        Bienvenido a Criadero Gracia Divina — Tu familia felina comienza aquí
+        <a
+          href="#contacto"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('catalog', 'contacto');
+          }}
+        >
+          Contáctanos
+        </a>
+      </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          {/* Brand Wordmark (Gracia Divina in Red and White theme) */}
-          <button
-            onClick={() => handleNavClick('catalog')}
-            className="group flex items-center gap-3 focus:outline-none cursor-pointer select-none"
+      {/* Main Header */}
+      <header className="header">
+        <div className="container header-inner">
+          {/* Logo */}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('catalog');
+            }}
+            className="logo"
           >
-            <div className="transition-transform group-hover:scale-105">
-              <CatteryLogo size={46} className="w-11 h-11 sm:w-12 sm:h-12" />
-            </div>
-            <div className="flex flex-col text-left">
-              <div className="flex items-center text-2xl sm:text-3xl tracking-tight leading-none">
-                <span className="font-serif font-bold text-[#111827]">Gracia</span>
-                <span className="font-serif font-bold text-[#b91c1c] ml-1.5">Divina</span>
-              </div>
-              <span className="text-[10px] tracking-widest uppercase font-semibold text-neutral-500 mt-0.5 hidden sm:block">
-                Criadero Felino de Alta Cuna
-              </span>
-            </div>
+            <svg className="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="23" fill="var(--crimson-2)" stroke="var(--gold)" strokeWidth="2" />
+              <path
+                d="M14 18l2-8 6 5h4l6-5 2 8c1.5 2.5 2 4.5 2 7 0 7-6 11-10 11s-10-4-10-11c0-2.5.5-4.5 2-7z"
+                fill="var(--gold)"
+              />
+              <circle cx="20" cy="24" r="1.6" fill="var(--crimson-2)" />
+              <circle cx="28" cy="24" r="1.6" fill="var(--crimson-2)" />
+              <path d="M22.5 28h3l-1.5 1.6z" fill="var(--crimson-2)" />
+              <path
+                d="M17 8l3.5 3.5L24 7l3.5 4.5L31 8"
+                fill="none"
+                stroke="var(--gold)"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>
+              Gracia<b>Divina</b>
+            </span>
+          </a>
+
+          {/* Mobile Hamburger Burger */}
+          <button
+            className="burger"
+            aria-label="Abrir menú"
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span style={mobileMenuOpen ? { transform: 'translateY(7px) rotate(45deg)' } : {}} />
+            <span style={mobileMenuOpen ? { opacity: 0 } : {}} />
+            <span style={mobileMenuOpen ? { transform: 'translateY(-7px) rotate(-45deg)' } : {}} />
           </button>
 
-          {/* Quick Nav Chips for Desktop in Red & White */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-neutral-700">
+          {/* Desktop & Mobile Navigation Menu */}
+          <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
+            <ul>
+              <li>
+                <a
+                  href="#inicio"
+                  className={currentView === 'catalog' ? 'active' : ''}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('catalog');
+                  }}
+                >
+                  Inicio
+                </a>
+              </li>
+
+              <li className="has-drop">
+                <a
+                  href="#razas"
+                  className={currentView === 'breeds' ? 'active' : ''}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('catalog', 'razas');
+                  }}
+                >
+                  Razas <span className="caret">▾</span>
+                </a>
+                <ul className="drop">
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Maine Coon
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Bengalí
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Siberiano
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Ragdoll
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      British Shorthair
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Persa
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Sphynx
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Azul Ruso
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('catalog', 'razas');
+                      }}
+                    >
+                      Siamés
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#razas"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('breeds');
+                      }}
+                    >
+                      <strong>Ver todas las razas →</strong>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a
+                  href="#gatitos"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('catalog', 'camadas-disponibles');
+                  }}
+                >
+                  Gatitos
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#sobre-nosotros"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('catalog', 'sobre-nosotros');
+                  }}
+                >
+                  Sobre Nosotros
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#testimonios"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('catalog', 'testimonios');
+                  }}
+                >
+                  Testimonios
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('catalog', 'faq');
+                  }}
+                >
+                  FAQ
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#garantia-de-salud"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('health');
+                  }}
+                >
+                  Garantía de Salud
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#vacunaciones"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('health');
+                  }}
+                >
+                  Vacunaciones
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#envio-y-entrega"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('policy');
+                  }}
+                >
+                  Envío y Entrega
+                </a>
+              </li>
+            </ul>
+
             <button
-              onClick={() => handleNavClick('catalog')}
-              className={`hover:text-[#b91c1c] transition-colors cursor-pointer ${
-                currentView === 'catalog' ? 'text-[#b91c1c] font-bold' : ''
-              }`}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenAdoptionModal();
+              }}
+              className="btn btn-gold btn-sm"
             >
-              Cachorros (600 €)
-            </button>
-            <button
-              onClick={() => handleNavClick('breeds')}
-              className={`hover:text-[#b91c1c] transition-colors cursor-pointer ${
-                currentView === 'breeds' ? 'text-[#b91c1c] font-bold' : ''
-              }`}
-            >
-              Razas
-            </button>
-            <button
-              onClick={() => handleNavClick('testimonials')}
-              className={`hover:text-[#b91c1c] transition-colors cursor-pointer flex items-center gap-1.5 ${
-                currentView === 'testimonials' ? 'text-[#b91c1c] font-bold' : ''
-              }`}
-            >
-              <Star className="w-3.5 h-3.5 fill-[#b91c1c] text-[#b91c1c]" />
-              <span>Testimonios</span>
-            </button>
-            <button
-              onClick={() => handleNavClick('health')}
-              className={`hover:text-[#b91c1c] transition-colors cursor-pointer ${
-                currentView === 'health' ? 'text-[#b91c1c] font-bold' : ''
-              }`}
-            >
-              Garantías
-            </button>
-            <button
-              onClick={() => handleNavClick('contact')}
-              className={`hover:text-[#b91c1c] transition-colors cursor-pointer ${
-                currentView === 'contact' ? 'text-[#b91c1c] font-bold' : ''
-              }`}
-            >
-              Contacto
+              Adoptar Gatito
             </button>
           </nav>
-
-          {/* Right Side: Email CTA, Admin Button & Signature Hamburger Menu Icon */}
-          <div className="flex items-center gap-3">
-            <a
-              href="mailto:Criaderograciadivina@gmail.com"
-              className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-[#b91c1c] hover:text-white bg-red-50 hover:bg-[#b91c1c] rounded-full transition-all border border-red-200"
-              title="Contacto por email"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span>Criaderograciadivina@gmail.com</span>
-            </a>
-
-            <button
-              onClick={onOpenAdmin}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-700 hover:text-white bg-neutral-100 hover:bg-[#b91c1c] rounded-full transition-colors border border-neutral-200 cursor-pointer"
-              title="Panel de control CMS"
-            >
-              <Sliders className="w-3.5 h-3.5" />
-              <span>Admin</span>
-            </button>
-
-            {/* Signature Hamburger Menu Button */}
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="p-2.5 rounded-lg text-[#111827] hover:text-[#b91c1c] hover:bg-red-50 transition-colors cursor-pointer flex items-center justify-center focus:outline-none"
-              aria-label="Abrir menú de navegación"
-            >
-              <Menu className="w-7 h-7 stroke-[2]" />
-            </button>
-          </div>
         </div>
       </header>
-
-      {/* Slide-in Full Screen / Drawer Menu in Regal Red & White */}
-      {drawerOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden animate-in fade-in duration-200">
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
-            onClick={() => setDrawerOpen(false)}
-          />
-
-          <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-md bg-[#450a0a] text-white shadow-2xl flex flex-col justify-between p-6 sm:p-8 animate-in slide-in-from-right duration-300 border-l border-red-900">
-              {/* Drawer Top */}
-              <div className="space-y-6">
-                <div className="flex items-center justify-between border-b border-red-900/80 pb-5">
-                  <div className="flex items-center gap-3">
-                    <CatteryLogo size={38} className="w-9 h-9" />
-                    <div className="flex flex-col text-left">
-                      <div className="flex items-center text-2xl tracking-tight leading-none">
-                        <span className="font-serif font-bold text-white">Gracia</span>
-                        <span className="font-serif font-bold text-red-200 ml-1.5">Divina</span>
-                      </div>
-                      <span className="text-[10px] tracking-wider uppercase text-red-200/80 mt-0.5">
-                        Criadero Felino
-                      </span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2 text-red-200 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
-                    aria-label="Cerrar menú"
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-
-                {/* Nav Links List in Red and White */}
-                <nav className="space-y-2 max-h-[55vh] overflow-y-auto pr-1">
-                  {menuSections.map((item) => {
-                    const isActive = currentView === item.id;
-                    return (
-                      <button
-                        key={item.id}
-                        onClick={() => handleNavClick(item.id)}
-                        className={`w-full group text-left px-4 py-3 rounded-xl transition-all cursor-pointer flex items-center justify-between ${
-                          isActive
-                            ? 'bg-white text-[#b91c1c] font-bold shadow-md'
-                            : 'hover:bg-red-900/60 text-white'
-                        }`}
-                      >
-                        <div>
-                          <div className={`font-serif text-lg tracking-wide ${isActive ? 'text-[#b91c1c]' : 'text-white'}`}>
-                            {item.label}
-                          </div>
-                          <div className={`text-xs mt-0.5 ${isActive ? 'text-neutral-600' : 'text-red-200/80'}`}>
-                            {item.desc}
-                          </div>
-                        </div>
-                        <ChevronRight
-                          className={`w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1 ${
-                            isActive ? 'text-[#b91c1c]' : 'text-red-300'
-                          }`}
-                        />
-                      </button>
-                    );
-                  })}
-                </nav>
-              </div>
-
-              {/* Drawer Bottom Contact & Action */}
-              <div className="pt-6 border-t border-red-900/80 space-y-3">
-                <div className="p-3.5 bg-black/20 rounded-xl border border-red-900/60 text-xs space-y-1.5">
-                  <div className="flex items-center gap-2 text-red-200 font-semibold">
-                    <Mail className="w-4 h-4 text-white" />
-                    <span>Adopciones Oficiales por Correo</span>
-                  </div>
-                  <a
-                    href="mailto:Criaderograciadivina@gmail.com"
-                    className="text-white hover:underline font-mono text-xs block font-bold"
-                  >
-                    Criaderograciadivina@gmail.com
-                  </a>
-                  <p className="text-red-200/90 text-[11px]">
-                    Tarifa fija con vacunas, microchip y garantía: <strong className="text-white">600 €</strong>
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => {
-                      setDrawerOpen(false);
-                      onOpenAdoptionModal();
-                    }}
-                    className="w-full py-3 px-3 text-xs font-bold uppercase tracking-wider text-[#b91c1c] bg-white hover:bg-red-50 rounded-full transition-colors cursor-pointer text-center shadow-sm"
-                  >
-                    Solicitar Adopción
-                  </button>
-                  <button
-                    onClick={() => {
-                      setDrawerOpen(false);
-                      onOpenAdmin();
-                    }}
-                    className="w-full py-3 px-3 text-xs font-bold uppercase tracking-wider text-white bg-red-950 hover:bg-black rounded-full transition-colors cursor-pointer text-center border border-red-800"
-                  >
-                    Panel Admin
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

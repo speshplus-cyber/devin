@@ -1,7 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { Kitten, SiteSettings, Litter, Testimonial } from '../types';
-import { KittenCard } from '../components/KittenCard';
-import { ShieldCheck, Heart, Award, Search, Sparkles, Calendar, Mail, FileText, Star, CheckCircle, ChevronRight } from 'lucide-react';
 
 interface CatalogViewProps {
   kittens: Kitten[];
@@ -31,503 +29,427 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   onNavigateToTestimonials,
 }) => {
   const [selectedBreed, setSelectedBreed] = useState<string>('Todas');
-  const [selectedStatus, setSelectedStatus] = useState<string>('Todos');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [sortBy, setSortBy] = useState<'featured' | 'age-asc' | 'price-asc'>('featured');
+  const [selectedSex, setSelectedSex] = useState<string>('Todos');
 
-  const breedsList = ['Todas', 'Maine Coon', 'British Shorthair', 'Ragdoll', 'Bengalí', 'Sphynx'];
+  // Contact Form state
+  const [contactName, setContactName] = useState('');
+  const [contactSurname, setContactSurname] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactPhone, setContactPhone] = useState('');
+  const [contactCity, setContactCity] = useState('');
+  const [contactBreed, setContactBreed] = useState('');
+  const [contactKitten, setContactKitten] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+  const [formSentMessage, setFormSentMessage] = useState<string | null>(null);
 
-  // 6 Signature Hero Breed Showcase Cards (Matching Screenshot layout)
-  const heroBreedCards = [
+  const breedsList = [
+    'Todas',
+    'Maine Coon',
+    'Bengalí',
+    'Siberiano',
+    'Ragdoll',
+    'British Shorthair',
+    'Persa',
+    'Sphynx',
+    'Azul Ruso',
+    'Siamés',
+  ];
+
+  // 6 Hero Tiles
+  const heroTiles = [
+    { name: 'Maine Coon', image: '/photos/IMG_4505.jpeg', breedKey: 'Maine Coon' },
+    { name: 'Bengalí', image: '/photos/IMG_4480.jpeg', breedKey: 'Bengalí' },
+    { name: 'Siberiano', image: '/photos/IMG_4510.jpeg', breedKey: 'Siberiano' },
+    { name: 'Ragdoll', image: '/photos/IMG_4611.jpeg', breedKey: 'Ragdoll' },
+    { name: 'British Shorthair', image: '/photos/IMG_4684.jpeg', breedKey: 'British Shorthair' },
+    { name: 'Persa', image: '/photos/IMG_4587.jpeg', breedKey: 'Persa' },
+  ];
+
+  // 9 Signature Breeds
+  const signatureBreeds = [
     {
-      id: 'Maine Coon',
-      name: 'MAINE COON',
+      name: 'Maine Coon',
+      desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
+      avail: '10 disponibles · 600 € →',
       image: '/photos/IMG_4505.jpeg',
     },
     {
-      id: 'Bengalí',
-      name: 'BENGALÍ',
+      name: 'Bengalí',
+      desc: 'Un leopardo en miniatura: atlético, inteligente y lleno de energía.',
+      avail: '6 disponibles · 600 € →',
       image: '/photos/IMG_4480.jpeg',
     },
     {
-      id: 'Siberiano',
-      name: 'SIBERIANO',
+      name: 'Siberiano',
+      desc: 'Robusto, cariñoso y con pelaje de triple capa. Apto para algunos alérgicos.',
+      avail: '6 disponibles · 600 € →',
       image: '/photos/IMG_4510.jpeg',
     },
     {
-      id: 'Ragdoll',
-      name: 'RAGDOLL',
+      name: 'Ragdoll',
+      desc: 'El "gato peluche": dócil, tranquilo y de impresionantes ojos azules.',
+      avail: '5 disponibles · 600 € →',
       image: '/photos/IMG_4611.jpeg',
     },
     {
-      id: 'British Shorthair',
-      name: 'BRITISH SHORTHAIR',
+      name: 'British Shorthair',
+      desc: 'Un osito de peluche: pelaje denso, carita redonda y carácter sereno.',
+      avail: '8 disponibles · 600 € →',
       image: '/photos/IMG_4684.jpeg',
     },
     {
-      id: 'Persa',
-      name: 'PERSA',
+      name: 'Persa',
+      desc: 'Elegancia clásica: pelaje largo y exuberante y un carácter muy dulce.',
+      avail: '5 disponibles · 600 € →',
       image: '/photos/IMG_4587.jpeg',
+    },
+    {
+      name: 'Sphynx',
+      desc: 'Sin pelo y con un corazón enorme: extrovertido, cálido y muy sociable.',
+      avail: '5 disponibles · 600 € →',
+      image: '/photos/IMG_4620.jpeg',
+    },
+    {
+      name: 'Azul Ruso',
+      desc: 'Elegancia plateada y ojos verde esmeralda. Tranquilo, limpio y leal.',
+      avail: '5 disponibles · 600 € →',
+      image: '/photos/IMG_4656.jpeg',
+    },
+    {
+      name: 'Siamés',
+      desc: 'Ojos azules intensos, cuerpo elegante y una personalidad muy comunicativa.',
+      avail: '5 disponibles · 600 € →',
+      image: '/photos/IMG_4630.jpeg',
     },
   ];
 
-  const filteredKittens = useMemo(() => {
-    return kittens.filter((kitten) => {
-      // Breed filter
-      if (selectedBreed !== 'Todas' && kitten.breed !== selectedBreed) {
-        return false;
-      }
-      // Status filter
-      if (selectedStatus !== 'Todos' && kitten.status !== selectedStatus) {
-        return false;
-      }
-      // Search query
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase();
-        const matchName = kitten.name.toLowerCase().includes(query);
-        const matchBreed = kitten.breed.toLowerCase().includes(query);
-        const matchColor = kitten.colorManto.toLowerCase().includes(query);
-        const matchDesc = kitten.description.toLowerCase().includes(query);
-        if (!matchName && !matchBreed && !matchColor && !matchDesc) {
-          return false;
-        }
-      }
+  // Filtered kittens for the featured section
+  const displayedKittens = useMemo(() => {
+    return kittens.filter((k) => {
+      if (selectedBreed !== 'Todas' && k.breed !== selectedBreed) return false;
+      if (selectedSex !== 'Todos' && k.gender !== selectedSex) return false;
       return true;
-    }).sort((a, b) => {
-      if (sortBy === 'featured') {
-        return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-      }
-      if (sortBy === 'age-asc') {
-        return a.ageWeeks - b.ageWeeks;
-      }
-      return 0;
     });
-  }, [kittens, selectedBreed, selectedStatus, searchQuery, sortBy]);
+  }, [kittens, selectedBreed, selectedSex]);
 
-  const handleHeroBreedClick = (breedName: string) => {
-    if (breedsList.includes(breedName)) {
-      setSelectedBreed(breedName);
-    } else {
-      setSelectedBreed('Todas');
-    }
+  const handleBreedTileClick = (breedName: string) => {
+    setSelectedBreed(breedName);
     const elem = document.getElementById('camadas-disponibles');
     if (elem) {
       elem.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const handleContactWhatsApp = (e: React.FormEvent) => {
+    e.preventDefault();
+    const fullName = `${contactName} ${contactSurname}`.trim() || 'Interesado';
+    const text =
+      `¡Hola Criadero Gracia Divina! Mi nombre es ${fullName}.\n` +
+      `Me gustaría solicitar información sobre la adopción de un gatito de raza.\n` +
+      `• Raza: ${contactBreed || 'Cualquiera'}\n` +
+      `• Gatito de interés: ${contactKitten || 'General'}\n` +
+      `• Ciudad: ${contactCity || 'España'}\n` +
+      `• Teléfono: ${contactPhone || '-'}\n` +
+      `• Email: ${contactEmail || '-'}\n` +
+      `• Mensaje: ${contactMessage || 'Quisiera conocer disponibilidad y próximos pasos.'}`;
+
+    const cleanNumber = (settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '');
+    window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    setFormSentMessage('¡Abriendo WhatsApp para enviar tu consulta directamente al criadero!');
+  };
+
+  const handleContactEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    const fullName = `${contactName} ${contactSurname}`.trim() || 'Familia interesada';
+    const subject = `Consulta de Adopción - ${contactBreed || 'Gatito de Raza'} - ${fullName}`;
+    const body =
+      `Hola Criadero Gracia Divina,\n\n` +
+      `Mi nombre es ${fullName}.\n` +
+      `Estoy interesado/a en la adopción de un gatito:\n\n` +
+      `• Raza: ${contactBreed || 'No especificada'}\n` +
+      `• Gatito de interés: ${contactKitten || 'Sin preferencia'}\n` +
+      `• Ciudad de residencia: ${contactCity || '-'}\n` +
+      `• Teléfono de contacto: ${contactPhone || '-'}\n\n` +
+      `Mensaje:\n${contactMessage || 'Agradecería información sobre disponibilidad, reserva y visita concertada.'}\n\n` +
+      `Atentamente,\n${fullName}`;
+
+    const emailTo = settings.contactEmail || 'Criaderograciadivina@gmail.com';
+    window.open(`mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+    setFormSentMessage('¡Abriendo tu cliente de correo para enviar la solicitud oficial a ' + emailTo + '!');
+  };
+
   return (
-    <div className="space-y-16 pb-20 bg-white">
+    <div id="inicio">
       {/* 
         ========================================================================
-        HERO SECTION (GATITOSELITES.ES LAYOUT IN STRICT RED & WHITE PALETTE)
-        Deep Regal Crimson Red background: #7f1d1d / #991b1b
-        Left: Tag pill + "Gatitos de Raza Premium" (white) + Subtitle + 2 pill buttons
-        Right: 2x3 grid of rounded breed cards with bottom-left tags
+        1. HERO SECTION (MATCHING GATITOSELITES.ES EXACTLY)
         ========================================================================
       */}
-      <section className="bg-gradient-to-br from-[#991b1b] via-[#7f1d1d] to-[#450a0a] text-white pt-10 pb-14 sm:pt-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden relative shadow-md">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Column: Headline, Pill Tag & Action Buttons */}
-            <div className="lg:col-span-5 space-y-6">
-              {/* Pill tag in Red & White */}
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/30 bg-white/10 text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-white shadow-xs">
-                <span>GRACIA DIVINA — 9 RAZAS DISPONIBLES</span>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08] text-balance">
-                Gatitos de Raza{' '}
-                <span className="text-white font-serif block sm:inline drop-shadow-sm">
-                  Premium
-                </span>
-              </h1>
-
-              {/* Subtitle paragraph */}
-              <p className="text-sm sm:text-base text-red-100 leading-relaxed font-light max-w-lg">
-                Criados con amor en un entorno familiar en España. Con garantía de salud, vacunados y listos para robarte el corazón.
-              </p>
-
-              {/* Two Pill Buttons: VER RAZAS (White) & CONTACTAR (Outline) */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-2">
-                <button
-                  onClick={onNavigateToBreeds}
-                  className="px-8 py-3.5 rounded-full bg-white hover:bg-red-50 text-[#b91c1c] text-xs sm:text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-md cursor-pointer"
-                >
-                  VER RAZAS
-                </button>
-
-                <button
-                  onClick={onNavigateToContact || (() => onOpenAdoptionModal())}
-                  className="px-8 py-3.5 rounded-full bg-transparent hover:bg-white/15 text-white border border-white/80 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-                >
-                  CONTACTAR
-                </button>
-              </div>
-
-              {/* Subtle Trust Indicators in Red & White */}
-              <div className="pt-4 flex items-center gap-4 text-xs text-red-200">
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-white" />
-                  <span>Garantía 2 Años</span>
-                </span>
-                <span>·</span>
-                <span className="flex items-center gap-1.5">
-                  <Star className="w-4 h-4 text-white fill-white" />
-                  <span>Tarifa Fija 600 €</span>
-                </span>
-                <span>·</span>
-                <span className="flex items-center gap-1.5">
-                  <Mail className="w-4 h-4 text-white" />
-                  <span>Email Directo</span>
-                </span>
-              </div>
+      <section
+        className="hero"
+        style={{ '--hero': `url('/photos/IMG_4505.jpeg')` } as React.CSSProperties}
+      >
+        <div className="container hero-inner">
+          <div className="hero-text">
+            <span className="eyebrow">GRACIA DIVINA — 9 RAZAS DISPONIBLES</span>
+            <h1>
+              Gatitos de Raza <em>Premium</em>
+            </h1>
+            <p>
+              Criados con amor en un entorno familiar en España. Con garantía de salud, vacunados y listos para robarte el corazón.
+            </p>
+            <div className="hero-btns">
+              <a
+                href="#razas"
+                className="btn btn-light"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('razas')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Ver Razas
+              </a>
+              <a
+                href="#contacto"
+                className="btn btn-ghost"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Contactar
+              </a>
             </div>
+          </div>
 
-            {/* Right Column: 2x3 Grid of Rounded Breed Cards */}
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                {heroBreedCards.map((card) => (
-                  <div
-                    key={card.name}
-                    onClick={() => handleHeroBreedClick(card.id)}
-                    className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/40 border border-white/20 shadow-lg cursor-pointer transform transition-transform duration-300 hover:scale-[1.02]"
-                  >
-                    <img
-                      src={card.image}
-                      alt={card.name}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-110"
-                    />
-                    {/* Vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20 opacity-70 group-hover:opacity-40 transition-opacity" />
+          <div className="hero-tiles">
+            {heroTiles.map((tile) => (
+              <a
+                key={tile.name}
+                href="#camadas-disponibles"
+                className="tile"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleBreedTileClick(tile.breedKey);
+                }}
+              >
+                <img src={tile.image} alt={tile.name} loading="lazy" />
+                <span>{tile.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
 
-                    {/* Bottom-left Pill Badge with Breed Name */}
-                    <div className="absolute bottom-3 left-3 z-10">
-                      <span className="inline-block px-3 py-1 rounded bg-[#450a0a]/90 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-bold tracking-wider uppercase border border-red-300/30 shadow-sm">
-                        {card.name}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <div className="hero-bar">
+          <div className="container">
+            <span>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+              </svg>
+              <span>Criados en Familia</span>
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z" />
+              </svg>
+              <span>Garantía de Salud</span>
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24">
+                <path d="M19 8h-3V5a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3h3a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z" />
+              </svg>
+              <span>Revisados por Veterinario</span>
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a9 9 0 0 0-9 9v5a3 3 0 0 0 3 3h2v-7H5v-1a7 7 0 0 1 14 0v1h-3v7h3v1h-6v2h6a2 2 0 0 0 2-2v-8a9 9 0 0 0-9-9z" />
+              </svg>
+              <span>Soporte de por Vida</span>
+            </span>
           </div>
         </div>
       </section>
 
       {/* 
         ========================================================================
-        TESTIMONIALS SECTION (FROM GATITOSELITES.ES IN RED & WHITE)
-        Featured real client reviews from Madrid, Barcelona, Valencia, Sevilla, Bilbao
+        2. SOBRE NOSOTROS SECTION
         ========================================================================
       */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="bg-red-50/40 rounded-3xl border border-red-100 p-8 sm:p-12 space-y-10 shadow-xs">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-red-100 pb-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#b91c1c] text-white text-xs font-semibold tracking-wider uppercase">
-                <Star className="w-3.5 h-3.5 fill-white text-white" />
-                <span>OPINIONES Y EXPERIENCIAS REALES · VALORACIÓN MEDIA 5.0 ★</span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#111827]">
-                Lo que dicen las familias que han adoptado con nosotros
-              </h2>
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                Familias en toda España que han recibido a su nuevo miembro en casa con todo el amor, garantías sanitarias por escrito y seguimiento afectuoso.
-              </p>
-            </div>
+      <section className="section" id="sobre-nosotros">
+        <div className="container about">
+          <div className="about-imgs">
+            <img src="/photos/IMG_4653.jpeg" alt="Gatito British Shorthair blanco" loading="lazy" />
+            <img src="/photos/IMG_4589.jpeg" alt="Gatito Persa dulce" loading="lazy" />
+          </div>
+          <div>
+            <span className="badge">Sobre Nosotros</span>
+            <h2>Sobre Criadero Gracia Divina</h2>
+            <p>
+              Bienvenido a <strong>Criadero Gracia Divina</strong>, un criadero familiar especializado en gatitos de raza sanos, felices y bien socializados. Cada uno de nuestros gatitos crece dentro de casa, recibe atención individual desde el primer día y sale hacia su nuevo hogar preparado para convertirse en un miembro más de la familia.
+            </p>
+            <p>
+              Trabajamos con 9 razas: desde el majestuoso Maine Coon y el salvaje Bengalí hasta el dulce Ragdoll y el elegante Azul Ruso. Todos nuestros gatitos tienen un precio único de <strong>600 €</strong> con documentación y kit de bienvenida incluidos.
+            </p>
+            <ul className="checks two">
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Gatitos criados en casa</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Revisados y vacunados</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Garantía de salud incluida</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Soporte del criador de por vida</span>
+              </li>
+            </ul>
+            <a
+              className="btn btn-green"
+              href="#contacto"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Conócenos
+            </a>
+          </div>
+        </div>
+      </section>
 
-            {onNavigateToTestimonials && (
-              <button
-                onClick={onNavigateToTestimonials}
-                className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#b91c1c] bg-white hover:bg-red-50 border border-red-200 transition-colors shadow-xs cursor-pointer flex items-center gap-1.5 self-start md:self-auto"
-              >
-                <span>Ver Todos los Testimonios</span>
-                <ChevronRight className="w-3.5 h-3.5 text-[#b91c1c]" />
-              </button>
-            )}
+      {/* 
+        ========================================================================
+        3. CONOCE NUESTROS GATITOS SECTION
+        ========================================================================
+      */}
+      <section className="section section-green" id="camadas-disponibles">
+        <div className="container">
+          <div className="section-head light">
+            <h2>Conoce Nuestros Gatitos 🐱</h2>
+            <p>Adorables gatitos de raza buscando su hogar para siempre</p>
           </div>
 
-          {/* Testimonial Cards Grid with Real Adopters Holding Kittens */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((t) => (
-              <div
-                key={t.id}
-                className="bg-white rounded-2xl border border-red-100 p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow relative overflow-hidden"
+          {/* Interactive Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+            {breedsList.map((breed) => (
+              <button
+                key={breed}
+                onClick={() => setSelectedBreed(breed)}
+                className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  selectedBreed === breed
+                    ? 'bg-[var(--gold)] text-[#450a0a] shadow-md'
+                    : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                }`}
               >
-                <div className="space-y-3.5">
-                  {/* Photo of Adopter Carrying Kitten */}
-                  <div className="relative aspect-[16/11] rounded-xl overflow-hidden bg-red-50 border border-red-100">
-                    <img
-                      src={t.image}
-                      alt={`${t.adopterName} con ${t.catName}`}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <span className="absolute bottom-2 left-2 px-2.5 py-1 text-[11px] font-bold bg-[#111827]/85 backdrop-blur-xs text-white rounded-md">
-                      {t.catName} ({t.breed})
-                    </span>
-                    <span className="absolute top-2 right-2 px-2 py-0.5 text-[10px] font-semibold bg-white text-[#b91c1c] rounded-full shadow-xs flex items-center gap-1">
-                      <CheckCircle className="w-3 h-3 text-[#b91c1c]" />
-                      <span>Verificado</span>
-                    </span>
-                  </div>
-
-                  {/* Stars */}
-                  <div className="flex items-center gap-0.5 text-[#b91c1c]">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#b91c1c]" />
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <p className="text-xs sm:text-sm text-neutral-700 italic leading-relaxed">
-                    "{t.text}"
-                  </p>
-                </div>
-
-                {/* Bottom: Adopter & City */}
-                <div className="pt-3.5 mt-3.5 border-t border-red-100 flex items-center justify-between text-xs">
-                  <div>
-                    <h4 className="font-bold text-[#111827]">
-                      {t.adopterName}
-                    </h4>
-                    <p className="text-[11px] text-neutral-500">{t.city} (Adopción {t.adoptionYear || '2025'})</p>
-                  </div>
-                  <span className="text-[10px] font-semibold text-[#b91c1c] bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">
-                    Garantía 2 Años
-                  </span>
-                </div>
-              </div>
+                {breed}
+              </button>
             ))}
           </div>
 
-          {/* Trust Banner Bar in Red & White */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-red-100 text-center">
-            <div>
-              <span className="font-serif text-2xl font-bold text-[#b91c1c] block">100%</span>
-              <span className="text-xs text-neutral-600">Familias Satisfechas</span>
-            </div>
-            <div>
-              <span className="font-serif text-2xl font-bold text-[#b91c1c] block">2 Años</span>
-              <span className="text-xs text-neutral-600">Garantía Sanitaria por Escrito</span>
-            </div>
-            <div>
-              <span className="font-serif text-2xl font-bold text-[#b91c1c] block">600 €</span>
-              <span className="text-xs text-neutral-600">Precio Fijo sin Sorpresas</span>
-            </div>
-            <div>
-              <span className="font-serif text-2xl font-bold text-[#b91c1c] block">&lt; 24h</span>
-              <span className="text-xs text-neutral-600">Respuesta por Email</span>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* Kitten Mini Cards Grid */}
+          <div className="kgrid">
+            {displayedKittens.slice(0, 12).map((kitten) => {
+              const mainPhoto = kitten.images && kitten.images.length > 0 ? kitten.images[0] : '/photos/IMG_4505.jpeg';
+              const waText = encodeURIComponent(
+                `¡Hola! Me interesa ${kitten.name} (${kitten.breed}, ${kitten.price || '600 €'}). ¿Sigue disponible?`
+              );
+              const waLink = `https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${waText}`;
 
-      {/* 
-        ========================================================================
-        KITTENS CATALOG SECTION (Available Kittens - All 600 €)
-        ========================================================================
-      */}
-      <section id="camadas-disponibles" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-red-100">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c]">
-              Catálogo de Ejemplares
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#111827] mt-1">
-              Cachorros Disponibles (Tarifa Fija: {settings.defaultPrice || '600 €'})
-            </h2>
-            <p className="text-xs sm:text-sm text-neutral-500 mt-1">
-              Fichas técnicas con fotografías reales y pedigrí documentado. Adopción gestionada vía email a <strong className="text-[#b91c1c]">{settings.contactEmail}</strong>.
-            </p>
-          </div>
-
-          {/* Quick Counter */}
-          <div className="text-xs text-neutral-600 font-medium">
-            Mostrando <strong className="text-[#b91c1c] font-bold">{filteredKittens.length}</strong> de {kittens.length} cachorros
-          </div>
-        </div>
-
-        {/* Filter Controls Bar in Red & White */}
-        <div className="py-6 space-y-4">
-          {/* Breed Chips */}
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-neutral-800 mr-2">Raza:</span>
-            {breedsList.map((breed) => {
-              const isActive = selectedBreed === breed;
               return (
-                <button
-                  key={breed}
-                  onClick={() => setSelectedBreed(breed)}
-                  className={`px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#b91c1c] text-white shadow-sm font-semibold'
-                      : 'bg-red-50 text-[#b91c1c] hover:bg-red-100 border border-red-100'
-                  }`}
-                >
-                  {breed}
-                </button>
+                <article key={kitten.id} className="kmini" data-breed={kitten.breed.toLowerCase()} data-sex={kitten.gender === 'Hembra' ? 'F' : 'M'}>
+                  <div className="kmini-img" onClick={() => onSelectKitten(kitten)}>
+                    <img src={mainPhoto} alt={`Gatito ${kitten.breed} ${kitten.name}`} loading="lazy" />
+                    <span className="tag">{kitten.breed}</span>
+                  </div>
+                  <div className="kmini-body">
+                    <div className="kmini-top">
+                      <h3>{kitten.name}</h3>
+                      <span className="price">{kitten.price || '600 €'}</span>
+                    </div>
+                    <div className="kmini-meta">
+                      <span className={`sex sex-${kitten.gender === 'Hembra' ? 'F' : 'M'}`}>
+                        {kitten.gender}
+                      </span>
+                      <span className="avail">● {kitten.status}</span>
+                    </div>
+                    <div className="kmini-btns">
+                      <button
+                        type="button"
+                        className="btn btn-green btn-sm"
+                        onClick={() => onSelectKitten(kitten)}
+                      >
+                        Ver detalles
+                      </button>
+                      <a
+                        className="btn btn-wa btn-sm btn-icon"
+                        href={waLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`WhatsApp sobre ${kitten.name}`}
+                      >
+                        <svg viewBox="0 0 24 24">
+                          <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
               );
             })}
           </div>
 
-          {/* Status, Search & Sorting Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-2">
-            {/* Search Input */}
-            <div className="sm:col-span-5 relative">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Buscar por nombre, color del manto o temperamento..."
-                className="w-full pl-9 pr-3.5 py-2 text-xs sm:text-sm bg-white rounded-lg border border-red-100 focus:outline-none focus:border-[#b91c1c] focus:ring-1 focus:ring-[#b91c1c] text-[#111827]"
-              />
-            </div>
-
-            {/* Status Filter */}
-            <div className="sm:col-span-4 flex items-center gap-1 p-1 bg-red-50/80 rounded-lg border border-red-100">
-              {['Todos', 'Disponible', 'En Adopción', 'Reservado'].map((status) => (
-                <button
-                  key={status}
-                  onClick={() => setSelectedStatus(status)}
-                  className={`flex-1 py-1.5 text-[11px] font-medium rounded-md transition-colors truncate cursor-pointer ${
-                    selectedStatus === status
-                      ? 'bg-white text-[#b91c1c] shadow-xs font-semibold'
-                      : 'text-neutral-600 hover:text-[#b91c1c]'
-                  }`}
-                >
-                  {status}
-                </button>
-              ))}
-            </div>
-
-            {/* Sort Dropdown */}
-            <div className="sm:col-span-3">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="w-full py-2 px-3 text-xs bg-white rounded-lg border border-red-100 focus:outline-none focus:border-[#b91c1c] text-[#111827]"
-              >
-                <option value="featured">Destacados Primero</option>
-                <option value="age-asc">Edad (Menor a Mayor)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Kittens Grid */}
-        {filteredKittens.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredKittens.map((kitten) => (
-              <KittenCard
-                key={kitten.id}
-                kitten={kitten}
-                onSelect={onSelectKitten}
-                onEmailInquiry={onEmailInquiry}
-                onQuickReserve={() => onOpenAdoptionModal(kitten)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="py-16 text-center bg-white rounded-xl border border-red-100 p-8 space-y-4">
-            <Sparkles className="w-10 h-10 text-[#b91c1c] mx-auto opacity-60" />
-            <h3 className="font-serif text-xl font-semibold text-[#111827]">
-              No se encontraron cachorros con los filtros seleccionados
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-500 max-w-md mx-auto">
-              Pruebe a cambiar los criterios de búsqueda o contacte con nosotros directamente a través de nuestro correo oficial {settings.contactEmail}.
-            </p>
+          <div className="center">
             <button
               onClick={() => {
                 setSelectedBreed('Todas');
-                setSelectedStatus('Todos');
-                setSearchQuery('');
+                setSelectedSex('Todos');
               }}
-              className="px-4 py-2 text-xs font-semibold text-[#b91c1c] bg-red-50 hover:bg-red-100 rounded-lg cursor-pointer"
+              className="btn btn-gold"
             >
-              Restablecer Filtros
+              Ver los 55 gatitos disponibles
             </button>
           </div>
-        )}
+        </div>
       </section>
 
       {/* 
         ========================================================================
-        LITTERS SECTION in Red & White
+        4. ELIGE TU RAZA FAVORITA SECTION
         ========================================================================
       */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-red-100 pt-12">
-          <div className="mb-6">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c]">
-              Planificación Reproductiva
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#111827] mt-1">
-              Camadas Actuales y Próximas Entregas
-            </h2>
+      <section className="section" id="razas">
+        <div className="container">
+          <div className="section-head">
+            <span className="badge">Nuestras Razas</span>
+            <h2>Elige tu Raza Favorita</h2>
+            <p>Cada raza tiene su propia personalidad. Descubre cuál encaja mejor contigo.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {litters.map((litter) => (
+          <div className="breed-tiles">
+            {signatureBreeds.map((breed) => (
               <div
-                key={litter.id}
-                className="bg-white rounded-xl border border-red-100 p-5 flex flex-col justify-between hover:shadow-md transition-shadow"
+                key={breed.name}
+                onClick={() => handleBreedTileClick(breed.name)}
+                className="btile"
               >
-                <div className="space-y-3">
-                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-red-50">
-                    <img
-                      src={litter.image}
-                      alt={litter.litterName}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                    <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 text-[11px] font-semibold bg-[#b91c1c] text-white rounded-full">
-                      {litter.breed}
-                    </span>
-                  </div>
-
-                  <div>
-                    <span className="text-[11px] text-[#b91c1c] font-semibold uppercase tracking-wider">
-                      {litter.code}
-                    </span>
-                    <h3 className="font-serif text-lg font-bold text-[#111827] mt-0.5">
-                      {litter.litterName}
-                    </h3>
-                  </div>
-
-                  <p className="text-xs text-neutral-600 leading-relaxed">
-                    {litter.description}
-                  </p>
-
-                  <div className="pt-2 border-t border-red-100 text-xs space-y-1 text-neutral-600">
-                    <div className="flex justify-between">
-                      <span>Nacimiento:</span>
-                      <strong className="text-neutral-900">{litter.birthDate}</strong>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Entrega estimada:</span>
-                      <strong className="text-[#b91c1c] font-semibold">{litter.readyDate}</strong>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Cachorros disponibles:</span>
-                      <strong className="text-neutral-900">{litter.availableCount} de {litter.kittensCount}</strong>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4 mt-3 border-t border-red-100">
-                  <button
-                    onClick={() => onOpenAdoptionModal()}
-                    className="w-full py-2.5 text-xs font-semibold text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
-                  >
-                    <Mail className="w-3.5 h-3.5" />
-                    <span>Reservar de esta Camada por Email (600 €)</span>
-                  </button>
+                <img src={breed.image} alt={breed.name} loading="lazy" />
+                <div>
+                  <h3>{breed.name}</h3>
+                  <p>{breed.desc}</p>
+                  <span>{breed.avail}</span>
                 </div>
               </div>
             ))}
@@ -537,63 +459,511 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        VETERINARY & LEGAL GUARANTEES STRIP in Red & White
+        5. POR QUÉ NOSOTROS SECTION
         ========================================================================
       */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-red-50/50 rounded-2xl border border-red-100 p-8 sm:p-10">
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c]">
-              Rigor & Transparencia
+      <section className="section section-cream">
+        <div className="container">
+          <div className="section-head">
+            <span className="badge">Por Qué Nosotros</span>
+            <h2>¿Por Qué Elegir Criadero Gracia Divina?</h2>
+            <p>Nos dedicamos a unir familias con gatitos de raza sanos, felices y llenos de amor.</p>
+          </div>
+
+          <div className="features">
+            <div className="feature">
+              <div className="ficon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+                </svg>
+              </div>
+              <h3>Gatitos Sanos</h3>
+              <p>
+                Todos nuestros gatitos son revisados por el veterinario, están vacunados y cuentan con garantía de salud por escrito.
+              </p>
+            </div>
+
+            <div className="feature">
+              <div className="ficon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 13c-2.8 0-6 2.9-6 5.5 0 1.6 1.3 2.5 3 2.5 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.7 0 3-.9 3-2.5 0-2.6-3.2-5.5-6-5.5zM6.2 11.5c1.1-.3 1.6-1.8 1.2-3.3S5.7 5.7 4.6 6s-1.6 1.8-1.2 3.3 1.7 2.5 2.8 2.2zm11.6 0c1.1.3 2.4-.7 2.8-2.2s-.1-3-1.2-3.3-2.4.7-2.8 2.2.1 3 1.2 3.3zM9.5 7.8c1.2 0 2.1-1.4 2.1-3.1S10.7 1.6 9.5 1.6 7.4 3 7.4 4.7s.9 3.1 2.1 3.1zm5 0c1.2 0 2.1-1.4 2.1-3.1s-.9-3.1-2.1-3.1-2.1 1.4-2.1 3.1.9 3.1 2.1 3.1z" />
+                </svg>
+              </div>
+              <h3>Criados en Familia</h3>
+              <p>
+                Crecen dentro de nuestro hogar, rodeados de personas y de la rutina diaria, por eso llegan seguros, sociables y equilibrados.
+              </p>
+            </div>
+
+            <div className="feature">
+              <div className="ficon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a9 9 0 0 0-9 9v5a3 3 0 0 0 3 3h2v-7H5v-1a7 7 0 0 1 14 0v1h-3v7h3v1h-6v2h6a2 2 0 0 0 2-2v-8a9 9 0 0 0-9-9z" />
+                </svg>
+              </div>
+              <h3>Soporte de por Vida</h3>
+              <p>
+                Te acompañamos antes, durante y después de la adopción. Siempre podrás escribirnos con cualquier duda.
+              </p>
+            </div>
+
+            <div className="feature">
+              <div className="ficon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h8v2H8v-2z" />
+                </svg>
+              </div>
+              <h3>Documentación Completa</h3>
+              <p>
+                Cada gatito se entrega con cartilla sanitaria, microchip, registro de vacunas y desparasitaciones y contrato de venta.
+              </p>
+            </div>
+          </div>
+
+          <div className="promise">
+            <div>
+              <h3>Nuestra Promesa</h3>
+              <p>
+                Cada gatito sale de nuestro hogar con amor, los cuidados adecuados y las bases para una vida maravillosa. Lo tratamos como parte de nuestra familia hasta el día en que pasa a formar parte de la tuya.
+              </p>
+            </div>
+            <div className="stats">
+              <div>
+                <b>55</b>
+                <span>Gatitos Disponibles</span>
+              </div>
+              <div>
+                <b>9</b>
+                <span>Razas</span>
+              </div>
+              <div>
+                <b>100%</b>
+                <span>Garantía de Salud</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        ========================================================================
+        6. DESCUBRE LA DIFERENCIA SECTION
+        ========================================================================
+      */}
+      <section className="section">
+        <div className="container about reverse">
+          <div>
+            <span className="badge">La Diferencia</span>
+            <h2>Descubre la Diferencia Criadero Gracia Divina</h2>
+            <p>
+              Lo que nos distingue es nuestro compromiso con criar gatitos sanos y equilibrados en un auténtico ambiente familiar. Cada gatito recibe atención individual, juego diario y mucho cariño desde que nace.
+            </p>
+            <ul className="checks">
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Criados con amor en nuestro hogar</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Documentación sanitaria completa</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Soporte continuo del criador</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                </svg>
+                <span>Listos para su familia para siempre</span>
+              </li>
+            </ul>
+            <a
+              className="btn btn-gold"
+              href="#contacto"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Contáctanos Hoy
+            </a>
+          </div>
+          <div className="about-imgs">
+            <img src="/photos/IMG_4601.jpeg" alt="Gatita Siamesa dulce" loading="lazy" />
+            <img src="/photos/IMG_4496.jpeg" alt="Gatita Maine Coon" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        ========================================================================
+        7. TESTIMONIOS SECTION
+        ========================================================================
+      */}
+      <section className="section section-green" id="testimonios">
+        <div className="container">
+          <div className="section-head light">
+            <span className="badge" style={{ background: 'var(--gold)', color: '#450a0a' }}>
+              Testimonios
             </span>
-            <h2 className="font-serif text-3xl font-bold text-[#111827] mt-1">
-              Lo que Siempre Incluye la Adopción (Tarifa Fija: {settings.defaultPrice || '600 €'})
-            </h2>
-            <p className="text-xs sm:text-sm text-neutral-600 mt-2">
-              Cada ejemplar se entrega con la máxima protección legal, sanitaria y bienestar afectivo.
+            <h2>Lo Que Dicen Nuestras Familias</h2>
+            <p>Más de 280 adopciones felices en toda España avalan nuestra dedicación y cuidado.</p>
+          </div>
+
+          <div className="tgrid">
+            <article className="tcard">
+              <div className="tcard-body">
+                <div className="tcard-rating-row">
+                  <div className="stars" aria-label="5 de 5 estrellas">
+                    ★★★★★
+                  </div>
+                  <span className="badge-verified">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                    </svg>
+                    <span>Verificada</span>
+                  </span>
+                </div>
+                <blockquote>
+                  «Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó a casa se adaptó en cuestión de horas. Es súper cariñosa y equilibrada, se nota muchísimo que se crían en familia.»
+                </blockquote>
+                <figcaption>
+                  <span className="avatar">LP</span>
+                  <div className="who">
+                    <strong>Laura P.</strong>
+                    <small>Madrid</small>
+                  </div>
+                </figcaption>
+                <div className="tcard-kitten">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"
+                    />
+                  </svg>
+                  <span>
+                    Gatita adoptada: <strong>Mia · Maine Coon</strong>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article className="tcard">
+              <div className="tcard-body">
+                <div className="tcard-rating-row">
+                  <div className="stars" aria-label="5 de 5 estrellas">
+                    ★★★★★
+                  </div>
+                  <span className="badge-verified">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                    </svg>
+                    <span>Verificada</span>
+                  </span>
+                </div>
+                <blockquote>
+                  «Buscábamos un Ragdoll tranquilo para convivir con nuestros dos hijos pequeños y no podríamos estar más felices. Vino con su cartilla al día, microchip, revisión veterinaria perfecta y un carácter dulce que enamora a todo el que viene a casa.»
+                </blockquote>
+                <figcaption>
+                  <span className="avatar">CM</span>
+                  <div className="who">
+                    <strong>Carlos y Marta G.</strong>
+                    <small>Barcelona</small>
+                  </div>
+                </figcaption>
+                <div className="tcard-kitten">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"
+                    />
+                  </svg>
+                  <span>
+                    Gatito adoptado: <strong>Nube · Ragdoll</strong>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article className="tcard">
+              <div className="tcard-body">
+                <div className="tcard-rating-row">
+                  <div className="stars" aria-label="5 de 5 estrellas">
+                    ★★★★★
+                  </div>
+                  <span className="badge-verified">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                    </svg>
+                    <span>Verificada</span>
+                  </span>
+                </div>
+                <blockquote>
+                  «Nuestro Británico de Pelo Corto llegó a Valencia mediante transporte especializado en perfecto estado. Nuestro veterinario nos felicitó por lo bien cuidado y socializado que venía. Además, siguen pendientes de cualquier duda que tenemos.»
+                </blockquote>
+                <figcaption>
+                  <span className="avatar">ER</span>
+                  <div className="who">
+                    <strong>Elena R.</strong>
+                    <small>Valencia</small>
+                  </div>
+                </figcaption>
+                <div className="tcard-kitten">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"
+                    />
+                  </svg>
+                  <span>
+                    Gatito adoptado: <strong>Oliver · Británico de Pelo Corto</strong>
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div className="center" style={{ marginTop: '38px' }}>
+            <button
+              onClick={() => onNavigateToTestimonials && onNavigateToTestimonials()}
+              className="btn btn-gold"
+            >
+              Ver Todas las Opiniones (+280) →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        ========================================================================
+        8. CONTACT SECTION
+        ========================================================================
+      */}
+      <section className="section section-cream" id="contacto">
+        <div className="container">
+          <div className="section-head">
+            <span className="badge">Contacto</span>
+            <h2>¿Listo para Adoptar un Gatito?</h2>
+            <p>
+              ¿Tienes preguntas sobre nuestros gatitos o quieres llevarte uno a casa? ¡Nos encantará saber de ti!
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-5 rounded-xl border border-red-100 space-y-2 shadow-xs">
-              <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-[#b91c1c]">
-                <ShieldCheck className="w-5 h-5 text-[#b91c1c]" />
-              </div>
-              <h3 className="font-serif font-bold text-sm text-[#111827]">Garantía Sanitaria 2 Años</h3>
-              <p className="text-xs text-neutral-600 leading-relaxed">
-                Protección contractual frente a patologías genéticas hereditarias (HCM, PKD, SMA) y víricas.
-              </p>
-            </div>
+          <div className="contact-grid">
+            <form className="form" onSubmit={handleContactWhatsApp}>
+              <h3>Formulario de Consulta</h3>
 
-            <div className="bg-white p-5 rounded-xl border border-red-100 space-y-2 shadow-xs">
-              <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-[#b91c1c]">
-                <Award className="w-5 h-5 text-[#b91c1c]" />
-              </div>
-              <h3 className="font-serif font-bold text-sm text-[#111827]">Pedigrí Oficial Federado</h3>
-              <p className="text-xs text-neutral-600 leading-relaxed">
-                Certificado genealógico de hasta 5 generaciones emitido por clubs oficiales WCF o ASFE/FIFe.
-              </p>
-            </div>
+              {formSentMessage && (
+                <div className="mb-4 p-3 bg-red-100 border border-red-300 text-red-900 rounded-lg text-xs font-semibold">
+                  {formSentMessage}
+                </div>
+              )}
 
-            <div className="bg-white p-5 rounded-xl border border-red-100 space-y-2 shadow-xs">
-              <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-[#b91c1c]">
-                <Heart className="w-5 h-5 text-[#b91c1c]" />
+              <div className="row2">
+                <label>
+                  Nombre *
+                  <input
+                    name="nombre"
+                    required
+                    value={contactName}
+                    onChange={(e) => setContactName(e.target.value)}
+                    placeholder="Tu nombre"
+                  />
+                </label>
+                <label>
+                  Apellidos *
+                  <input
+                    name="apellidos"
+                    required
+                    value={contactSurname}
+                    onChange={(e) => setContactSurname(e.target.value)}
+                    placeholder="Tus apellidos"
+                  />
+                </label>
               </div>
-              <h3 className="font-serif font-bold text-sm text-[#111827]">100% Crianza en Hogar</h3>
-              <p className="text-xs text-neutral-600 leading-relaxed">
-                Sin jaulas ni aislamiento. Criados con niños y rascadores, listos para integrarse en su familia.
-              </p>
-            </div>
 
-            <div className="bg-white p-5 rounded-xl border border-red-100 space-y-2 shadow-xs">
-              <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-[#b91c1c]">
-                <ShieldCheck className="w-5 h-5 text-[#b91c1c]" />
+              <div className="row2">
+                <label>
+                  Correo Electrónico *
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    value={contactEmail}
+                    onChange={(e) => setContactEmail(e.target.value)}
+                    placeholder="ejemplo@correo.com"
+                  />
+                </label>
+                <label>
+                  Teléfono *
+                  <input
+                    name="telefono"
+                    type="tel"
+                    required
+                    value={contactPhone}
+                    onChange={(e) => setContactPhone(e.target.value)}
+                    placeholder="+34 600 00 00 00"
+                  />
+                </label>
               </div>
-              <h3 className="font-serif font-bold text-sm text-[#111827]">Pasaporte & Welcome Pack</h3>
-              <p className="text-xs text-neutral-600 leading-relaxed">
-                Microchip oficial, vacunas completas para su edad, manta olfativa y alimento super premium.
-              </p>
-            </div>
+
+              <div className="row2">
+                <label>
+                  Ciudad
+                  <input
+                    name="ciudad"
+                    value={contactCity}
+                    onChange={(e) => setContactCity(e.target.value)}
+                    placeholder="Ej. Madrid, Barcelona..."
+                  />
+                </label>
+                <label>
+                  Raza de Interés
+                  <select
+                    name="raza"
+                    value={contactBreed}
+                    onChange={(e) => setContactBreed(e.target.value)}
+                  >
+                    <option value="">Seleccionar raza...</option>
+                    <option value="Maine Coon">Maine Coon</option>
+                    <option value="Bengalí">Bengalí</option>
+                    <option value="Siberiano">Siberiano</option>
+                    <option value="Ragdoll">Ragdoll</option>
+                    <option value="British Shorthair">British Shorthair</option>
+                    <option value="Persa">Persa</option>
+                    <option value="Sphynx">Sphynx</option>
+                    <option value="Azul Ruso">Azul Ruso</option>
+                    <option value="Siamés">Siamés</option>
+                    <option value="No estoy seguro">No estoy seguro</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Gatito de interés
+                <input
+                  name="gatito"
+                  placeholder="Ej.: Norman (Ragdoll)"
+                  value={contactKitten}
+                  onChange={(e) => setContactKitten(e.target.value)}
+                />
+              </label>
+
+              <label>
+                Mensaje
+                <textarea
+                  name="mensaje"
+                  rows={4}
+                  placeholder="Cuéntanos qué buscas, dudas sobre cuidados o fechas estimadas..."
+                  value={contactMessage}
+                  onChange={(e) => setContactMessage(e.target.value)}
+                />
+              </label>
+
+              <div className="form-btns">
+                <button
+                  type="submit"
+                  className="btn btn-wa"
+                  onClick={handleContactWhatsApp}
+                >
+                  <svg viewBox="0 0 24 24">
+                    <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+                  </svg>
+                  <span>Enviar por WhatsApp</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="btn btn-green"
+                  onClick={handleContactEmail}
+                >
+                  <svg viewBox="0 0 24 24">
+                    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg>
+                  <span>Enviar por Email</span>
+                </button>
+              </div>
+            </form>
+
+            <aside className="contact-info">
+              <h3>Información de Contacto</h3>
+
+              <div className="ci">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <div>
+                  <strong>Correo Electrónico</strong>
+                  <a href={`mailto:${settings.contactEmail || 'Criaderograciadivina@gmail.com'}`}>
+                    {settings.contactEmail || 'Criaderograciadivina@gmail.com'}
+                  </a>
+                </div>
+              </div>
+
+              <div className="ci">
+                <svg viewBox="0 0 24 24">
+                  <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+                </svg>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <a
+                    href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    +34 692 88 14 30
+                  </a>
+                </div>
+              </div>
+
+              <div className="ci">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11h-5v-2h3V6h2v7z" />
+                </svg>
+                <div>
+                  <strong>Tiempo de Respuesta</strong>
+                  <span>Respondemos normalmente en menos de 24 horas</span>
+                </div>
+              </div>
+
+              <div className="ci">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                <div>
+                  <strong>Ubicación</strong>
+                  <span>España</span>
+                </div>
+              </div>
+
+              <div className="note">
+                <strong>Nuestra Ubicación</strong>
+                <p>
+                  Somos un criadero familiar. Por la seguridad y privacidad de nuestra familia y de nuestros gatitos, no publicamos nuestra dirección. Cuando nos contactes, te la facilitaremos encantados y organizaremos una visita o una entrega cómoda para ti.
+                </p>
+              </div>
+
+              <div className="note">
+                <strong>Razas Disponibles</strong>
+                <div className="pills">
+                  {breedsList.slice(1).map((breed) => (
+                    <span
+                      key={breed}
+                      onClick={() => handleBreedTileClick(breed)}
+                    >
+                      {breed}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

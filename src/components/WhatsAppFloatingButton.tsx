@@ -1,5 +1,4 @@
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
 
 interface WhatsAppFloatingButtonProps {
   onClick?: () => void;
@@ -12,34 +11,30 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
   selectedKittenName,
   phoneNumber = '34692881430',
 }) => {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
     if (onClick) {
+      e.preventDefault();
       onClick();
-      return;
     }
-    const msg = selectedKittenName
-      ? `Hola, estoy interesado/a en la adopción del cachorro ${selectedKittenName} (600 €). ¿Podrían facilitarme más detalles, fotos o vídeos?`
-      : 'Hola, he visitado su página web y me gustaría recibir información sobre los cachorros disponibles (precio 600 €) y próximas camadas.';
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
+  const defaultMsg = selectedKittenName
+    ? `¡Hola! Me interesa ${selectedKittenName} (600 €). ¿Sigue disponible?`
+    : '¡Hola! Estoy interesado en los gatitos de raza de Criadero Gracia Divina.';
+
   return (
-    <aside aria-label="Contacto directo por WhatsApp" className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40">
-      <button
-        onClick={handleClick}
-        className="group flex items-center gap-2.5 px-4 sm:px-5 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-[0_8px_24px_rgba(37,211,102,0.4)] hover:shadow-[0_12px_28px_rgba(37,211,102,0.55)] transition-all transform hover:-translate-y-1 active:translate-y-0 cursor-pointer border border-white/30"
-        aria-label="Contactar por WhatsApp"
-        title="Chatear por WhatsApp con el criador"
-      >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
-        </span>
-        <MessageCircle className="w-5 h-5 fill-white text-[#25D366]" />
-        <span className="font-semibold text-xs sm:text-sm tracking-wide whitespace-nowrap">
-          {selectedKittenName ? `WhatsApp: ${selectedKittenName}` : 'WhatsApp'}
-        </span>
-      </button>
-    </aside>
+    <a
+      className="wa-float"
+      href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMsg)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Escríbenos por WhatsApp"
+      onClick={handleClick}
+    >
+      <svg viewBox="0 0 24 24">
+        <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+      </svg>
+      <span>WhatsApp</span>
+    </a>
   );
 };

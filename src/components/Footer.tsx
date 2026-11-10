@@ -1,216 +1,349 @@
 import React from 'react';
-import { ShieldCheck, Heart, Award, Mail, MapPin, Sliders, Star } from 'lucide-react';
-import { CatteryLogo } from './CatteryLogo';
 
 interface FooterProps {
   onNavigate: (view: string) => void;
   onOpenAdoptionModal: () => void;
-  onOpenEmail: (message?: string) => void;
+  onOpenEmail?: (message?: string) => void;
   onOpenAdmin: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigate,
   onOpenAdoptionModal,
-  onOpenEmail,
   onOpenAdmin,
 }) => {
+  const handleScrollTo = (id: string, view: string = 'catalog') => {
+    onNavigate(view);
+    setTimeout(() => {
+      const elem = document.getElementById(id);
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 50);
+  };
+
   return (
-    <footer className="bg-white text-neutral-800 pt-16 border-t-2 border-[#b91c1c]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Trust Banner in Clean White & Red */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pb-12 border-b border-red-100">
-          <div className="flex items-start gap-3 p-4 bg-red-50/40 rounded-xl border border-red-100">
-            <ShieldCheck className="w-6 h-6 text-[#b91c1c] shrink-0 mt-0.5" />
-            <div>
-              <h4 className="text-sm font-bold text-[#111827]">Pedigrí Oficial WCF & FIFe</h4>
-              <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
-                Trazabilidad genealógica documentada de hasta 5 generaciones.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 p-4 bg-red-50/40 rounded-xl border border-red-100">
-            <Heart className="w-6 h-6 text-[#b91c1c] shrink-0 mt-0.5" />
-            <div>
-              <h4 className="text-sm font-bold text-[#111827]">100% Crianza en Hogar</h4>
-              <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
-                Convivencia familiar sin jaulas, socializados y mimados cada día.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 p-4 bg-red-50/40 rounded-xl border border-red-100">
-            <Award className="w-6 h-6 text-[#b91c1c] shrink-0 mt-0.5" />
-            <div>
-              <h4 className="text-sm font-bold text-[#111827]">Garantía Genética 2 Años</h4>
-              <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
-                Padres con test HCM, PKD, SMA y serología FIV/FeLV negativos por escrito.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 p-4 bg-red-50/40 rounded-xl border border-red-100">
-            <ShieldCheck className="w-6 h-6 text-[#b91c1c] shrink-0 mt-0.5" />
-            <div>
-              <h4 className="text-sm font-bold text-[#111827]">Pasaporte & Microchip</h4>
-              <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
-                Vacunación completa para su edad y alta en el registro oficial.
-              </p>
-            </div>
-          </div>
+    <footer className="footer">
+      <div className="container footer-grid">
+        {/* Col 1: Logo & Mission */}
+        <div>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollTo('inicio');
+            }}
+            className="logo logo-light"
+          >
+            <svg className="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="23" fill="#ffffff" stroke="var(--gold)" strokeWidth="2" />
+              <path
+                d="M14 18l2-8 6 5h4l6-5 2 8c1.5 2.5 2 4.5 2 7 0 7-6 11-10 11s-10-4-10-11c0-2.5.5-4.5 2-7z"
+                fill="var(--gold)"
+              />
+              <circle cx="20" cy="24" r="1.6" fill="var(--crimson-dark)" />
+              <circle cx="28" cy="24" r="1.6" fill="var(--crimson-dark)" />
+              <path d="M22.5 28h3l-1.5 1.6z" fill="var(--crimson-dark)" />
+              <path
+                d="M17 8l3.5 3.5L24 7l3.5 4.5L31 8"
+                fill="none"
+                stroke="var(--gold)"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>
+              Gracia<b>Divina</b>
+            </span>
+          </a>
+          <p>
+            Criadero familiar de gatitos de raza en España. Gatitos sanos, socializados y criados con amor, listos para formar parte de tu familia.
+          </p>
+          <a
+            className="btn btn-wa btn-sm"
+            href="https://wa.me/34692881430?text=%C2%A1Hola!%20Estoy%20interesado%20en%20los%20gatitos%20de%20raza%20de%20Criadero%20Gracia%20Divina."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+            </svg>
+            <span>WhatsApp</span>
+          </a>
         </div>
 
-        {/* Main Footer Links */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 py-12">
-          {/* Brand Info */}
-          <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="shrink-0 drop-shadow-xs">
-                <CatteryLogo size={48} className="w-12 h-12" />
-              </div>
-              <div className="flex flex-col text-left">
-                <div className="flex items-center text-2xl font-serif tracking-tight leading-none">
-                  <span className="font-bold text-[#111827]">Gracia</span>
-                  <span className="font-bold text-[#b91c1c] ml-1.5">Divina</span>
-                </div>
-                <span className="text-[10px] tracking-widest uppercase font-semibold text-neutral-500 mt-1">
-                  Criadero Felino de Alta Cuna
-                </span>
-              </div>
-            </div>
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md font-light">
-              Dedicados en cuerpo y alma a preservar la pureza, salud y nobleza de las mejores razas felinas en España. Nuestros cachorros nacen y crecen en nuestro salón familiar, rodeados de amor, caricias y juegos diarios.
-            </p>
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="inline-block px-3 py-1 text-[11px] font-semibold text-[#b91c1c] bg-red-50 rounded-full border border-red-200">
-                Afiliado WCF Nº 41289
-              </span>
-              <span className="inline-block px-3 py-1 text-[11px] font-semibold text-[#b91c1c] bg-red-50 rounded-full border border-red-200">
-                Registro ASFE / FIFe Oficial
-              </span>
-            </div>
-          </div>
-
-          {/* Quick Navigation */}
-          <div className="md:col-span-3 space-y-3">
-            <h5 className="text-xs font-bold uppercase tracking-wider text-[#b91c1c]">Navegación</h5>
-            <ul className="space-y-2 text-xs sm:text-sm text-neutral-600">
-              <li>
-                <button
-                  onClick={() => onNavigate('catalog')}
-                  className="hover:text-[#b91c1c] transition-colors cursor-pointer text-left"
-                >
-                  Cachorros Disponibles (600 €)
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('breeds')}
-                  className="hover:text-[#b91c1c] transition-colors cursor-pointer text-left"
-                >
-                  Nuestras 9 Razas
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('testimonials')}
-                  className="hover:text-[#b91c1c] transition-colors cursor-pointer flex items-center gap-1.5 text-left"
-                >
-                  <Star className="w-3.5 h-3.5 fill-[#b91c1c] text-[#b91c1c]" />
-                  <span>Testimonios & Familias</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('health')}
-                  className="hover:text-[#b91c1c] transition-colors cursor-pointer text-left"
-                >
-                  Protocolo Veterinario & Pedigrí
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('policy')}
-                  className="hover:text-[#b91c1c] transition-colors cursor-pointer text-left"
-                >
-                  Políticas de Adopción & Garantías
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('contact')}
-                  className="hover:text-[#b91c1c] transition-colors cursor-pointer text-left"
-                >
-                  Contacto & Cita Previa
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Details via Email */}
-          <div className="md:col-span-4 space-y-3">
-            <h5 className="text-xs font-bold uppercase tracking-wider text-[#b91c1c]">Contacto & Adopciones</h5>
-            <div className="space-y-2.5 text-xs sm:text-sm text-neutral-600">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#b91c1c] shrink-0 mt-0.5" />
-                <span>Sierra de Guadarrama, Madrid (España). Visitas concertadas previa cita.</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#b91c1c] shrink-0" />
-                <a
-                  href="mailto:Criaderograciadivina@gmail.com"
-                  className="hover:underline text-[#b91c1c] font-semibold font-mono"
-                >
-                  Criaderograciadivina@gmail.com
-                </a>
-              </div>
-            </div>
-            <div className="pt-3 flex flex-col sm:flex-row gap-2">
-              <button
-                onClick={onOpenAdoptionModal}
-                className="w-full sm:w-auto px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-full transition-colors cursor-pointer shadow-xs text-center"
+        {/* Col 2: Enlaces */}
+        <div>
+          <h4>Enlaces</h4>
+          <ul>
+            <li>
+              <a
+                href="#inicio"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('inicio');
+                }}
               >
-                Solicitar Adopción (600 €)
-              </button>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Razas
+              </a>
+            </li>
+            <li>
+              <a
+                href="#gatitos"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('camadas-disponibles');
+                }}
+              >
+                Todos los gatitos
+              </a>
+            </li>
+            <li>
+              <a
+                href="#sobre-nosotros"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('sobre-nosotros');
+                }}
+              >
+                Sobre Nosotros
+              </a>
+            </li>
+            <li>
+              <a
+                href="#testimonios"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('testimonios');
+                }}
+              >
+                Testimonios
+              </a>
+            </li>
+            <li>
+              <a
+                href="#faq"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('faq');
+                }}
+              >
+                Preguntas Frecuentes
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contacto"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('contacto');
+                }}
+              >
+                Contacto
+              </a>
+            </li>
+            <li>
               <button
                 onClick={onOpenAdmin}
-                className="w-full sm:w-auto px-4 py-2.5 text-xs font-semibold text-neutral-700 bg-neutral-100 hover:bg-neutral-200 rounded-full transition-colors cursor-pointer border border-neutral-200 flex items-center justify-center gap-1.5"
-                title="Acceso al panel de administración CMS"
+                className="text-[#fca5a5] hover:text-[var(--gold)] text-xs underline cursor-pointer text-left py-1"
               >
-                <Sliders className="w-3.5 h-3.5" />
-                <span>Panel Admin</span>
+                🔒 Panel Admin
               </button>
-            </div>
-          </div>
+            </li>
+          </ul>
+        </div>
+
+        {/* Col 3: Nuestras Razas */}
+        <div>
+          <h4>Nuestras Razas</h4>
+          <ul>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Maine Coon
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Bengalí
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Siberiano
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Ragdoll
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                British Shorthair
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Persa
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Sphynx
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Azul Ruso
+              </a>
+            </li>
+            <li>
+              <a
+                href="#razas"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo('razas');
+                }}
+              >
+                Siamés
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Col 4: Información & Contacto */}
+        <div>
+          <h4>Información</h4>
+          <ul>
+            <li>
+              <a
+                href="#garantia-de-salud"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('health');
+                }}
+              >
+                Garantía de Salud
+              </a>
+            </li>
+            <li>
+              <a
+                href="#vacunaciones"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('health');
+                }}
+              >
+                Vacunaciones
+              </a>
+            </li>
+            <li>
+              <a
+                href="#envio-y-entrega"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('policy');
+                }}
+              >
+                Envío y Entrega
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contrato-de-venta"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('policy');
+                }}
+              >
+                Contrato de Venta
+              </a>
+            </li>
+          </ul>
+
+          <h4 className="mt">Contacto</h4>
+          <ul className="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+              <a href="mailto:Criaderograciadivina@gmail.com">Criaderograciadivina@gmail.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+              </svg>
+              <a href="https://wa.me/34692881430" target="_blank" rel="noopener noreferrer">
+                +34 692 88 14 30
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      {/* Bottom Copyright & Legal in soft neutral strip */}
-      <div className="bg-neutral-50 border-t border-red-100 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-          <p>© {new Date().getFullYear()} Criadero Gracia Divina. Todos los derechos reservados.</p>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <button
-              onClick={() => onNavigate('policy')}
-              className="hover:text-[#b91c1c] underline cursor-pointer"
-            >
-              Políticas de Adopción & Garantías
-            </button>
-            <span aria-hidden="true">·</span>
-            <button
-              onClick={() => onNavigate('policy')}
-              className="hover:text-[#b91c1c] underline cursor-pointer"
-            >
-              Protección de Datos (RGPD)
-            </button>
-            <span aria-hidden="true">·</span>
-            <button
-              onClick={onOpenAdmin}
-              className="hover:text-[#b91c1c] underline cursor-pointer flex items-center gap-1"
-            >
-              <Sliders className="w-3 h-3 text-[#b91c1c]" />
-              <span>Acceso Panel Control</span>
-            </button>
-          </div>
-        </div>
+      <div className="footer-bottom container">
+        © 2026 Criadero Gracia Divina. Todos los derechos reservados.
       </div>
     </footer>
   );

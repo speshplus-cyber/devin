@@ -6,6 +6,8 @@ interface CatalogViewProps {
   litters: Litter[];
   testimonials: Testimonial[];
   settings: SiteSettings;
+  selectedBreed?: string;
+  onSelectBreed?: (breed: string) => void;
   onSelectKitten: (kitten: Kitten) => void;
   onEmailInquiry: (kitten: Kitten) => void;
   onOpenAdoptionModal: (kitten?: Kitten) => void;
@@ -20,6 +22,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   litters,
   testimonials,
   settings,
+  selectedBreed: selectedBreedProp,
+  onSelectBreed,
   onSelectKitten,
   onEmailInquiry,
   onOpenAdoptionModal,
@@ -28,8 +32,24 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   onNavigateToContact,
   onNavigateToTestimonials,
 }) => {
-  const [selectedBreed, setSelectedBreed] = useState<string>('Todas');
+  const [internalBreed, setInternalBreed] = useState<string>(selectedBreedProp || 'Todas');
   const [selectedSex, setSelectedSex] = useState<string>('Todos');
+
+  // Synchronize internal state with incoming selectedBreed prop
+  React.useEffect(() => {
+    if (selectedBreedProp !== undefined) {
+      setInternalBreed(selectedBreedProp);
+    }
+  }, [selectedBreedProp]);
+
+  const activeBreed = selectedBreedProp !== undefined ? selectedBreedProp : internalBreed;
+
+  const handleBreedChange = (breed: string) => {
+    setInternalBreed(breed);
+    if (onSelectBreed) {
+      onSelectBreed(breed);
+    }
+  };
 
   // Contact Form state
   const [contactName, setContactName] = useState('');
@@ -55,85 +75,89 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     'Siamés',
   ];
 
-  // 6 Hero Tiles
+  // 6 Hero Tiles matching gatitoselites.es
   const heroTiles = [
-    { name: 'Maine Coon', image: '/photos/IMG_4505.jpeg', breedKey: 'Maine Coon' },
-    { name: 'Bengalí', image: '/photos/IMG_4480.jpeg', breedKey: 'Bengalí' },
-    { name: 'Siberiano', image: '/photos/IMG_4510.jpeg', breedKey: 'Siberiano' },
-    { name: 'Ragdoll', image: '/photos/IMG_4611.jpeg', breedKey: 'Ragdoll' },
-    { name: 'British Shorthair', image: '/photos/IMG_4684.jpeg', breedKey: 'British Shorthair' },
-    { name: 'Persa', image: '/photos/IMG_4587.jpeg', breedKey: 'Persa' },
+    { name: 'Maine Coon', image: '/photos/lion-DFSPOmjQ.jpg', breedKey: 'Maine Coon' },
+    { name: 'Bengalí', image: '/photos/bear-ngunYmJJ.jpg', breedKey: 'Bengalí' },
+    { name: 'Siberiano', image: '/photos/jackie-B4k2ui5R.jpg', breedKey: 'Siberiano' },
+    { name: 'Ragdoll', image: '/photos/norman-DKKWwGPS.jpg', breedKey: 'Ragdoll' },
+    { name: 'British Shorthair', image: '/photos/teddy-DqzhuZqD.jpg', breedKey: 'British Shorthair' },
+    { name: 'Persa', image: '/photos/tiago-BnN5kHMR.jpg', breedKey: 'Persa' },
   ];
 
-  // 9 Signature Breeds
+  // 9 Signature Breeds matching gatitoselites.es
   const signatureBreeds = [
     {
       name: 'Maine Coon',
       desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
       avail: '10 disponibles · 600 € →',
-      image: '/photos/IMG_4505.jpeg',
+      image: '/photos/lion-DFSPOmjQ.jpg',
     },
     {
       name: 'Bengalí',
       desc: 'Un leopardo en miniatura: atlético, inteligente y lleno de energía.',
       avail: '6 disponibles · 600 € →',
-      image: '/photos/IMG_4480.jpeg',
+      image: '/photos/bear-ngunYmJJ.jpg',
     },
     {
       name: 'Siberiano',
       desc: 'Robusto, cariñoso y con pelaje de triple capa. Apto para algunos alérgicos.',
       avail: '6 disponibles · 600 € →',
-      image: '/photos/IMG_4510.jpeg',
+      image: '/photos/jackie-B4k2ui5R.jpg',
     },
     {
       name: 'Ragdoll',
       desc: 'El "gato peluche": dócil, tranquilo y de impresionantes ojos azules.',
       avail: '5 disponibles · 600 € →',
-      image: '/photos/IMG_4611.jpeg',
+      image: '/photos/norman-DKKWwGPS.jpg',
     },
     {
       name: 'British Shorthair',
       desc: 'Un osito de peluche: pelaje denso, carita redonda y carácter sereno.',
       avail: '8 disponibles · 600 € →',
-      image: '/photos/IMG_4684.jpeg',
+      image: '/photos/teddy-DqzhuZqD.jpg',
     },
     {
       name: 'Persa',
       desc: 'Elegancia clásica: pelaje largo y exuberante y un carácter muy dulce.',
       avail: '5 disponibles · 600 € →',
-      image: '/photos/IMG_4587.jpeg',
+      image: '/photos/tiago-BnN5kHMR.jpg',
     },
     {
       name: 'Sphynx',
       desc: 'Sin pelo y con un corazón enorme: extrovertido, cálido y muy sociable.',
       avail: '5 disponibles · 600 € →',
-      image: '/photos/IMG_4620.jpeg',
+      image: '/photos/oscar-BFhuhZo2.jpg',
     },
     {
       name: 'Azul Ruso',
       desc: 'Elegancia plateada y ojos verde esmeralda. Tranquilo, limpio y leal.',
       avail: '5 disponibles · 600 € →',
-      image: '/photos/IMG_4656.jpeg',
+      image: '/photos/grace-DKHjgcjD.jpg',
     },
     {
       name: 'Siamés',
       desc: 'Ojos azules intensos, cuerpo elegante y una personalidad muy comunicativa.',
       avail: '5 disponibles · 600 € →',
-      image: '/photos/IMG_4630.jpeg',
+      image: '/photos/leo-DFLBAktV.jpg',
     },
   ];
+
+  // Helper to normalize strings for robust accent-insensitive comparison
+  const normalizeStr = (str: string) =>
+    str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 
   // Filtered kittens for the featured section
   const displayedKittens = useMemo(() => {
     return kittens.filter((k) => {
-      if (selectedBreed !== 'Todas' && k.breed !== selectedBreed) return false;
+      if (activeBreed !== 'Todas' && normalizeStr(k.breed) !== normalizeStr(activeBreed)) return false;
       if (selectedSex !== 'Todos' && k.gender !== selectedSex) return false;
       return true;
     });
-  }, [kittens, selectedBreed, selectedSex]);
+  }, [kittens, activeBreed, selectedSex]);
 
   const handleBreedTileClick = (breedName: string) => {
-    setSelectedBreed(breedName);
+    handleBreedChange(breedName);
     const elem = document.getElementById('camadas-disponibles');
     if (elem) {
       elem.scrollIntoView({ behavior: 'smooth' });
@@ -278,8 +302,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       <section className="section" id="sobre-nosotros">
         <div className="container about">
           <div className="about-imgs">
-            <img src="/photos/IMG_4653.jpeg" alt="Gatito British Shorthair blanco" loading="lazy" />
-            <img src="/photos/IMG_4589.jpeg" alt="Gatito Persa dulce" loading="lazy" />
+            <img src="/photos/freddie-B1SgnCoi.jpg" alt="Gatito British Shorthair blanco" loading="lazy" />
+            <img src="/photos/gus-BN3dxQOU.jpg" alt="Gatito Persa dulce" loading="lazy" />
           </div>
           <div>
             <span className="badge">Sobre Nosotros</span>
@@ -343,25 +367,51 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
           </div>
 
           {/* Interactive Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-            {breedsList.map((breed) => (
-              <button
-                key={breed}
-                onClick={() => setSelectedBreed(breed)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                  selectedBreed === breed
-                    ? 'bg-[var(--gold)] text-[#450a0a] shadow-md'
-                    : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
-                }`}
-              >
-                {breed}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+            {breedsList.map((breed) => {
+              const countForBreed = breed === 'Todas' 
+                ? kittens.length 
+                : kittens.filter((k) => normalizeStr(k.breed) === normalizeStr(breed)).length;
+
+              return (
+                <button
+                  key={breed}
+                  onClick={() => handleBreedChange(breed)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                    activeBreed === breed
+                      ? 'bg-[var(--gold)] text-[#450a0a] shadow-md font-bold scale-105'
+                      : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                  }`}
+                >
+                  {breed} ({countForBreed})
+                </button>
+              );
+            })}
           </div>
+
+          {/* Active Category Status Banner */}
+          {activeBreed !== 'Todas' && (
+            <div className="max-w-2xl mx-auto mb-6 p-3 rounded-xl bg-white/15 border border-white/25 text-white flex items-center justify-between text-xs sm:text-sm">
+              <div>
+                <span>Categoría seleccionada: </span>
+                <strong className="text-[var(--gold)] font-bold text-sm sm:text-base">{activeBreed}</strong>
+                <span className="text-white/80 ml-2">({displayedKittens.length} gatitos)</span>
+              </div>
+              <button
+                onClick={() => {
+                  handleBreedChange('Todas');
+                  setSelectedSex('Todos');
+                }}
+                className="px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-bold text-white transition-all cursor-pointer underline"
+              >
+                Ver todos los 55 gatitos ✕
+              </button>
+            </div>
+          )}
 
           {/* Kitten Mini Cards Grid */}
           <div className="kgrid">
-            {displayedKittens.slice(0, 12).map((kitten) => {
+            {displayedKittens.map((kitten) => {
               const mainPhoto = kitten.images && kitten.images.length > 0 ? kitten.images[0] : '/photos/IMG_4505.jpeg';
               const waText = encodeURIComponent(
                 `¡Hola! Me interesa ${kitten.name} (${kitten.breed}, ${kitten.price || '600 €'}). ¿Sigue disponible?`
@@ -414,10 +464,10 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
           <div className="center">
             <button
               onClick={() => {
-                setSelectedBreed('Todas');
+                handleBreedChange('Todas');
                 setSelectedSex('Todos');
               }}
-              className="btn btn-gold"
+              className="btn btn-gold cursor-pointer"
             >
               Ver los 55 gatitos disponibles
             </button>

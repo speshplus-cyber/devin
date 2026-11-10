@@ -38,6 +38,7 @@ import { isAuthenticated, getCurrentUser, logout, AdminSession } from './service
 
 export default function App() {
   const [currentView, setCurrentView] = useState<string>('catalog');
+  const [selectedBreedFilter, setSelectedBreedFilter] = useState<string>('Todas');
   const [selectedKitten, setSelectedKitten] = useState<Kitten | null>(null);
   const [adoptionModalOpen, setAdoptionModalOpen] = useState(false);
   const [adoptionTargetKitten, setAdoptionTargetKitten] = useState<Kitten | null>(null);
@@ -135,14 +136,25 @@ export default function App() {
     setAdoptionModalOpen(true);
   };
 
-  const handleNavigateToBreeds = () => {
+  const handleNavigateToBreeds = (breed?: string) => {
+    if (breed) {
+      setSelectedBreedFilter(breed);
+    }
     setCurrentView('breeds');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleFilterBreedFromMonograph = (_breed: BreedType) => {
+  const handleSelectBreedFilter = (breed: string) => {
+    setSelectedBreedFilter(breed);
     setCurrentView('catalog');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      const elem = document.getElementById('camadas-disponibles');
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 50);
   };
 
   // If in admin view, verify authentication before rendering the Control Panel
@@ -199,6 +211,7 @@ export default function App() {
         currentView={currentView}
         announcementText={settings.announcementText}
         onNavigate={setCurrentView}
+        onSelectBreed={handleSelectBreedFilter}
         onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
         onOpenEmail={handleOpenEmail}
         onOpenAdmin={() => {
@@ -215,6 +228,8 @@ export default function App() {
             litters={litters}
             testimonials={testimonials}
             settings={settings}
+            selectedBreed={selectedBreedFilter}
+            onSelectBreed={setSelectedBreedFilter}
             onSelectKitten={(k) => setSelectedKitten(k)}
             onEmailInquiry={handleKittenEmailInquiry}
             onOpenAdoptionModal={handleOpenAdoptionWithKitten}
@@ -236,7 +251,11 @@ export default function App() {
 
         {currentView === 'breeds' && (
           <BreedsView
-            onFilterBreed={handleFilterBreedFromMonograph}
+            kittens={kittens}
+            initialBreed={selectedBreedFilter !== 'Todas' ? (selectedBreedFilter as BreedType) : 'Maine Coon'}
+            onFilterBreed={(breed) => handleSelectBreedFilter(breed)}
+            onSelectKitten={(k) => setSelectedKitten(k)}
+            onAdoptKitten={(k) => handleOpenAdoptionWithKitten(k)}
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
           />
         )}
@@ -283,6 +302,7 @@ export default function App() {
       {/* Bottom Footer */}
       <Footer
         onNavigate={setCurrentView}
+        onSelectBreed={handleSelectBreedFilter}
         onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
         onOpenEmail={handleOpenEmail}
         onOpenAdmin={() => {

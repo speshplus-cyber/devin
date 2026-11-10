@@ -2,6 +2,7 @@ import React from 'react';
 
 interface FooterProps {
   onNavigate: (view: string) => void;
+  onSelectBreed?: (breed: string) => void;
   onOpenAdoptionModal: () => void;
   onOpenEmail?: (message?: string) => void;
   onOpenAdmin: () => void;
@@ -9,9 +10,18 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigate,
+  onSelectBreed,
   onOpenAdoptionModal,
   onOpenAdmin,
 }) => {
+  const handleBreedClick = (breedName: string) => {
+    if (onSelectBreed) {
+      onSelectBreed(breedName);
+    } else {
+      handleScrollTo('camadas-disponibles');
+    }
+  };
+
   const handleScrollTo = (id: string, view: string = 'catalog') => {
     onNavigate(view);
     setTimeout(() => {
@@ -172,101 +182,101 @@ export const Footer: React.FC<FooterProps> = ({
           <ul>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Maine Coon');
                 }}
               >
-                Maine Coon
+                Maine Coon (10)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Bengalí');
                 }}
               >
-                Bengalí
+                Bengalí (6)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Siberiano');
                 }}
               >
-                Siberiano
+                Siberiano (6)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Ragdoll');
                 }}
               >
-                Ragdoll
+                Ragdoll (5)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('British Shorthair');
                 }}
               >
-                British Shorthair
+                British Shorthair (8)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Persa');
                 }}
               >
-                Persa
+                Persa (5)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Sphynx');
                 }}
               >
-                Sphynx
+                Sphynx (5)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Azul Ruso');
                 }}
               >
-                Azul Ruso
+                Azul Ruso (5)
               </a>
             </li>
             <li>
               <a
-                href="#razas"
+                href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScrollTo('razas');
+                  handleBreedClick('Siamés');
                 }}
               >
-                Siamés
+                Siamés (5)
               </a>
             </li>
           </ul>

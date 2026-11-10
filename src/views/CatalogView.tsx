@@ -75,71 +75,71 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     'Siamés',
   ];
 
-  // 6 Hero Tiles matching gatitoselites.es
+  // 6 Hero Tiles matching authentic cattery kittens
   const heroTiles = [
-    { name: 'Maine Coon', image: '/photos/lion-DFSPOmjQ.jpg', breedKey: 'Maine Coon' },
-    { name: 'Bengalí', image: '/photos/bear-ngunYmJJ.jpg', breedKey: 'Bengalí' },
-    { name: 'Siberiano', image: '/photos/jackie-B4k2ui5R.jpg', breedKey: 'Siberiano' },
-    { name: 'Ragdoll', image: '/photos/norman-DKKWwGPS.jpg', breedKey: 'Ragdoll' },
-    { name: 'British Shorthair', image: '/photos/teddy-DqzhuZqD.jpg', breedKey: 'British Shorthair' },
-    { name: 'Persa', image: '/photos/tiago-BnN5kHMR.jpg', breedKey: 'Persa' },
+    { name: 'British Shorthair', image: '/photos/bsh-milo-09.jpg', breedKey: 'British Shorthair' },
+    { name: 'Ragdoll', image: '/photos/rag-jason-24.jpg', breedKey: 'Ragdoll' },
+    { name: 'Sphynx', image: '/photos/sph-desmond-32.png', breedKey: 'Sphynx' },
+    { name: 'British Bicolor', image: '/photos/bsh-maggie-06.png', breedKey: 'British Shorthair' },
+    { name: 'Ragdoll Ojos Azules', image: '/photos/rag-alulu-21.jpg', breedKey: 'Ragdoll' },
+    { name: 'Sphynx Nude Velvet', image: '/photos/sph-bambino-30.jpg', breedKey: 'Sphynx' },
   ];
 
-  // 9 Signature Breeds matching gatitoselites.es
+  // Signature Breeds matching available and upcoming litters
   const signatureBreeds = [
     {
-      name: 'Maine Coon',
-      desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
-      avail: '10 disponibles · 600 € →',
-      image: '/photos/lion-DFSPOmjQ.jpg',
-    },
-    {
-      name: 'Bengalí',
-      desc: 'Un leopardo en miniatura: atlético, inteligente y lleno de energía.',
-      avail: '6 disponibles · 600 € →',
-      image: '/photos/bear-ngunYmJJ.jpg',
-    },
-    {
-      name: 'Siberiano',
-      desc: 'Robusto, cariñoso y con pelaje de triple capa. Apto para algunos alérgicos.',
-      avail: '6 disponibles · 600 € →',
-      image: '/photos/jackie-B4k2ui5R.jpg',
+      name: 'British Shorthair',
+      desc: 'Un osito de peluche: pelaje denso, carita redonda y carácter sereno.',
+      avail: '20 disponibles · 600 € →',
+      image: '/photos/bsh-milo-09.jpg',
     },
     {
       name: 'Ragdoll',
       desc: 'El "gato peluche": dócil, tranquilo y de impresionantes ojos azules.',
-      avail: '5 disponibles · 600 € →',
-      image: '/photos/norman-DKKWwGPS.jpg',
-    },
-    {
-      name: 'British Shorthair',
-      desc: 'Un osito de peluche: pelaje denso, carita redonda y carácter sereno.',
-      avail: '8 disponibles · 600 € →',
-      image: '/photos/teddy-DqzhuZqD.jpg',
-    },
-    {
-      name: 'Persa',
-      desc: 'Elegancia clásica: pelaje largo y exuberante y un carácter muy dulce.',
-      avail: '5 disponibles · 600 € →',
-      image: '/photos/tiago-BnN5kHMR.jpg',
+      avail: '9 disponibles · 600 € →',
+      image: '/photos/rag-jason-24.jpg',
     },
     {
       name: 'Sphynx',
       desc: 'Sin pelo y con un corazón enorme: extrovertido, cálido y muy sociable.',
-      avail: '5 disponibles · 600 € →',
-      image: '/photos/oscar-BFhuhZo2.jpg',
+      avail: '7 disponibles · 600 € →',
+      image: '/photos/sph-desmond-32.png',
+    },
+    {
+      name: 'Maine Coon',
+      desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
+      avail: 'Próximas camadas · 600 € →',
+      image: '/photos/bsh-milo-09.jpg',
+    },
+    {
+      name: 'Bengalí',
+      desc: 'Un leopardo en miniatura: atlético, inteligente y lleno de energía.',
+      avail: 'Próximas camadas · 600 € →',
+      image: '/photos/bsh-marmalade-07.jpg',
+    },
+    {
+      name: 'Siberiano',
+      desc: 'Robusto, cariñoso y con pelaje de triple capa. Apto para algunos alérgicos.',
+      avail: 'Próximas camadas · 600 € →',
+      image: '/photos/rag-lola-25.jpg',
+    },
+    {
+      name: 'Persa',
+      desc: 'Elegancia clásica: pelaje largo y exuberante y un carácter muy dulce.',
+      avail: 'Próximas camadas · 600 € →',
+      image: '/photos/rag-cleo-23.jpg',
     },
     {
       name: 'Azul Ruso',
       desc: 'Elegancia plateada y ojos verde esmeralda. Tranquilo, limpio y leal.',
-      avail: '5 disponibles · 600 € →',
-      image: '/photos/grace-DKHjgcjD.jpg',
+      avail: 'Próximas camadas · 600 € →',
+      image: '/photos/bsh-smokey-19.png',
     },
     {
       name: 'Siamés',
       desc: 'Ojos azules intensos, cuerpo elegante y una personalidad muy comunicativa.',
-      avail: '5 disponibles · 600 € →',
-      image: '/photos/leo-DFLBAktV.jpg',
+      avail: 'Próximas camadas · 600 € →',
+      image: '/photos/rag-alulu-21.jpg',
     },
   ];
 
@@ -215,7 +215,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       >
         <div className="container hero-inner">
           <div className="hero-text">
-            <span className="eyebrow">GRACIA DIVINA — 9 RAZAS DISPONIBLES</span>
+            <span className="eyebrow">GRACIA DIVINA — 36 GATITOS DISPONIBLES</span>
             <h1>
               Gatitos de Raza <em>Premium</em>
             </h1>
@@ -302,8 +302,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       <section className="section" id="sobre-nosotros">
         <div className="container about">
           <div className="about-imgs">
-            <img src="/photos/freddie-B1SgnCoi.jpg" alt="Gatito British Shorthair blanco" loading="lazy" />
-            <img src="/photos/gus-BN3dxQOU.jpg" alt="Gatito Persa dulce" loading="lazy" />
+            <img src="/photos/bsh-astrid-01.jpg" alt="Gatita British Shorthair dulce" loading="lazy" />
+            <img src="/photos/rag-alulu-21.jpg" alt="Gatita Ragdoll dulce" loading="lazy" />
           </div>
           <div>
             <span className="badge">Sobre Nosotros</span>
@@ -404,7 +404,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 }}
                 className="px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-bold text-white transition-all cursor-pointer underline"
               >
-                Ver todos los 55 gatitos ✕
+                Ver todos los 36 gatitos ✕
               </button>
             </div>
           )}
@@ -469,7 +469,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               }}
               className="btn btn-gold cursor-pointer"
             >
-              Ver los 55 gatitos disponibles
+              Ver los 36 gatitos disponibles
             </button>
           </div>
         </div>
@@ -579,7 +579,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </div>
             <div className="stats">
               <div>
-                <b>55</b>
+                <b>36</b>
                 <span>Gatitos Disponibles</span>
               </div>
               <div>
@@ -646,8 +646,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </a>
           </div>
           <div className="about-imgs">
-            <img src="/photos/IMG_4601.jpeg" alt="Gatita Siamesa dulce" loading="lazy" />
-            <img src="/photos/IMG_4496.jpeg" alt="Gatita Maine Coon" loading="lazy" />
+            <img src="/photos/sph-layla-33.png" alt="Gatita Sphynx dulce" loading="lazy" />
+            <img src="/photos/bsh-milo-09.jpg" alt="Gatito British Shorthair" loading="lazy" />
           </div>
         </div>
       </section>

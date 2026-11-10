@@ -141,32 +141,10 @@ export const Header: React.FC<HeaderProps> = ({
                       href="#camadas-disponibles"
                       onClick={(e) => {
                         e.preventDefault();
-                        handleBreedClick('Maine Coon');
+                        handleBreedClick('British Shorthair');
                       }}
                     >
-                      Maine Coon (10)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Bengalí');
-                      }}
-                    >
-                      Bengalí (6)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Siberiano');
-                      }}
-                    >
-                      Siberiano (6)
+                      British Shorthair (20)
                     </a>
                   </li>
                   <li>
@@ -177,29 +155,7 @@ export const Header: React.FC<HeaderProps> = ({
                         handleBreedClick('Ragdoll');
                       }}
                     >
-                      Ragdoll (5)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('British Shorthair');
-                      }}
-                    >
-                      British Shorthair (8)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Persa');
-                      }}
-                    >
-                      Persa (5)
+                      Ragdoll (9)
                     </a>
                   </li>
                   <li>
@@ -210,7 +166,51 @@ export const Header: React.FC<HeaderProps> = ({
                         handleBreedClick('Sphynx');
                       }}
                     >
-                      Sphynx (5)
+                      Sphynx (7)
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#camadas-disponibles"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBreedClick('Maine Coon');
+                      }}
+                    >
+                      Maine Coon
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#camadas-disponibles"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBreedClick('Bengalí');
+                      }}
+                    >
+                      Bengalí
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#camadas-disponibles"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBreedClick('Siberiano');
+                      }}
+                    >
+                      Siberiano
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#camadas-disponibles"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBreedClick('Persa');
+                      }}
+                    >
+                      Persa
                     </a>
                   </li>
                   <li>
@@ -221,7 +221,7 @@ export const Header: React.FC<HeaderProps> = ({
                         handleBreedClick('Azul Ruso');
                       }}
                     >
-                      Azul Ruso (5)
+                      Azul Ruso
                     </a>
                   </li>
                   <li>
@@ -232,7 +232,7 @@ export const Header: React.FC<HeaderProps> = ({
                         handleBreedClick('Siamés');
                       }}
                     >
-                      Siamés (5)
+                      Siamés
                     </a>
                   </li>
                   <li>

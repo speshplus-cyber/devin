@@ -85,8 +85,14 @@ export interface Testimonial {
   breed: BreedType | string;
   adoptionYear: string;
   rating: number;
-  image: string;
   text: string;
+  image?: string;
+  avatar?: string;
+  author?: string;
+  location?: string;
+  kittenName?: string;
+  verified?: boolean;
+  date?: string;
 }
 
 export interface FAQItem {

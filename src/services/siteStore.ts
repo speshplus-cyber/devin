@@ -20,7 +20,7 @@ export interface AdoptionLead {
 const STORAGE_KEYS = {
   KITTENS: 'gracia_divina_kittens_v8',
   LITTERS: 'gracia_divina_litters_v8',
-  TESTIMONIALS: 'gracia_divina_testimonials_v8',
+  TESTIMONIALS: 'gracia_divina_testimonials_v9',
   SETTINGS: 'gracia_divina_settings_v8',
   LEADS: 'gracia_divina_leads_v8',
 };
@@ -45,7 +45,15 @@ if (typeof window !== 'undefined' && window.localStorage) {
       'gracia_divina_litters_v6',
       'gracia_divina_litters_v7',
       'gracia_divina_settings_v7',
+      'gracia_divina_testimonials',
+      'gracia_divina_testimonials_v1',
+      'gracia_divina_testimonials_v2',
+      'gracia_divina_testimonials_v3',
+      'gracia_divina_testimonials_v4',
+      'gracia_divina_testimonials_v5',
+      'gracia_divina_testimonials_v6',
       'gracia_divina_testimonials_v7',
+      'gracia_divina_testimonials_v8',
     ];
     legacyKeys.forEach((key) => {
       try {

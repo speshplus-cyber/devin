@@ -49,53 +49,52 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({
         </div>
       </div>
 
-      {/* Testimonials Grid with Photos of People Carrying their Kittens */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Testimonials Grid - 100% Clean, Authentic Verified Reviews (No AI Images) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((t) => (
           <div
             key={t.id}
             className="bg-white rounded-2xl border border-red-100 p-6 flex flex-col justify-between shadow-xs hover:shadow-lg transition-all duration-300 relative group"
           >
             <div className="space-y-4">
-              {/* Photo & Badge */}
-              <div className="relative aspect-[16/11] rounded-xl overflow-hidden bg-neutral-100 border border-red-100">
-                <img
-                  src={t.image}
-                  alt={`${t.adopterName || t.author} con ${t.catName || t.kittenName}`}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <span className="absolute bottom-2.5 left-2.5 px-3 py-1 text-[11px] font-bold bg-[#111827]/85 backdrop-blur-xs text-white rounded-md uppercase tracking-wider">
-                  {t.catName || t.kittenName}
-                </span>
-                <span className="absolute top-2.5 right-2.5 px-2.5 py-1 text-[10px] font-semibold bg-white/95 text-[#b91c1c] rounded-full shadow-xs flex items-center gap-1">
+              {/* Header: Avatar, Name, Verified Badge */}
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#991b1b] to-[#7f1d1d] text-white font-bold text-sm flex items-center justify-center shadow-xs shrink-0 border-2 border-red-100">
+                    {t.avatar || (t.adopterName || t.author || 'FA').substring(0, 2).toUpperCase()}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-[#111827]">{t.adopterName || t.author}</h4>
+                    <p className="text-xs text-neutral-500 flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3 h-3 text-[#b91c1c]" />
+                      <span>{t.city || t.location}</span>
+                    </p>
+                  </div>
+                </div>
+                <span className="px-2.5 py-1 text-[10px] font-semibold bg-red-50 text-[#b91c1c] rounded-full border border-red-200 flex items-center gap-1 shrink-0">
                   <CheckCircle className="w-3 h-3 text-[#b91c1c]" />
-                  <span>Adoptante Verificado</span>
+                  <span>Verificada</span>
                 </span>
               </div>
 
-              {/* Stars */}
+              {/* Stars & Rating */}
               <div className="flex items-center gap-1 text-[#b91c1c]">
-                {[...Array(t.rating)].map((_, i) => (
+                {[...Array(t.rating || 5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-[#b91c1c]" />
                 ))}
+                <span className="text-xs font-bold text-[#b91c1c] ml-1.5">5.0 / 5.0</span>
               </div>
 
               {/* Testimonial Quote */}
               <p className="text-xs sm:text-sm text-neutral-700 italic leading-relaxed">
-                "{t.text}"
+                «{t.text}»
               </p>
             </div>
 
-            {/* Adopter Info Strip */}
+            {/* Adopted Kitten Strip */}
             <div className="pt-4 mt-4 border-t border-red-100 flex items-center justify-between">
-              <div>
-                <h4 className="font-bold text-xs sm:text-sm text-[#111827]">{t.adopterName || t.author}</h4>
-                <div className="flex items-center gap-1 text-[11px] text-neutral-500">
-                  <MapPin className="w-3 h-3 text-[#b91c1c]" />
-                  <span>{t.city || t.location} (Adopción {t.adoptionYear || t.date || '2026'})</span>
-                </div>
+              <div className="text-xs text-neutral-600">
+                Gatito adoptado: <strong className="text-[#111827]">{t.catName || t.kittenName}</strong>
               </div>
               <span className="text-[11px] font-semibold text-[#b91c1c] bg-red-50 px-2.5 py-1 rounded-full border border-red-200">
                 {t.breed}

@@ -2723,7 +2723,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Febrero 2026",
     "rating": 5,
     "avatar": "LP",
-    "image": "/photos/mc-spartacus-18.jpg",
     "text": "Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Spartacus a casa se adaptó en cuestión de horas. Es enorme, cariñoso como un perro y equilibrado, se nota muchísimo que se crían en familia.",
     "verified": true
   },
@@ -2740,7 +2739,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Enero 2026",
     "rating": 5,
     "avatar": "CM",
-    "image": "/photos/rag-jason-24.jpg",
     "text": "Buscábamos un Ragdoll tranquilo para convivir con nuestros dos hijos pequeños y no podríamos estar más felices. Vino con su cartilla al día, microchip, revisión veterinaria perfecta y un carácter dulce que enamora a todo el que viene a casa.",
     "verified": true
   },
@@ -2757,7 +2755,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Febrero 2026",
     "rating": 5,
     "avatar": "ER",
-    "image": "/photos/sph-desmond-32.png",
     "text": "Nuestro Sphynx llegó a Valencia mediante transporte especializado en perfecto estado. Su piel es como terciopelo cálido y su personalidad no puede ser más cariñosa. Además, criaderograciadivina sigue pendiente de nosotros ante cualquier duda.",
     "verified": true
   },
@@ -2774,7 +2771,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Enero 2026",
     "rating": 5,
     "avatar": "JM",
-    "image": "/photos/bsh-milo-09.jpg",
     "text": "Una experiencia de diez. Milo es una belleza de pelaje denso y carácter sosegado. Todo el proceso de reserva y entrega fue transparente y profesional. Superó todas nuestras expectativas.",
     "verified": true
   },
@@ -2791,7 +2787,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Diciembre 2025",
     "rating": 5,
     "avatar": "BS",
-    "image": "/photos/mc-luna-10.jpg",
     "text": "Luna es el amor de nuestra casa. Ojos esmeralda y unos penachos de lince impresionantes. Muy agradecida a criaderograciadivina por el trato tan humano y la dedicación.",
     "verified": true
   },
@@ -2808,7 +2803,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Febrero 2026",
     "rating": 5,
     "avatar": "MC",
-    "image": "/photos/sph-bambino-30.jpg",
     "text": "Queríamos un Sphynx sano y bien socializado y superó con creces lo esperado. Juguetona, limpia y sumamente inteligente. Recomendable al 100%.",
     "verified": true
   },
@@ -2825,7 +2819,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Febrero 2026",
     "rating": 5,
     "avatar": "RA",
-    "image": "/photos/bsh-astrid-01.jpg",
     "text": "Astrid es una muñeca de peluche. Desde el primer día usó el arenero sin problema y se tumba a nuestro lado en el sofá. El kit de bienvenida y el pienso que nos enviaron nos ayudaron muchísimo con su adaptación.",
     "verified": true
   },
@@ -2842,7 +2835,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Enero 2026",
     "rating": 5,
     "avatar": "PT",
-    "image": "/photos/rag-alulu-21.jpg",
     "text": "Es increíble lo dócil que es Alulu. La coges en brazos y parece que se derrite de relax. El asesoramiento genético y las pruebas veterinarias que nos entregaron nos dieron una seguridad total.",
     "verified": true
   },
@@ -2859,7 +2851,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Enero 2026",
     "rating": 5,
     "avatar": "SG",
-    "image": "/photos/mc-louie-09.jpg",
     "text": "Louie es impresionante, con solo unos meses ya tiene una presencia majestuosa. Come fenomenal y es el compañero inseparable de mi hijo. La comunicación por WhatsApp con criaderograciadivina fue impecable.",
     "verified": true
   },
@@ -2876,7 +2867,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Febrero 2026",
     "rating": 5,
     "avatar": "DR",
-    "image": "/photos/sph-layla-33.png",
     "text": "Llegó al norte en transporte con climatización perfecta y súper despierta. Le encanta dormir acurrucada bajo las mantas con nosotros. Se nota que han recibido cariño y atención desde que nacieron.",
     "verified": true
   },
@@ -2893,7 +2883,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Noviembre 2025",
     "rating": 5,
     "avatar": "VN",
-    "image": "/photos/rag-cleo-23.jpg",
     "text": "La adopción de Cleo fue el mejor acierto del año. Ojos de un azul zafiro cautivador y un ronroneo constante. Un criadero honesto, familiar y apasionado por el bienestar de los felinos.",
     "verified": true
   },
@@ -2910,7 +2899,6 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     "date": "Enero 2026",
     "rating": 5,
     "avatar": "AL",
-    "image": "/photos/bsh-babushka-02.jpg",
     "text": "Buscábamos un British Shorthair auténtico de línea europea y Babushka tiene una morfología impecable. Las vacunas, el chip y el contrato estaban perfectos. 100% de confianza.",
     "verified": true
   }

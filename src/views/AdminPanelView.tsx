@@ -1144,16 +1144,14 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   >
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
-                        <img
-                          src={t.image}
-                          alt={t.catName}
-                          className="w-14 h-14 rounded-lg object-cover border border-neutral-200"
-                        />
+                        <div className="w-12 h-12 rounded-xl bg-red-50 text-[#b91c1c] font-bold text-sm flex items-center justify-center border border-red-200 shrink-0">
+                          {t.avatar || (t.adopterName || t.author || 'AD').substring(0, 2).toUpperCase()}
+                        </div>
                         <div>
-                          <h4 className="font-bold text-sm text-neutral-900">{t.adopterName}</h4>
-                          <p className="text-xs text-neutral-500">{t.city} · Adopción {t.adoptionYear}</p>
+                          <h4 className="font-bold text-sm text-neutral-900">{t.adopterName || t.author}</h4>
+                          <p className="text-xs text-neutral-500">{t.city || t.location} · Adopción {t.adoptionYear || t.date || '2026'}</p>
                           <div className="flex items-center gap-0.5 text-[#b91c1c] mt-0.5">
-                            {[...Array(t.rating)].map((_, i) => (
+                            {[...Array(t.rating || 5)].map((_, i) => (
                               <Star key={i} className="w-3.5 h-3.5 fill-[#b91c1c]" />
                             ))}
                           </div>

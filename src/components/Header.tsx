@@ -182,61 +182,6 @@ export const Header: React.FC<HeaderProps> = ({
                   </li>
                   <li>
                     <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Bengalí');
-                      }}
-                    >
-                      Bengalí
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Siberiano');
-                      }}
-                    >
-                      Siberiano
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Persa');
-                      }}
-                    >
-                      Persa
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Azul Ruso');
-                      }}
-                    >
-                      Azul Ruso
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Siamés');
-                      }}
-                    >
-                      Siamés
-                    </a>
-                  </li>
-                  <li>
-                    <a
                       href="#razas"
                       onClick={(e) => {
                         e.preventDefault();

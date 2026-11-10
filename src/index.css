@@ -1300,3 +1300,409 @@ svg {
     width: calc(50% - 5px);
   }
 }
+
+/* ==========================================================================
+   MODERN LUXURY HOME PAGE & MOBILE-FIRST STYLES
+   ========================================================================== */
+
+/* Modern Luxury Hero */
+.lux-hero {
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, rgba(153, 27, 27, 0.6) 0%, rgba(69, 10, 10, 0.96) 60%, #150305 100%),
+              var(--hero) center/cover no-repeat;
+  color: #fff;
+  padding: 68px 0 76px;
+  overflow: hidden;
+}
+
+.lux-hero-content {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lux-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 164, 73, 0.18);
+  border: 1px solid rgba(201, 164, 73, 0.45);
+  color: #fde68a;
+  border-radius: 99px;
+  padding: 7px 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  backdrop-filter: blur(8px);
+}
+
+.lux-hero h1 {
+  color: #fff;
+  font-size: clamp(2.2rem, 5.2vw, 3.8rem);
+  line-height: 1.15;
+  margin-bottom: 18px;
+  font-weight: 800;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lux-hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+.lux-hero p {
+  color: #fee2e2;
+  font-size: clamp(1rem, 2.1vw, 1.18rem);
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto 32px;
+}
+
+.lux-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 46px;
+}
+
+.lux-hero-actions .btn {
+  min-height: 52px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+}
+
+/* Breed Quick Selector Rail (Touch-Optimized Carousel on Mobile) */
+.breed-carousel-wrap {
+  margin-top: 28px;
+}
+
+.breed-carousel-title {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fca5a5;
+  margin-bottom: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.breed-carousel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.breed-card {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  text-align: left;
+}
+
+.breed-card:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.breed-card img {
+  width: 66px;
+  height: 66px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.breed-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.breed-card-info h4 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breed-card-info span {
+  display: inline-block;
+  background: rgba(201, 164, 73, 0.25);
+  color: #fef08a;
+  border: 1px solid rgba(201, 164, 73, 0.4);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Trust Strip */
+.trust-strip {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  background: var(--cream);
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.trust-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.trust-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(127, 29, 29, 0.25);
+}
+
+.trust-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.trust-text h4 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--crimson-dark);
+}
+
+.trust-text p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Filter Bar Responsive */
+.filter-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.filter-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filter-pill {
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.filter-pill.active {
+  background: var(--gold);
+  color: #450a0a;
+  border-color: var(--gold);
+  box-shadow: 0 4px 14px rgba(201, 164, 73, 0.4);
+  font-weight: 700;
+  transform: scale(1.03);
+}
+
+.filter-pill.inactive {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.filter-pill.inactive:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.filter-active-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+/* Adoption 3-Step Process */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.step-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 22px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.step-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #450a0a;
+  font-weight: 800;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 12px rgba(201, 164, 73, 0.35);
+}
+
+.step-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--crimson-dark);
+}
+
+.step-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Responsive Overrides for Mobile */
+@media (max-width: 900px) {
+  .breed-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .breed-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .breed-card {
+    min-width: 230px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lux-hero {
+    padding: 44px 0 54px;
+  }
+  .lux-hero h1 {
+    font-size: 2.1rem;
+  }
+  .lux-hero p {
+    font-size: 0.95rem;
+  }
+  .lux-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .lux-hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .trust-item {
+    padding: 14px;
+  }
+  .filter-pills-row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 100%;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-pills-row::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}

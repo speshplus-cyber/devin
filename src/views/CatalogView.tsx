@@ -62,84 +62,48 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   const [contactMessage, setContactMessage] = useState('');
   const [formSentMessage, setFormSentMessage] = useState<string | null>(null);
 
+  // The 4 active breeds that actually have kittens
   const breedsList = [
     'Todas',
     'Maine Coon',
-    'Bengalí',
-    'Siberiano',
-    'Ragdoll',
     'British Shorthair',
-    'Persa',
+    'Ragdoll',
     'Sphynx',
-    'Azul Ruso',
-    'Siamés',
   ];
 
-  // 6 Hero Tiles matching authentic cattery kittens
-  const heroTiles = [
-    { name: 'Maine Coon', image: '/photos/mc-spartacus-18.jpg', breedKey: 'Maine Coon' },
-    { name: 'British Shorthair', image: '/photos/bsh-milo-09.jpg', breedKey: 'British Shorthair' },
-    { name: 'Ragdoll', image: '/photos/rag-jason-24.jpg', breedKey: 'Ragdoll' },
-    { name: 'Sphynx', image: '/photos/sph-desmond-32.png', breedKey: 'Sphynx' },
-    { name: 'Maine Coon Smoke', image: '/photos/mc-louie-09.jpg', breedKey: 'Maine Coon' },
-    { name: 'British Bicolor', image: '/photos/bsh-maggie-06.png', breedKey: 'British Shorthair' },
-  ];
-
-  // Signature Breeds matching available and upcoming litters
+  // The 4 Signature Breeds with authentic photos and counts
   const signatureBreeds = [
     {
       name: 'Maine Coon',
-      desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
-      avail: '19 disponibles · 600 € →',
+      tagline: 'El gigante dócil del reino felino',
+      desc: 'Imponente, noble y de carácter paciente y sociable. Con penachos de lince y manto majestuoso.',
+      avail: '19 gatitos disponibles · 600 € →',
       image: '/photos/mc-spartacus-18.jpg',
+      count: 19,
     },
     {
       name: 'British Shorthair',
-      desc: 'Un osito de peluche: pelaje denso, carita redonda y carácter sereno.',
-      avail: '20 disponibles · 600 € →',
+      tagline: 'El osito de terciopelo sereno',
+      desc: 'Carita redonda, mofletes tiernos y pelaje crisp sumamente denso. Temperamento dulce y tranquilo.',
+      avail: '20 gatitos disponibles · 600 € →',
       image: '/photos/bsh-milo-09.jpg',
+      count: 20,
     },
     {
       name: 'Ragdoll',
-      desc: 'El "gato peluche": dócil, tranquilo y de impresionantes ojos azules.',
-      avail: '9 disponibles · 600 € →',
+      tagline: 'Ojos azules zafiro y entrega total',
+      desc: 'El gato peluche por excelencia: se relaja por completo en brazos y busca cariño constante.',
+      avail: '9 gatitos disponibles · 600 € →',
       image: '/photos/rag-jason-24.jpg',
+      count: 9,
     },
     {
       name: 'Sphynx',
-      desc: 'Sin pelo y con un corazón enorme: extrovertido, cálido y muy sociable.',
-      avail: '7 disponibles · 600 € →',
+      tagline: 'Piel de terciopelo y amor infinito',
+      desc: 'Sin pelo, de tacto cálido como melocotón. Extraordinariamente cariñoso, vivaz y apegado a la familia.',
+      avail: '7 gatitos disponibles · 600 € →',
       image: '/photos/sph-desmond-32.png',
-    },
-    {
-      name: 'Bengalí',
-      desc: 'Un leopardo en miniatura: atlético, inteligente y lleno de energía.',
-      avail: 'Próximas camadas · 600 € →',
-      image: '/photos/bsh-marmalade-07.jpg',
-    },
-    {
-      name: 'Siberiano',
-      desc: 'Robusto, cariñoso y con pelaje de triple capa. Apto para algunos alérgicos.',
-      avail: 'Próximas camadas · 600 € →',
-      image: '/photos/rag-lola-25.jpg',
-    },
-    {
-      name: 'Persa',
-      desc: 'Elegancia clásica: pelaje largo y exuberante y un carácter muy dulce.',
-      avail: 'Próximas camadas · 600 € →',
-      image: '/photos/rag-cleo-23.jpg',
-    },
-    {
-      name: 'Azul Ruso',
-      desc: 'Elegancia plateada y ojos verde esmeralda. Tranquilo, limpio y leal.',
-      avail: 'Próximas camadas · 600 € →',
-      image: '/photos/bsh-smokey-19.png',
-    },
-    {
-      name: 'Siamés',
-      desc: 'Ojos azules intensos, cuerpo elegante y una personalidad muy comunicativa.',
-      avail: 'Próximas camadas · 600 € →',
-      image: '/photos/rag-alulu-21.jpg',
+      count: 7,
     },
   ];
 
@@ -147,7 +111,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   const normalizeStr = (str: string) =>
     str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 
-  // Filtered kittens for the featured section
+  // Filtered kittens for the catalog section
   const displayedKittens = useMemo(() => {
     return kittens.filter((k) => {
       if (activeBreed !== 'Todas' && normalizeStr(k.breed) !== normalizeStr(activeBreed)) return false;
@@ -175,11 +139,11 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       `• Ciudad: ${contactCity || 'España'}\n` +
       `• Teléfono: ${contactPhone || '-'}\n` +
       `• Email: ${contactEmail || '-'}\n` +
-      `• Mensaje: ${contactMessage || 'Quisiera conocer disponibilidad y próximos pasos.'}`;
+      `• Mensaje: ${contactMessage || 'Quisiera conocer disponibilidad y próximos pasos para la reserva.'}`;
 
     const cleanNumber = (settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`, '_blank');
-    setFormSentMessage('¡Abriendo WhatsApp para enviar tu consulta directamente al criadero!');
+    setFormSentMessage('¡Abriendo WhatsApp para enviar tu consulta directamente al criador!');
   };
 
   const handleContactEmail = (e: React.FormEvent) => {
@@ -206,215 +170,227 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     <div id="inicio">
       {/* 
         ========================================================================
-        1. HERO SECTION (MATCHING GATITOSELITES.ES EXACTLY)
+        1. MODERN LUXURY HERO SECTION (MOBILE-FIRST OPTIMIZED)
         ========================================================================
       */}
       <section
-        className="hero"
+        className="lux-hero"
         style={{ '--hero': `url('/photos/IMG_4505.jpeg')` } as React.CSSProperties}
       >
-        <div className="container hero-inner">
-          <div className="hero-text">
-            <span className="eyebrow">GRACIA DIVINA — 55 GATITOS DISPONIBLES</span>
+        <div className="container">
+          <div className="lux-hero-content">
+            <div className="lux-badge">
+              <svg viewBox="0 0 24 24" style={{ width: '16px', height: '16px', fill: 'currentColor' }}>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <span>CRIADERO ÉTICO DE ÉLITE EN ESPAÑA · WCF & FIFe</span>
+            </div>
+
             <h1>
-              Gatitos de Raza <em>Premium</em>
+              Nobleza, Pureza y Crianza Familiar
+              <em>55 Gatitos de Pura Raza Listos para Enamorarte</em>
             </h1>
+
             <p>
-              Criados con amor en un entorno familiar en España. Con garantía de salud, vacunados y listos para robarte el corazón.
+              Criadero familiar de referencia especializado en 4 selectas razas: <strong>Maine Coon</strong>,{' '}
+              <strong>British Shorthair</strong>, <strong>Ragdoll</strong> y <strong>Sphynx</strong>.
+              Criados dentro del hogar, con 2 años de garantía sanitaria por escrito y entrega personalizada en toda España.
             </p>
-            <div className="hero-btns">
+
+            <div className="lux-hero-actions">
               <a
-                href="#razas"
-                className="btn btn-light"
+                href="#camadas-disponibles"
+                className="btn btn-gold"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('razas')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById('camadas-disponibles')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Ver Razas
+                Ver los 55 Gatitos Disponibles (600 €) ↓
               </a>
               <a
-                href="#contacto"
-                className="btn btn-ghost"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola Criadero Gracia Divina! Me gustaría consultar sobre los gatitos disponibles.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-wa"
               >
-                Contactar
+                <svg viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+                  <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
+                </svg>
+                <span>WhatsApp Directo (+34 692 88 14 30)</span>
               </a>
             </div>
-          </div>
 
-          <div className="hero-tiles">
-            {heroTiles.map((tile) => (
-              <a
-                key={tile.name}
-                href="#camadas-disponibles"
-                className="tile"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleBreedTileClick(tile.breedKey);
-                }}
-              >
-                <img src={tile.image} alt={tile.name} loading="lazy" />
-                <span>{tile.name}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="hero-bar">
-          <div className="container">
-            <span>
-              <svg viewBox="0 0 24 24">
-                <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
-              </svg>
-              <span>Criados en Familia</span>
-            </span>
-            <span>
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z" />
-              </svg>
-              <span>Garantía de Salud</span>
-            </span>
-            <span>
-              <svg viewBox="0 0 24 24">
-                <path d="M19 8h-3V5a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3h3a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z" />
-              </svg>
-              <span>Revisados por Veterinario</span>
-            </span>
-            <span>
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2a9 9 0 0 0-9 9v5a3 3 0 0 0 3 3h2v-7H5v-1a7 7 0 0 1 14 0v1h-3v7h3v1h-6v2h6a2 2 0 0 0 2-2v-8a9 9 0 0 0-9-9z" />
-              </svg>
-              <span>Soporte de por Vida</span>
-            </span>
+            {/* Quick Touch-Optimized Breed Selector Rail */}
+            <div className="breed-carousel-wrap">
+              <div className="breed-carousel-title">
+                <span>Nuestras 4 Razas Exclusivas · Toca para filtrar</span>
+              </div>
+              <div className="breed-carousel">
+                {signatureBreeds.map((breed) => (
+                  <div
+                    key={breed.name}
+                    className="breed-card"
+                    onClick={() => handleBreedTileClick(breed.name)}
+                  >
+                    <img src={breed.image} alt={breed.name} loading="lazy" />
+                    <div className="breed-card-info">
+                      <h4>{breed.name}</h4>
+                      <span>{breed.count} Disponibles</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 
         ========================================================================
-        2. SOBRE NOSOTROS SECTION
+        2. TRUST & HEALTH GUARANTEE STRIP (CLEAN 2x2 ON MOBILE, 4-COL DESKTOP)
         ========================================================================
       */}
-      <section className="section" id="sobre-nosotros">
-        <div className="container about">
-          <div className="about-imgs">
-            <img src="/photos/mc-spartacus-18.jpg" alt="Gatito Maine Coon majestuoso" loading="lazy" />
-            <img src="/photos/bsh-astrid-01.jpg" alt="Gatita British Shorthair dulce" loading="lazy" />
-          </div>
-          <div>
-            <span className="badge">Sobre Nosotros</span>
-            <h2>Sobre Criadero Gracia Divina</h2>
-            <p>
-              Bienvenido a <strong>Criadero Gracia Divina</strong>, un criadero familiar especializado en gatitos de raza sanos, felices y bien socializados. Cada uno de nuestros gatitos crece dentro de casa, recibe atención individual desde el primer día y sale hacia su nuevo hogar preparado para convertirse en un miembro más de la familia.
-            </p>
-            <p>
-              Trabajamos con 9 razas: desde el majestuoso Maine Coon y el salvaje Bengalí hasta el dulce Ragdoll y el elegante Azul Ruso. Todos nuestros gatitos tienen un precio único de <strong>600 €</strong> con documentación y kit de bienvenida incluidos.
-            </p>
-            <ul className="checks two">
-              <li>
+      <section className="trust-strip">
+        <div className="container">
+          <div className="trust-grid">
+            <div className="trust-item">
+              <div className="trust-icon">
                 <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z" />
                 </svg>
-                <span>Gatitos criados en casa</span>
-              </li>
-              <li>
+              </div>
+              <div className="trust-text">
+                <h4>Garantía 2 Años</h4>
+                <p>Cobertura vírica y genética total por escrito en contrato oficial.</p>
+              </div>
+            </div>
+
+            <div className="trust-item">
+              <div className="trust-icon">
                 <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
                 </svg>
-                <span>Revisados y vacunados</span>
-              </li>
-              <li>
+              </div>
+              <div className="trust-text">
+                <h4>100% en Familia</h4>
+                <p>Criados libres dentro de casa, sociables y habituados a niños.</p>
+              </div>
+            </div>
+
+            <div className="trust-item">
+              <div className="trust-icon">
                 <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
                 </svg>
-                <span>Garantía de salud incluida</span>
-              </li>
-              <li>
+              </div>
+              <div className="trust-text">
+                <h4>Pedigrí Oficial</h4>
+                <p>Líneas de campeones libres de HCM, PKD y FIV/FeLV por ADN.</p>
+              </div>
+            </div>
+
+            <div className="trust-item">
+              <div className="trust-icon">
                 <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9 1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
                 </svg>
-                <span>Soporte del criador de por vida</span>
-              </li>
-            </ul>
-            <a
-              className="btn btn-green"
-              href="#contacto"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Conócenos
-            </a>
+              </div>
+              <div className="trust-text">
+                <h4>Entrega en España</h4>
+                <p>Transporte especializado directo a tu puerta o recogida en mano.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 
         ========================================================================
-        3. CONOCE NUESTROS GATITOS SECTION
+        3. KITTENS CATALOG SECTION (TOUCH-OPTIMIZED GRID)
         ========================================================================
       */}
       <section className="section section-green" id="camadas-disponibles">
         <div className="container">
           <div className="section-head light">
-            <h2>Conoce Nuestros Gatitos 🐱</h2>
-            <p>Adorables gatitos de raza buscando su hogar para siempre</p>
+            <span className="badge" style={{ background: 'var(--gold)', color: '#450a0a', fontWeight: 'bold' }}>
+              Camadas 2026 Abiertas
+            </span>
+            <h2>Nuestros 55 Gatitos Disponibles 🐾</h2>
+            <p>Precio único cerrado de <strong>600 €</strong> con microchip, vacunas, desparasitación y garantías incluidas</p>
           </div>
 
           {/* Interactive Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-            {breedsList.map((breed) => {
-              const countForBreed = breed === 'Todas' 
-                ? kittens.length 
-                : kittens.filter((k) => normalizeStr(k.breed) === normalizeStr(breed)).length;
+          <div className="filter-bar-wrap">
+            <div className="filter-pills-row">
+              {breedsList.map((breed) => {
+                const countForBreed = breed === 'Todas' 
+                  ? kittens.length 
+                  : kittens.filter((k) => normalizeStr(k.breed) === normalizeStr(breed)).length;
 
-              return (
-                <button
-                  key={breed}
-                  onClick={() => handleBreedChange(breed)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                    activeBreed === breed
-                      ? 'bg-[var(--gold)] text-[#450a0a] shadow-md font-bold scale-105'
-                      : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
-                  }`}
-                >
-                  {breed} ({countForBreed})
-                </button>
-              );
-            })}
-          </div>
+                const isActive = activeBreed === breed;
 
-          {/* Active Category Status Banner */}
-          {activeBreed !== 'Todas' && (
-            <div className="max-w-2xl mx-auto mb-6 p-3 rounded-xl bg-white/15 border border-white/25 text-white flex items-center justify-between text-xs sm:text-sm">
-              <div>
-                <span>Categoría seleccionada: </span>
-                <strong className="text-[var(--gold)] font-bold text-sm sm:text-base">{activeBreed}</strong>
-                <span className="text-white/80 ml-2">({displayedKittens.length} gatitos)</span>
-              </div>
-              <button
-                onClick={() => {
-                  handleBreedChange('Todas');
-                  setSelectedSex('Todos');
-                }}
-                className="px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-bold text-white transition-all cursor-pointer underline"
-              >
-                Ver todos los 55 gatitos ✕
-              </button>
+                return (
+                  <button
+                    key={breed}
+                    onClick={() => handleBreedChange(breed)}
+                    className={`filter-pill ${isActive ? 'active' : 'inactive'}`}
+                  >
+                    {breed} ({countForBreed})
+                  </button>
+                );
+              })}
             </div>
-          )}
+
+            {/* Sex Filter Row */}
+            <div className="filter-pills-row" style={{ marginTop: '4px' }}>
+              {['Todos', 'Macho', 'Hembra'].map((sex) => (
+                <button
+                  key={sex}
+                  onClick={() => setSelectedSex(sex)}
+                  className={`filter-pill ${selectedSex === sex ? 'active' : 'inactive'}`}
+                  style={{ padding: '6px 14px', fontSize: '0.8rem' }}
+                >
+                  {sex === 'Todos' ? 'Todos los sexos' : sex === 'Macho' ? '♂ Machos' : '♀ Hembras'}
+                </button>
+              ))}
+            </div>
+
+            {/* Active Category Status Banner */}
+            {(activeBreed !== 'Todas' || selectedSex !== 'Todos') && (
+              <div className="filter-active-indicator">
+                <span>
+                  Filtro activo: <strong>{activeBreed}</strong> {selectedSex !== 'Todos' ? `· ${selectedSex}s` : ''} ({displayedKittens.length} gatitos)
+                </span>
+                <button
+                  onClick={() => {
+                    handleBreedChange('Todas');
+                    setSelectedSex('Todos');
+                  }}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.25)',
+                    border: 'none',
+                    color: '#fff',
+                    borderRadius: '99px',
+                    padding: '2px 10px',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    marginLeft: '8px'
+                  }}
+                >
+                  Ver todos los 55 ✕
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Kitten Mini Cards Grid */}
           <div className="kgrid">
             {displayedKittens.map((kitten) => {
               const mainPhoto = kitten.images && kitten.images.length > 0 ? kitten.images[0] : '/photos/IMG_4505.jpeg';
               const waText = encodeURIComponent(
-                `¡Hola! Me interesa ${kitten.name} (${kitten.breed}, ${kitten.price || '600 €'}). ¿Sigue disponible?`
+                `¡Hola Criadero Gracia Divina! Me interesa el gatito ${kitten.name} (${kitten.breed}, ${kitten.gender}, ${kitten.price || '600 €'}). ¿Sigue disponible para reserva?`
               );
               const waLink = `https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}?text=${waText}`;
 
@@ -423,6 +399,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   <div className="kmini-img" onClick={() => onSelectKitten(kitten)}>
                     <img src={mainPhoto} alt={`Gatito ${kitten.breed} ${kitten.name}`} loading="lazy" />
                     <span className="tag">{kitten.breed}</span>
+                    <span className="tag tag-gold">{kitten.status}</span>
                   </div>
                   <div className="kmini-body">
                     <div className="kmini-top">
@@ -431,9 +408,9 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     </div>
                     <div className="kmini-meta">
                       <span className={`sex sex-${kitten.gender === 'Hembra' ? 'F' : 'M'}`}>
-                        {kitten.gender}
+                        {kitten.gender === 'Hembra' ? '♀ Hembra' : '♂ Macho'}
                       </span>
-                      <span className="avail">● {kitten.status}</span>
+                      <span className="avail">● Todo Incluido</span>
                     </div>
                     <div className="kmini-btns">
                       <button
@@ -441,7 +418,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                         className="btn btn-green btn-sm"
                         onClick={() => onSelectKitten(kitten)}
                       >
-                        Ver detalles
+                        Ver Ficha
                       </button>
                       <a
                         className="btn btn-wa btn-sm btn-icon"
@@ -449,6 +426,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`WhatsApp sobre ${kitten.name}`}
+                        title="Preguntar por WhatsApp"
                       >
                         <svg viewBox="0 0 24 24">
                           <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
@@ -477,15 +455,15 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        4. ELIGE TU RAZA FAVORITA SECTION
+        4. THE 4 SIGNATURE BREEDS SHOWCASE (ONLY ACTIVE BREEDS)
         ========================================================================
       */}
       <section className="section" id="razas">
         <div className="container">
           <div className="section-head">
-            <span className="badge">Nuestras Razas</span>
-            <h2>Elige tu Raza Favorita</h2>
-            <p>Cada raza tiene su propia personalidad. Descubre cuál encaja mejor contigo.</p>
+            <span className="badge">Nuestras 4 Razas</span>
+            <h2>Especialistas en 4 Razas de Alta Cuna</h2>
+            <p>Criamos exclusivamente 4 razas para garantizar la máxima tipicidad morfológica y carácter sociable.</p>
           </div>
 
           <div className="breed-tiles">
@@ -509,86 +487,66 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        5. POR QUÉ NOSOTROS SECTION
+        5. SINGLE UNIFIED CATTERY PHILOSOPHY SECTION (CLEAN & AUTHENTIC)
         ========================================================================
       */}
-      <section className="section section-cream">
-        <div className="container">
-          <div className="section-head">
-            <span className="badge">Por Qué Nosotros</span>
-            <h2>¿Por Qué Elegir Criadero Gracia Divina?</h2>
-            <p>Nos dedicamos a unir familias con gatitos de raza sanos, felices y llenos de amor.</p>
+      <section className="section section-cream" id="sobre-nosotros">
+        <div className="container about">
+          <div className="about-imgs">
+            <img src="/photos/mc-spartacus-18.jpg" alt="Gatito Maine Coon en el hogar" loading="lazy" />
+            <img src="/photos/bsh-astrid-01.jpg" alt="Gatita British Shorthair en brazos" loading="lazy" />
           </div>
+          <div>
+            <span className="badge">Nuestra Filosofía</span>
+            <h2>Crianza Familiar con Alma y Transparencia</h2>
+            <p>
+              En <strong>Criadero Gracia Divina</strong> entendemos la crianza como una vocación de vida. Cada cachorro nace y crece en el corazón de nuestro hogar, rodeado del cariño de nuestra familia, ruidos cotidianos y atención veterinaria individualizada.
+            </p>
+            <p>
+              Nos enfocamos exclusivamente en <strong>Maine Coon, British Shorthair, Ragdoll y Sphynx</strong>, garantizando que cada ejemplar represente la cúspide de belleza, salud y temperamento dócil de su estándar oficial.
+            </p>
 
-          <div className="features">
-            <div className="feature">
-              <div className="ficon">
+            <ul className="checks two">
+              <li>
                 <svg viewBox="0 0 24 24">
-                  <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
                 </svg>
-              </div>
-              <h3>Gatitos Sanos</h3>
-              <p>
-                Todos nuestros gatitos son revisados por el veterinario, están vacunados y cuentan con garantía de salud por escrito.
-              </p>
-            </div>
-
-            <div className="feature">
-              <div className="ficon">
+                <span>Sin jaulas: 100% en familia</span>
+              </li>
+              <li>
                 <svg viewBox="0 0 24 24">
-                  <path d="M12 13c-2.8 0-6 2.9-6 5.5 0 1.6 1.3 2.5 3 2.5 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.7 0 3-.9 3-2.5 0-2.6-3.2-5.5-6-5.5zM6.2 11.5c1.1-.3 1.6-1.8 1.2-3.3S5.7 5.7 4.6 6s-1.6 1.8-1.2 3.3 1.7 2.5 2.8 2.2zm11.6 0c1.1.3 2.4-.7 2.8-2.2s-.1-3-1.2-3.3-2.4.7-2.8 2.2.1 3 1.2 3.3zM9.5 7.8c1.2 0 2.1-1.4 2.1-3.1S10.7 1.6 9.5 1.6 7.4 3 7.4 4.7s.9 3.1 2.1 3.1zm5 0c1.2 0 2.1-1.4 2.1-3.1s-.9-3.1-2.1-3.1-2.1 1.4-2.1 3.1.9 3.1 2.1 3.1z" />
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
                 </svg>
-              </div>
-              <h3>Criados en Familia</h3>
-              <p>
-                Crecen dentro de nuestro hogar, rodeados de personas y de la rutina diaria, por eso llegan seguros, sociables y equilibrados.
-              </p>
-            </div>
-
-            <div className="feature">
-              <div className="ficon">
+                <span>Test genéticos HCM, PKD y FIV/FeLV</span>
+              </li>
+              <li>
                 <svg viewBox="0 0 24 24">
-                  <path d="M12 2a9 9 0 0 0-9 9v5a3 3 0 0 0 3 3h2v-7H5v-1a7 7 0 0 1 14 0v1h-3v7h3v1h-6v2h6a2 2 0 0 0 2-2v-8a9 9 0 0 0-9-9z" />
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
                 </svg>
-              </div>
-              <h3>Soporte de por Vida</h3>
-              <p>
-                Te acompañamos antes, durante y después de la adopción. Siempre podrás escribirnos con cualquier duda.
-              </p>
-            </div>
-
-            <div className="feature">
-              <div className="ficon">
+                <span>Garantía de salud de 2 años</span>
+              </li>
+              <li>
                 <svg viewBox="0 0 24 24">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h8v2H8v-2z" />
+                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
                 </svg>
-              </div>
-              <h3>Documentación Completa</h3>
-              <p>
-                Cada gatito se entrega con cartilla sanitaria, microchip, registro de vacunas y desparasitaciones y contrato de venta.
-              </p>
-            </div>
-          </div>
+                <span>Asesoramiento continuo de por vida</span>
+              </li>
+            </ul>
 
-          <div className="promise">
-            <div>
-              <h3>Nuestra Promesa</h3>
-              <p>
-                Cada gatito sale de nuestro hogar con amor, los cuidados adecuados y las bases para una vida maravillosa. Lo tratamos como parte de nuestra familia hasta el día en que pasa a formar parte de la tuya.
-              </p>
-            </div>
-            <div className="stats">
-              <div>
-                <b>55</b>
-                <span>Gatitos Disponibles</span>
-              </div>
-              <div>
-                <b>9</b>
-                <span>Razas</span>
-              </div>
-              <div>
-                <b>100%</b>
-                <span>Garantía de Salud</span>
+            <div className="promise" style={{ marginTop: '24px', background: '#fff' }}>
+              <div className="stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', width: '100%' }}>
+                <div>
+                  <b>55</b>
+                  <span>Gatitos en Casa</span>
+                </div>
+                <div>
+                  <b>4</b>
+                  <span>Razas Selectas</span>
+                </div>
+                <div>
+                  <b>100%</b>
+                  <span>Garantía de Salud</span>
+                </div>
               </div>
             </div>
           </div>
@@ -597,73 +555,64 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        6. DESCUBRE LA DIFERENCIA SECTION
+        6. ADOPTION IN 3 SIMPLE STEPS (HIGH-CONVERSION MOBILE GUIDE)
         ========================================================================
       */}
       <section className="section">
-        <div className="container about reverse">
-          <div>
-            <span className="badge">La Diferencia</span>
-            <h2>Descubre la Diferencia Criadero Gracia Divina</h2>
-            <p>
-              Lo que nos distingue es nuestro compromiso con criar gatitos sanos y equilibrados en un auténtico ambiente familiar. Cada gatito recibe atención individual, juego diario y mucho cariño desde que nace.
-            </p>
-            <ul className="checks">
-              <li>
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                </svg>
-                <span>Criados con amor en nuestro hogar</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                </svg>
-                <span>Documentación sanitaria completa</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                </svg>
-                <span>Soporte continuo del criador</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
-                </svg>
-                <span>Listos para su familia para siempre</span>
-              </li>
-            </ul>
+        <div className="container">
+          <div className="section-head">
+            <span className="badge">Proceso Simple</span>
+            <h2>Cómo Adoptar a tu Gatito</h2>
+            <p>Un proceso transparente, cercano y seguro en solo 3 sencillos pasos.</p>
+          </div>
+
+          <div className="steps-grid">
+            <div className="step-card">
+              <div className="step-number">1</div>
+              <h3>Elige tu Compañero</h3>
+              <p>Explora nuestras 55 fichas con fotos reales, sexo, pedigrí y temperamento. Elige el que conecte contigo.</p>
+            </div>
+
+            <div className="step-card">
+              <div className="step-number">2</div>
+              <h3>Contacto y Videollamada</h3>
+              <p>Escríbenos por WhatsApp o email. Te enviaremos vídeos en directo o concertaremos una videollamada personalizada.</p>
+            </div>
+
+            <div className="step-card">
+              <div className="step-number">3</div>
+              <h3>Bienvenida a Casa</h3>
+              <p>Formalizamos el contrato y garantía de 2 años. Te lo entregamos en mano o con transporte climatizado en tu ciudad.</p>
+            </div>
+          </div>
+
+          <div className="center">
             <a
-              className="btn btn-gold"
               href="#contacto"
+              className="btn btn-green"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Contáctanos Hoy
+              Comenzar Consulta de Adopción →
             </a>
-          </div>
-          <div className="about-imgs">
-            <img src="/photos/mc-luna-10.jpg" alt="Gatita Maine Coon dulce" loading="lazy" />
-            <img src="/photos/rag-jason-24.jpg" alt="Gatito Ragdoll de ojos azules" loading="lazy" />
           </div>
         </div>
       </section>
 
       {/* 
         ========================================================================
-        7. TESTIMONIOS SECTION
+        7. VERIFIED TESTIMONIALS SECTION
         ========================================================================
       */}
       <section className="section section-green" id="testimonios">
         <div className="container">
           <div className="section-head light">
             <span className="badge" style={{ background: 'var(--gold)', color: '#450a0a' }}>
-              Testimonios
+              Testimonios Reales
             </span>
-            <h2>Lo Que Dicen Nuestras Familias</h2>
+            <h2>Opiniones de Nuestras Familias</h2>
             <p>Más de 280 adopciones felices en toda España avalan nuestra dedicación y cuidado.</p>
           </div>
 
@@ -682,7 +631,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   </span>
                 </div>
                 <blockquote>
-                  «Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó a casa se adaptó en cuestión de horas. Es súper cariñosa y equilibrada, se nota muchísimo que se crían en familia.»
+                  «Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Spartacus a casa se adaptó en cuestión de horas. Es enorme, cariñoso como un perro y equilibrado, se nota muchísimo que se crían en familia.»
                 </blockquote>
                 <figcaption>
                   <span className="avatar">LP</span>
@@ -699,7 +648,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     />
                   </svg>
                   <span>
-                    Gatita adoptada: <strong>Mia · Maine Coon</strong>
+                    Gatito adoptado: <strong>Spartacus · Maine Coon</strong>
                   </span>
                 </div>
               </div>
@@ -736,7 +685,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     />
                   </svg>
                   <span>
-                    Gatito adoptado: <strong>Nube · Ragdoll</strong>
+                    Gatito adoptado: <strong>Jason · Ragdoll</strong>
                   </span>
                 </div>
               </div>
@@ -756,7 +705,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   </span>
                 </div>
                 <blockquote>
-                  «Nuestro Británico de Pelo Corto llegó a Valencia mediante transporte especializado en perfecto estado. Nuestro veterinario nos felicitó por lo bien cuidado y socializado que venía. Además, siguen pendientes de cualquier duda que tenemos.»
+                  «Nuestro British Shorthair llegó a Valencia mediante transporte especializado en perfecto estado. Nuestro veterinario nos felicitó por lo bien cuidado y socializado que venía. Además, siguen pendientes de cualquier duda que tenemos.»
                 </blockquote>
                 <figcaption>
                   <span className="avatar">ER</span>
@@ -773,7 +722,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     />
                   </svg>
                   <span>
-                    Gatito adoptado: <strong>Oliver · Británico de Pelo Corto</strong>
+                    Gatito adoptado: <strong>Milo · British Shorthair</strong>
                   </span>
                 </div>
               </div>
@@ -793,22 +742,22 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       {/* 
         ========================================================================
-        8. CONTACT SECTION
+        8. VIP RESERVATION & CONTACT SECTION (MOBILE-FIRST FORM)
         ========================================================================
       */}
       <section className="section section-cream" id="contacto">
         <div className="container">
           <div className="section-head">
-            <span className="badge">Contacto</span>
-            <h2>¿Listo para Adoptar un Gatito?</h2>
+            <span className="badge">Contacto Directo</span>
+            <h2>Reserva o Consulta de Gatitos</h2>
             <p>
-              ¿Tienes preguntas sobre nuestros gatitos o quieres llevarte uno a casa? ¡Nos encantará saber de ti!
+              ¿Tienes preguntas sobre un cachorro o deseas iniciar la reserva? Escríbenos y te responderemos en breve.
             </p>
           </div>
 
           <div className="contact-grid">
             <form className="form" onSubmit={handleContactWhatsApp}>
-              <h3>Formulario de Consulta</h3>
+              <h3>Formulario de Adopción</h3>
 
               {formSentMessage && (
                 <div className="mb-4 p-3 bg-red-100 border border-red-300 text-red-900 rounded-lg text-xs font-semibold">
@@ -866,7 +815,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
               <div className="row2">
                 <label>
-                  Ciudad
+                  Ciudad de Residencia
                   <input
                     name="ciudad"
                     value={contactCity}
@@ -882,36 +831,31 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     onChange={(e) => setContactBreed(e.target.value)}
                   >
                     <option value="">Seleccionar raza...</option>
-                    <option value="Maine Coon">Maine Coon</option>
-                    <option value="Bengalí">Bengalí</option>
-                    <option value="Siberiano">Siberiano</option>
-                    <option value="Ragdoll">Ragdoll</option>
-                    <option value="British Shorthair">British Shorthair</option>
-                    <option value="Persa">Persa</option>
-                    <option value="Sphynx">Sphynx</option>
-                    <option value="Azul Ruso">Azul Ruso</option>
-                    <option value="Siamés">Siamés</option>
-                    <option value="No estoy seguro">No estoy seguro</option>
+                    <option value="Maine Coon">Maine Coon (19 disponibles)</option>
+                    <option value="British Shorthair">British Shorthair (20 disponibles)</option>
+                    <option value="Ragdoll">Ragdoll (9 disponibles)</option>
+                    <option value="Sphynx">Sphynx (7 disponibles)</option>
+                    <option value="No estoy seguro">No estoy seguro / Cualquier raza</option>
                   </select>
                 </label>
               </div>
 
               <label>
-                Gatito de interés
+                Gatito en específico (opcional)
                 <input
                   name="gatito"
-                  placeholder="Ej.: Norman (Ragdoll)"
+                  placeholder="Ej.: Spartacus (Maine Coon) o Milo (British Shorthair)"
                   value={contactKitten}
                   onChange={(e) => setContactKitten(e.target.value)}
                 />
               </label>
 
               <label>
-                Mensaje
+                Mensaje o Dudas
                 <textarea
                   name="mensaje"
                   rows={4}
-                  placeholder="Cuéntanos qué buscas, dudas sobre cuidados o fechas estimadas..."
+                  placeholder="Cuéntanos sobre tu hogar, dudas sobre fechas de entrega o cuidados..."
                   value={contactMessage}
                   onChange={(e) => setContactMessage(e.target.value)}
                 />
@@ -943,14 +887,14 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </form>
 
             <aside className="contact-info">
-              <h3>Información de Contacto</h3>
+              <h3>Criadero Gracia Divina</h3>
 
               <div className="ci">
                 <svg viewBox="0 0 24 24">
                   <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
                 <div>
-                  <strong>Correo Electrónico</strong>
+                  <strong>Email Directo</strong>
                   <a href={`mailto:${settings.contactEmail || 'Criaderograciadivina@gmail.com'}`}>
                     {settings.contactEmail || 'Criaderograciadivina@gmail.com'}
                   </a>
@@ -962,7 +906,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
                 </svg>
                 <div>
-                  <strong>WhatsApp</strong>
+                  <strong>WhatsApp Oficial</strong>
                   <a
                     href={`https://wa.me/${(settings.whatsappNumber || '34692881430').replace(/[^0-9]/g, '')}`}
                     target="_blank"
@@ -978,8 +922,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11h-5v-2h3V6h2v7z" />
                 </svg>
                 <div>
-                  <strong>Tiempo de Respuesta</strong>
-                  <span>Respondemos normalmente en menos de 24 horas</span>
+                  <strong>Atención Personalizada</strong>
+                  <span>De Lunes a Domingo: 09:00 - 21:00</span>
                 </div>
               </div>
 
@@ -988,27 +932,27 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
                 </svg>
                 <div>
-                  <strong>Ubicación</strong>
-                  <span>España</span>
+                  <strong>Ubicación y Entregas</strong>
+                  <span>Criadero en España · Entrega personal a domicilio</span>
                 </div>
               </div>
 
               <div className="note">
-                <strong>Nuestra Ubicación</strong>
+                <strong>Garantía de Privacidad y Bienestar</strong>
                 <p>
-                  Somos un criadero familiar. Por la seguridad y privacidad de nuestra familia y de nuestros gatitos, no publicamos nuestra dirección. Cuando nos contactes, te la facilitaremos encantados y organizaremos una visita o una entrega cómoda para ti.
+                  Por la seguridad y tranquilidad de nuestros animales y familia, las visitas presenciales se conciertan con cita previa tras una primera toma de contacto. También ofrecemos videollamadas en directo para conocer a los cachorros.
                 </p>
               </div>
 
               <div className="note">
-                <strong>Razas Disponibles</strong>
+                <strong>Razas Disponibles (55 Gatitos)</strong>
                 <div className="pills">
-                  {breedsList.slice(1).map((breed) => (
+                  {signatureBreeds.map((breed) => (
                     <span
-                      key={breed}
-                      onClick={() => handleBreedTileClick(breed)}
+                      key={breed.name}
+                      onClick={() => handleBreedTileClick(breed.name)}
                     >
-                      {breed}
+                      {breed.name} ({breed.count})
                     </span>
                   ))}
                 </div>

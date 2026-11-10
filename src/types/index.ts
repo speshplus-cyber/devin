@@ -2,12 +2,7 @@ export type BreedType =
   | 'Maine Coon'
   | 'British Shorthair'
   | 'Ragdoll'
-  | 'Bengalí'
-  | 'Sphynx'
-  | 'Siberiano'
-  | 'Persa'
-  | 'Azul Ruso'
-  | 'Siamés';
+  | 'Sphynx';
 
 export type KittenStatus = 'Disponible' | 'En Adopción' | 'Reservado';
 

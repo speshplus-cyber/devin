@@ -77,16 +77,22 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
   // 6 Hero Tiles matching authentic cattery kittens
   const heroTiles = [
+    { name: 'Maine Coon', image: '/photos/mc-spartacus-18.jpg', breedKey: 'Maine Coon' },
     { name: 'British Shorthair', image: '/photos/bsh-milo-09.jpg', breedKey: 'British Shorthair' },
     { name: 'Ragdoll', image: '/photos/rag-jason-24.jpg', breedKey: 'Ragdoll' },
     { name: 'Sphynx', image: '/photos/sph-desmond-32.png', breedKey: 'Sphynx' },
+    { name: 'Maine Coon Smoke', image: '/photos/mc-louie-09.jpg', breedKey: 'Maine Coon' },
     { name: 'British Bicolor', image: '/photos/bsh-maggie-06.png', breedKey: 'British Shorthair' },
-    { name: 'Ragdoll Ojos Azules', image: '/photos/rag-alulu-21.jpg', breedKey: 'Ragdoll' },
-    { name: 'Sphynx Nude Velvet', image: '/photos/sph-bambino-30.jpg', breedKey: 'Sphynx' },
   ];
 
   // Signature Breeds matching available and upcoming litters
   const signatureBreeds = [
+    {
+      name: 'Maine Coon',
+      desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
+      avail: '19 disponibles · 600 € →',
+      image: '/photos/mc-spartacus-18.jpg',
+    },
     {
       name: 'British Shorthair',
       desc: 'Un osito de peluche: pelaje denso, carita redonda y carácter sereno.',
@@ -104,12 +110,6 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       desc: 'Sin pelo y con un corazón enorme: extrovertido, cálido y muy sociable.',
       avail: '7 disponibles · 600 € →',
       image: '/photos/sph-desmond-32.png',
-    },
-    {
-      name: 'Maine Coon',
-      desc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
-      avail: 'Próximas camadas · 600 € →',
-      image: '/photos/bsh-milo-09.jpg',
     },
     {
       name: 'Bengalí',
@@ -215,7 +215,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       >
         <div className="container hero-inner">
           <div className="hero-text">
-            <span className="eyebrow">GRACIA DIVINA — 36 GATITOS DISPONIBLES</span>
+            <span className="eyebrow">GRACIA DIVINA — 55 GATITOS DISPONIBLES</span>
             <h1>
               Gatitos de Raza <em>Premium</em>
             </h1>
@@ -302,8 +302,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       <section className="section" id="sobre-nosotros">
         <div className="container about">
           <div className="about-imgs">
+            <img src="/photos/mc-spartacus-18.jpg" alt="Gatito Maine Coon majestuoso" loading="lazy" />
             <img src="/photos/bsh-astrid-01.jpg" alt="Gatita British Shorthair dulce" loading="lazy" />
-            <img src="/photos/rag-alulu-21.jpg" alt="Gatita Ragdoll dulce" loading="lazy" />
           </div>
           <div>
             <span className="badge">Sobre Nosotros</span>
@@ -404,7 +404,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 }}
                 className="px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-bold text-white transition-all cursor-pointer underline"
               >
-                Ver todos los 36 gatitos ✕
+                Ver todos los 55 gatitos ✕
               </button>
             </div>
           )}
@@ -469,7 +469,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               }}
               className="btn btn-gold cursor-pointer"
             >
-              Ver los 36 gatitos disponibles
+              Ver los 55 gatitos disponibles
             </button>
           </div>
         </div>
@@ -579,7 +579,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </div>
             <div className="stats">
               <div>
-                <b>36</b>
+                <b>55</b>
                 <span>Gatitos Disponibles</span>
               </div>
               <div>
@@ -646,8 +646,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </a>
           </div>
           <div className="about-imgs">
-            <img src="/photos/sph-layla-33.png" alt="Gatita Sphynx dulce" loading="lazy" />
-            <img src="/photos/bsh-milo-09.jpg" alt="Gatito British Shorthair" loading="lazy" />
+            <img src="/photos/mc-luna-10.jpg" alt="Gatita Maine Coon dulce" loading="lazy" />
+            <img src="/photos/rag-jason-24.jpg" alt="Gatito Ragdoll de ojos azules" loading="lazy" />
           </div>
         </div>
       </section>

@@ -141,6 +141,17 @@ export const Header: React.FC<HeaderProps> = ({
                       href="#camadas-disponibles"
                       onClick={(e) => {
                         e.preventDefault();
+                        handleBreedClick('Maine Coon');
+                      }}
+                    >
+                      Maine Coon (19)
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#camadas-disponibles"
+                      onClick={(e) => {
+                        e.preventDefault();
                         handleBreedClick('British Shorthair');
                       }}
                     >
@@ -167,17 +178,6 @@ export const Header: React.FC<HeaderProps> = ({
                       }}
                     >
                       Sphynx (7)
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#camadas-disponibles"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBreedClick('Maine Coon');
-                      }}
-                    >
-                      Maine Coon
                     </a>
                   </li>
                   <li>

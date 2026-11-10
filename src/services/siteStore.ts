@@ -18,11 +18,11 @@ export interface AdoptionLead {
 }
 
 const STORAGE_KEYS = {
-  KITTENS: 'gracia_divina_kittens_v6',
-  LITTERS: 'gracia_divina_litters_v6',
-  TESTIMONIALS: 'gracia_divina_testimonials_v6',
-  SETTINGS: 'gracia_divina_settings_v6',
-  LEADS: 'gracia_divina_leads_v6',
+  KITTENS: 'gracia_divina_kittens_v7',
+  LITTERS: 'gracia_divina_litters_v7',
+  TESTIMONIALS: 'gracia_divina_testimonials_v7',
+  SETTINGS: 'gracia_divina_settings_v7',
+  LEADS: 'gracia_divina_leads_v7',
 };
 
 // Purge any legacy cached data keys from earlier builds
@@ -35,11 +35,13 @@ if (typeof window !== 'undefined' && window.localStorage) {
       'gracia_divina_kittens_v3',
       'gracia_divina_kittens_v4',
       'gracia_divina_kittens_v5',
+      'gracia_divina_kittens_v6',
       'gracia_divina_litters_v1',
       'gracia_divina_litters_v2',
       'gracia_divina_litters_v3',
       'gracia_divina_litters_v4',
       'gracia_divina_litters_v5',
+      'gracia_divina_litters_v6',
     ];
     legacyKeys.forEach((key) => {
       try {
@@ -54,7 +56,7 @@ export const getStoredKittens = (): Kitten[] => {
     const raw = localStorage.getItem(STORAGE_KEYS.KITTENS);
     if (raw) {
       const parsed = JSON.parse(raw);
-      // Ensure the stored kittens list is valid and contains the 36 authentic kittens
+      // Ensure the stored kittens list is valid and contains the 55 authentic kittens
       if (Array.isArray(parsed) && parsed.length === KITTENS_DATA.length) {
         return parsed;
       }
@@ -62,7 +64,7 @@ export const getStoredKittens = (): Kitten[] => {
   } catch (e) {
     console.error('Error loading kittens from storage:', e);
   }
-  // Default to the 36 verified kittens and cache them
+  // Default to the 55 verified kittens and cache them
   try {
     localStorage.setItem(STORAGE_KEYS.KITTENS, JSON.stringify(KITTENS_DATA));
   } catch (_) {}

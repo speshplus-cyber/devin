@@ -185,6 +185,17 @@ export const Footer: React.FC<FooterProps> = ({
                 href="#camadas-disponibles"
                 onClick={(e) => {
                   e.preventDefault();
+                  handleBreedClick('Maine Coon');
+                }}
+              >
+                Maine Coon (19)
+              </a>
+            </li>
+            <li>
+              <a
+                href="#camadas-disponibles"
+                onClick={(e) => {
+                  e.preventDefault();
                   handleBreedClick('British Shorthair');
                 }}
               >
@@ -211,17 +222,6 @@ export const Footer: React.FC<FooterProps> = ({
                 }}
               >
                 Sphynx (7)
-              </a>
-            </li>
-            <li>
-              <a
-                href="#camadas-disponibles"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleBreedClick('Maine Coon');
-                }}
-              >
-                Maine Coon
               </a>
             </li>
             <li>

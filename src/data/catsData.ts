@@ -4,7 +4,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-astrid",
     "name": "Astrid",
-    "pedigreeName": "Astrid de Gracia Divina (ID: GD001)",
+    "pedigreeName": "Astrid de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -50,7 +50,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-babushka",
     "name": "Babushka",
-    "pedigreeName": "Babushka de Gracia Divina (ID: GD002)",
+    "pedigreeName": "Babushka de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -96,7 +96,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-bambi",
     "name": "Bambi",
-    "pedigreeName": "Bambi de Gracia Divina (ID: GD003)",
+    "pedigreeName": "Bambi de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -142,7 +142,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-fanny",
     "name": "Fanny",
-    "pedigreeName": "Fanny de Gracia Divina (ID: GD004)",
+    "pedigreeName": "Fanny de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -188,7 +188,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-gunner",
     "name": "Gunner",
-    "pedigreeName": "Gunner de Gracia Divina (ID: GD005)",
+    "pedigreeName": "Gunner de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -234,7 +234,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-maggie",
     "name": "Maggie",
-    "pedigreeName": "Maggie de Gracia Divina (ID: GD006)",
+    "pedigreeName": "Maggie de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -280,7 +280,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-marmalade",
     "name": "Marmalade",
-    "pedigreeName": "Marmalade de Gracia Divina (ID: GD007)",
+    "pedigreeName": "Marmalade de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -326,7 +326,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-mickey",
     "name": "Mickey",
-    "pedigreeName": "Mickey de Gracia Divina (ID: GD008)",
+    "pedigreeName": "Mickey de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -372,7 +372,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-milo",
     "name": "Milo",
-    "pedigreeName": "Milo de Gracia Divina (ID: GD009)",
+    "pedigreeName": "Milo de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -418,7 +418,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-nutella",
     "name": "Nutella",
-    "pedigreeName": "Nutella de Gracia Divina (ID: GD010)",
+    "pedigreeName": "Nutella de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "18 de Enero de 2026",
@@ -464,7 +464,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-pablo",
     "name": "Pablo",
-    "pedigreeName": "Pablo de Gracia Divina (ID: GD011)",
+    "pedigreeName": "Pablo de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -510,7 +510,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-popie",
     "name": "Popie",
-    "pedigreeName": "Popie de Gracia Divina (ID: GD012)",
+    "pedigreeName": "Popie de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -556,7 +556,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-raji",
     "name": "Raji",
-    "pedigreeName": "Raji de Gracia Divina (ID: GD013)",
+    "pedigreeName": "Raji de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -602,7 +602,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-renzo",
     "name": "Renzo",
-    "pedigreeName": "Renzo de Gracia Divina (ID: GD014)",
+    "pedigreeName": "Renzo de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -648,7 +648,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-ricky",
     "name": "Ricky",
-    "pedigreeName": "Ricky de Gracia Divina (ID: GD015)",
+    "pedigreeName": "Ricky de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -694,7 +694,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-robert",
     "name": "Robert",
-    "pedigreeName": "Robert de Gracia Divina (ID: GD016)",
+    "pedigreeName": "Robert de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -740,7 +740,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-romeo",
     "name": "Romeo",
-    "pedigreeName": "Romeo de Gracia Divina (ID: GD017)",
+    "pedigreeName": "Romeo de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -786,7 +786,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-ruda",
     "name": "Ruda",
-    "pedigreeName": "Ruda de Gracia Divina (ID: GD018)",
+    "pedigreeName": "Ruda de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -832,7 +832,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-smokey",
     "name": "Smokey",
-    "pedigreeName": "Smokey de Gracia Divina (ID: GD019)",
+    "pedigreeName": "Smokey de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -878,7 +878,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "bsh-toni",
     "name": "Toni",
-    "pedigreeName": "Toni de Gracia Divina (ID: GD020)",
+    "pedigreeName": "Toni de Gracia Divina (ID)",
     "breed": "British Shorthair",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -924,7 +924,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-alulu",
     "name": "Alulu",
-    "pedigreeName": "Alulu de Gracia Divina (ID: GD021)",
+    "pedigreeName": "Alulu de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -970,7 +970,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-carreo",
     "name": "Carreo",
-    "pedigreeName": "Carreo de Gracia Divina (ID: GD022)",
+    "pedigreeName": "Carreo de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -1016,7 +1016,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-cleo",
     "name": "Cleo",
-    "pedigreeName": "Cleo de Gracia Divina (ID: GD023)",
+    "pedigreeName": "Cleo de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -1062,7 +1062,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-jason",
     "name": "Jason",
-    "pedigreeName": "Jason de Gracia Divina (ID: GD024)",
+    "pedigreeName": "Jason de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -1108,7 +1108,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-lola",
     "name": "Lola",
-    "pedigreeName": "Lola de Gracia Divina (ID: GD025)",
+    "pedigreeName": "Lola de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -1154,7 +1154,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-murphy",
     "name": "Murphy",
-    "pedigreeName": "Murphy de Gracia Divina (ID: GD026)",
+    "pedigreeName": "Murphy de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -1200,7 +1200,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-nunes",
     "name": "Nunes",
-    "pedigreeName": "Nunes de Gracia Divina (ID: GD027)",
+    "pedigreeName": "Nunes de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Hembra",
     "birthDate": "3 de Enero de 2026",
@@ -1246,7 +1246,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-ollie",
     "name": "Ollie",
-    "pedigreeName": "Ollie de Gracia Divina (ID: GD028)",
+    "pedigreeName": "Ollie de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -1292,7 +1292,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "rag-toni",
     "name": "Toni",
-    "pedigreeName": "Toni de Gracia Divina (ID: GD029)",
+    "pedigreeName": "Toni de Gracia Divina (ID)",
     "breed": "Ragdoll",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -1338,7 +1338,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-bambino",
     "name": "Bambino",
-    "pedigreeName": "Bambino de Gracia Divina (ID: GD030)",
+    "pedigreeName": "Bambino de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -1384,7 +1384,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-collie",
     "name": "Collie",
-    "pedigreeName": "Collie de Gracia Divina (ID: GD031)",
+    "pedigreeName": "Collie de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -1430,7 +1430,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-desmond",
     "name": "Desmond",
-    "pedigreeName": "Desmond de Gracia Divina (ID: GD032)",
+    "pedigreeName": "Desmond de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Macho",
     "birthDate": "3 de Enero de 2026",
@@ -1476,7 +1476,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-layla",
     "name": "Layla",
-    "pedigreeName": "Layla de Gracia Divina (ID: GD033)",
+    "pedigreeName": "Layla de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -1522,7 +1522,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-lino",
     "name": "Lino",
-    "pedigreeName": "Lino de Gracia Divina (ID: GD034)",
+    "pedigreeName": "Lino de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Macho",
     "birthDate": "10 de Enero de 2026",
@@ -1568,7 +1568,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-phila",
     "name": "Phila",
-    "pedigreeName": "Phila de Gracia Divina (ID: GD035)",
+    "pedigreeName": "Phila de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Hembra",
     "birthDate": "10 de Enero de 2026",
@@ -1614,7 +1614,7 @@ export const KITTENS_DATA: Kitten[] = [
   {
     "id": "sph-scrubs",
     "name": "Scrubs",
-    "pedigreeName": "Scrubs de Gracia Divina (ID: GD036)",
+    "pedigreeName": "Scrubs de Gracia Divina (ID)",
     "breed": "Sphynx",
     "gender": "Macho",
     "birthDate": "18 de Enero de 2026",
@@ -1656,10 +1656,909 @@ export const KITTENS_DATA: Kitten[] = [
       "dewormed": true,
       "passport": true
     }
+  },
+  {
+    "id": "mc-anna-1",
+    "name": "Anna",
+    "pedigreeName": "Anna de Gracia Divina (ID: GD-MC01)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Black Silver Classic Tabby",
+    "eyeColor": "Verde Dorado",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-anna-01.jpg"
+    ],
+    "description": "Anna es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-bravo-2",
+    "name": "Bravo",
+    "pedigreeName": "Bravo de Gracia Divina (ID: GD-MC02)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Red Solid de Osamenta Fuerte",
+    "eyeColor": "Ámbar Cálido",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-bravo-02.jpg"
+    ],
+    "description": "Bravo es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-brucie-3",
+    "name": "Brucie",
+    "pedigreeName": "Brucie de Gracia Divina (ID: GD-MC03)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "18 de Enero de 2026",
+    "ageWeeks": 9,
+    "colorManto": "Brown Mackerel Tabby con Blanco",
+    "eyeColor": "Cobre Brillante",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-brucie-03.jpg"
+    ],
+    "description": "Brucie es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-catty-4",
+    "name": "Catty",
+    "pedigreeName": "Catty de Gracia Divina (ID: GD-MC04)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Black Smoke con Collarín Blanco",
+    "eyeColor": "Verde Esmeralda",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-catty-04.jpg"
+    ],
+    "description": "Catty es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-chuco-5",
+    "name": "Chuco",
+    "pedigreeName": "Chuco de Gracia Divina (ID: GD-MC05)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "3 de Enero de 2026",
+    "ageWeeks": 11,
+    "colorManto": "Blue Solid Gigante Americano",
+    "eyeColor": "Dorado Ámbar",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-chuco-05.jpg"
+    ],
+    "description": "Chuco es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-jacki-6",
+    "name": "Jacki",
+    "pedigreeName": "Jacki de Gracia Divina (ID: GD-MC06)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Black Tabby Classic con Penachos",
+    "eyeColor": "Ámbar Luminoso",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-jacki-06.jpg"
+    ],
+    "description": "Jacki es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-lola-7",
+    "name": "Lola",
+    "pedigreeName": "Lola de Gracia Divina (ID: GD-MC07)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Tortie Bicolor con Blanco",
+    "eyeColor": "Verde Jade",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-lola-07.jpg"
+    ],
+    "description": "Lola es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-lolita-8",
+    "name": "Lolita",
+    "pedigreeName": "Lolita de Gracia Divina (ID: GD-MC08)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Red Tabby con Cola de Zorro",
+    "eyeColor": "Cobre Dorado",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-lolita-08.jpg"
+    ],
+    "description": "Lolita es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-louie-9",
+    "name": "Louie",
+    "pedigreeName": "Louie de Gracia Divina (ID: GD-MC09)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Black Solid de Porte Majestuoso",
+    "eyeColor": "Ámbar Intenso",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-louie-09.jpg"
+    ],
+    "description": "Louie es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-luna-10",
+    "name": "Luna",
+    "pedigreeName": "Luna de Gracia Divina (ID: GD-MC10)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Silver Torbie con Ojos Grandes",
+    "eyeColor": "Verde Brillante",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-luna-10.jpg"
+    ],
+    "description": "Luna es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-milo-11",
+    "name": "Milo",
+    "pedigreeName": "Milo de Gracia Divina (ID: GD-MC11)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "3 de Enero de 2026",
+    "ageWeeks": 11,
+    "colorManto": "Cream Smoke Colosal",
+    "eyeColor": "Cobre Profundo",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-milo-11.jpg"
+    ],
+    "description": "Milo es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-nikita-12",
+    "name": "Nikita",
+    "pedigreeName": "Nikita de Gracia Divina (ID: GD-MC12)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Black Classic Tabby Elegante",
+    "eyeColor": "Verde Esmeralda",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-nikita-12.png"
+    ],
+    "description": "Nikita es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-pamela-13",
+    "name": "Pamela",
+    "pedigreeName": "Pamela de Gracia Divina (ID: GD-MC13)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Brown Torbie con Blanco",
+    "eyeColor": "Ámbar Dorado",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-pamela-13.jpg"
+    ],
+    "description": "Pamela es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-pringles-14",
+    "name": "Pringles",
+    "pedigreeName": "Pringles de Gracia Divina (ID: GD-MC14)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Red Silver Classic Tabby",
+    "eyeColor": "Cobre Cálido",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-pringles-14.jpg"
+    ],
+    "description": "Pringles es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-rico-15",
+    "name": "Rico",
+    "pedigreeName": "Rico de Gracia Divina (ID: GD-MC15)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Black Silver Mackerel Tabby",
+    "eyeColor": "Dorado Intenso",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-rico-15.jpg"
+    ],
+    "description": "Rico es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-snowy-16",
+    "name": "Snowy",
+    "pedigreeName": "Snowy de Gracia Divina (ID: GD-MC16)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "White Solid de Pelaje Nieve",
+    "eyeColor": "Ámbar Suave",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-snowy-16.jpg"
+    ],
+    "description": "Snowy es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-sonia-17",
+    "name": "Sonia",
+    "pedigreeName": "Sonia de Gracia Divina (ID: GD-MC17)",
+    "breed": "Maine Coon",
+    "gender": "Hembra",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Blue Tortie Smoke",
+    "eyeColor": "Verde Jade",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-sonia-17.jpg"
+    ],
+    "description": "Sonia es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-spartacus-18",
+    "name": "Spartacus",
+    "pedigreeName": "Spartacus de Gracia Divina (ID: GD-MC18)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Brown Classic Tabby Gigante",
+    "eyeColor": "Cobre Profundo",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-spartacus-18.jpg"
+    ],
+    "description": "Spartacus es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
+  },
+  {
+    "id": "mc-stan-19",
+    "name": "Stan",
+    "pedigreeName": "Stan de Gracia Divina (ID: GD-MC19)",
+    "breed": "Maine Coon",
+    "gender": "Macho",
+    "birthDate": "10 de Enero de 2026",
+    "ageWeeks": 10,
+    "colorManto": "Red Classic Tabby con Lynx Tips",
+    "eyeColor": "Ámbar Vivo",
+    "status": "Disponible",
+    "price": "600 €",
+    "featured": true,
+    "images": [
+      "/photos/mc-stan-19.jpg"
+    ],
+    "description": "Stan es un majestuoso cachorro Maine Coon de tipicidad americana sobresaliente: hocico cuadrado y potente, orejas altas coronadas con penachos de lince (lynx tips), y una constitución ósea imponente. Criado en familia, posee el temperamento dulce y sociable de un \"gigante gentil\", fascinado por el agua y leal a sus cuidadores.",
+    "temperament": [
+      "Gigante gentil",
+      "Penachos de lince marcados",
+      "Sociable y afectuoso",
+      "Criado en familia"
+    ],
+    "sire": {
+      "name": "G.I.Ch. Ragnarok King of the North",
+      "title": "Gran Campeón Internacional WCF",
+      "breed": "Maine Coon",
+      "color": "Black Smoke Colosal"
+    },
+    "dam": {
+      "name": "Ch. Freya Valkyrie Whisper",
+      "title": "Campeona Nacional FIFe",
+      "breed": "Maine Coon",
+      "color": "Blue Tortie with White"
+    },
+    "healthTests": {
+      "hcm": "Negativo / Libre",
+      "pkd": "Negativo / Libre",
+      "fivFelv": "Negativo",
+      "sma": "Libre N/N",
+      "microchip": true,
+      "vaccines": "Pauta completa para su edad",
+      "dewormed": true,
+      "passport": true
+    }
   }
 ];
 
 export const BREEDS_DATA: BreedInfo[] = [
+  {
+    id: 'Maine Coon',
+    name: 'Maine Coon',
+    origin: 'Maine, Estados Unidos',
+    shortDesc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
+    heroImage: '/photos/mc-spartacus-18.jpg',
+    gallery: [
+      '/photos/mc-spartacus-18.jpg',
+      '/photos/mc-luna-10.jpg',
+      '/photos/mc-louie-09.jpg',
+      '/photos/mc-snowy-16.jpg'
+    ],
+    standardFed: 'WCF & FIFe Oficial',
+    averageWeight: 'Machos: 7.5 - 11 kg | Hembras: 5 - 7.5 kg',
+    lifeSpan: '13 - 16 años',
+    characterTraits: [
+      'Extremadamente sociable y paciente',
+      'Temperamento similar a un perro leal',
+      'Fascinación por el agua y juegos de cobro',
+      'Excelente convivencia con niños y otros animales'
+    ],
+    coatCare: 'Cepillado 2-3 veces por semana con carda metálica para mantener el subpelo sedoso sin nudos.',
+    idealFor: 'Familias con niños, hogares con espacio y personas que buscan un felino imponente y cariñoso.',
+    overview: 'El Maine Coon es la raza felina doméstica natural más grande del mundo. Poseen una mandíbula fuerte y cuadrada, orejas grandes coronadas con característicos penachos de lince (lynx tips), y una cola espesa como la de un zorro.'
+  },
   {
     id: 'British Shorthair',
     name: 'British Shorthair',
@@ -1734,31 +2633,6 @@ export const BREEDS_DATA: BreedInfo[] = [
     coatCare: 'Higiene periódica de la piel con toallitas húmedas específicas o baños tibios.',
     idealFor: 'Amantes de animales singulares, personas que buscan un felino que duerma siempre pegado a ellos.',
     overview: 'Su temperatura corporal se siente reconfortante al tacto. Adoran estar en brazos, meterse bajo las sábanas y acompañar a sus cuidadores en todo momento.'
-  },
-  {
-    id: 'Maine Coon',
-    name: 'Maine Coon',
-    origin: 'Maine, Estados Unidos',
-    shortDesc: 'El gigante gentil del mundo felino: grande, sociable y muy leal.',
-    heroImage: '/photos/bsh-milo-09.jpg',
-    gallery: [
-      '/photos/bsh-milo-09.jpg',
-      '/photos/bsh-astrid-01.jpg',
-      '/photos/rag-jason-24.jpg',
-      '/photos/sph-desmond-32.png'
-    ],
-    standardFed: 'WCF & FIFe Oficial',
-    averageWeight: 'Machos: 7.5 - 11 kg | Hembras: 5 - 7.5 kg',
-    lifeSpan: '13 - 16 años',
-    characterTraits: [
-      'Extremadamente sociable y paciente',
-      'Temperamento similar a un perro leal',
-      'Fascinación por el agua y juegos de cobro',
-      'Excelente convivencia con niños y otros animales'
-    ],
-    coatCare: 'Cepillado 2-3 veces por semana con carda metálica para mantener el subpelo sedoso sin nudos.',
-    idealFor: 'Familias con niños, hogares con espacio y personas que buscan un felino imponente y cariñoso.',
-    overview: 'El Maine Coon es la raza felina doméstica natural más grande del mundo. Poseen una mandíbula fuerte y cuadrada, orejas grandes coronadas con característicos penachos de lince (lynx tips), y una cola espesa como la de un zorro.'
   },
   {
     id: 'Bengalí',
@@ -1889,8 +2763,22 @@ export const BREEDS_DATA: BreedInfo[] = [
 
 export const LITTERS_DATA: Litter[] = [
   {
-    id: 'litter-a-bsh',
-    code: 'Camada A · Lords de Kensington',
+    id: 'litter-a-mc',
+    code: 'Camada A · Reyes del Norte',
+    litterName: 'Camada Maine Coon Gigantes',
+    breed: 'Maine Coon',
+    birthDate: '10 de Enero de 2026',
+    readyDate: '10 de Abril de 2026',
+    sire: 'G.I.Ch. Ragnarok King of the North (Black Smoke)',
+    dam: 'Ch. Freya Valkyrie Whisper (Blue Tortie with White)',
+    kittensCount: 19,
+    availableCount: 19,
+    image: '/photos/mc-spartacus-18.jpg',
+    description: 'Cachorros Maine Coon con penachos de lince prominentes, mandíbula ancha y cuadrada, y estructura ósea formidable.'
+  },
+  {
+    id: 'litter-b-bsh',
+    code: 'Camada B · Lords de Kensington',
     litterName: 'Camada British Shorthair Primavera',
     breed: 'British Shorthair',
     birthDate: '10 de Enero de 2026',
@@ -1903,8 +2791,8 @@ export const LITTERS_DATA: Litter[] = [
     description: 'Cachorros British Shorthair con tipicidad morfológica sobresaliente, mofletes redondeados y pelaje crisp sumamente denso.'
   },
   {
-    id: 'litter-b-rag',
-    code: 'Camada B · Ángeles de Terciopelo',
+    id: 'litter-c-rag',
+    code: 'Camada C · Ángeles de Terciopelo',
     litterName: 'Camada Ragdoll Ojos Azules',
     breed: 'Ragdoll',
     birthDate: '10 de Enero de 2026',
@@ -1917,8 +2805,8 @@ export const LITTERS_DATA: Litter[] = [
     description: 'Línea de ojos azules zafiro profundos y temperamento de peluche ultra dócil. Criados bajo los pies de nuestros hijos.'
   },
   {
-    id: 'litter-c-sph',
-    code: 'Camada C · Joyas del Nilo',
+    id: 'litter-d-sph',
+    code: 'Camada D · Joyas del Nilo',
     litterName: 'Camada Sphynx Nude Velvet',
     breed: 'Sphynx',
     birthDate: '10 de Enero de 2026',
@@ -1937,7 +2825,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   siteSubtitle: 'Criadero Felino de Alta Cuna',
   announcementText: 'Criadero Ético Federado WCF & FIFe · Camadas 2026 Abiertas para Reserva',
   heroHeadline: 'Nobleza, Pureza de Linaje y Crianza Familiar.',
-  heroSubtitle: 'Criadero de élite en España especializado en British Shorthair, Ragdoll y Sphynx, con líneas de campeones internacionales.',
+  heroSubtitle: 'Criadero de élite en España especializado en Maine Coon, British Shorthair, Ragdoll y Sphynx, con líneas de campeones internacionales.',
   contactEmail: 'Criaderograciadivina@gmail.com',
   whatsappNumber: '+34 692 88 14 30',
   catteryLocation: 'España',
@@ -1952,9 +2840,9 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     author: 'Laura P.',
     location: 'Madrid',
     avatar: 'LP',
-    kittenName: 'Milo · British Shorthair',
+    kittenName: 'Spartacus · Maine Coon',
     rating: 5,
-    text: 'Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Milo a casa se adaptó en cuestión de horas. Es súper cariñoso, redondo como un peluche y equilibrado, se nota muchísimo que se crían en familia.',
+    text: 'Desde el primer mensaje por WhatsApp el trato fue cercano y transparente. Nos mandaron vídeos semanales y cuando llegó Spartacus a casa se adaptó en cuestión de horas. Es enorme, cariñoso como un perro y equilibrado, se nota muchísimo que se crían en familia.',
     verified: true,
     date: 'Febrero 2026'
   },
@@ -1985,9 +2873,9 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     author: 'Javier M.',
     location: 'Sevilla',
     avatar: 'JM',
-    kittenName: 'Astrid · British Shorthair',
+    kittenName: 'Milo · British Shorthair',
     rating: 5,
-    text: 'Una experiencia de diez. Astrid es una belleza de pelaje denso y carácter sosegado. Todo el proceso de reserva y entrega fue transparente y profesional.',
+    text: 'Una experiencia de diez. Milo es una belleza de pelaje denso y carácter sosegado. Todo el proceso de reserva y entrega fue transparente y profesional.',
     verified: true,
     date: 'Enero 2026'
   },
@@ -1996,9 +2884,9 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     author: 'Beatriz S.',
     location: 'Bilbao',
     avatar: 'BS',
-    kittenName: 'Alulu · Ragdoll',
+    kittenName: 'Luna · Maine Coon',
     rating: 5,
-    text: 'Alulu es el amor de nuestra casa. Ojos azules penetrantes y cuando la coges parece una muñeca de trapo de lo relajada que se queda. Muy agradecida al Criadero Gracia Divina.',
+    text: 'Luna es el amor de nuestra casa. Ojos esmeralda y unos penachos de lince impresionantes. Muy agradecida al Criadero Gracia Divina por el trato y la dedicación.',
     verified: true,
     date: 'Diciembre 2025'
   },

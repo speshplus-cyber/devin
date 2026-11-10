@@ -7,6 +7,7 @@ interface AdoptionFormModalProps {
   isOpen: boolean;
   onClose: () => void;
   selectedKitten?: Kitten | null;
+  initialBreed?: BreedType;
   onSuccess: (data: any) => void;
 }
 
@@ -14,6 +15,7 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
   isOpen,
   onClose,
   selectedKitten,
+  initialBreed,
   onSuccess,
 }) => {
   const [formData, setFormData] = useState({
@@ -21,12 +23,22 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
     email: '',
     phone: '',
     city: '',
-    breed: (selectedKitten?.breed || 'Maine Coon') as BreedType,
+    breed: (selectedKitten?.breed || initialBreed || 'Maine Coon') as BreedType,
     housingType: 'Piso con protecciones en ventanas / balcones',
     experience: 'He convivido con gatos anteriormente',
     otherPets: 'Tengo otro gato',
     notes: selectedKitten ? `Interesado en el cachorro ${selectedKitten.name} (${selectedKitten.breed})` : '',
   });
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setFormData((prev) => ({
+        ...prev,
+        breed: (selectedKitten?.breed || initialBreed || prev.breed || 'Maine Coon') as BreedType,
+        notes: selectedKitten ? `Interesado en el cachorro ${selectedKitten.name} (${selectedKitten.breed})` : prev.notes,
+      }));
+    }
+  }, [isOpen, selectedKitten, initialBreed]);
 
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});

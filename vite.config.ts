@@ -4,7 +4,28 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react()],
+    appType: 'spa',
+    plugins: [
+      react(),
+      {
+        name: 'spa-fallback',
+        configureServer(server) {
+          server.middlewares.use((req, _res, next) => {
+            if (
+              req.method === 'GET' &&
+              req.url &&
+              !req.url.includes('.') &&
+              !req.url.startsWith('/@') &&
+              !req.url.startsWith('/src') &&
+              !req.url.startsWith('/node_modules')
+            ) {
+              req.url = '/index.html';
+            }
+            next();
+          });
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

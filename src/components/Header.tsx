@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { BreedType } from '../types';
+import { BREED_TO_SLUG } from '../services/router';
 
 interface HeaderProps {
   currentView: string;
   announcementText?: string;
   onNavigate: (view: string) => void;
-  onSelectBreed?: (breed: string) => void;
+  onSelectBreed?: (breed: BreedType) => void;
   onOpenAdoptionModal: () => void;
   onOpenEmail?: (message?: string) => void;
   onOpenAdmin?: () => void;
@@ -19,17 +21,18 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleBreedClick = (breedName: string) => {
+  const handleBreedClick = (breedName: BreedType) => {
     setMobileMenuOpen(false);
     if (onSelectBreed) {
       onSelectBreed(breedName);
     } else {
-      handleNavClick('catalog', 'camadas-disponibles');
+      const slug = BREED_TO_SLUG[breedName] || 'maine-coon';
+      handleNavClick(`/${slug}`);
     }
   };
 
-  const handleNavClick = (viewId: string, anchorId?: string) => {
-    onNavigate(viewId);
+  const handleNavClick = (viewIdOrPath: string, anchorId?: string) => {
+    onNavigate(viewIdOrPath);
     setMobileMenuOpen(false);
 
     if (anchorId) {
@@ -52,10 +55,10 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="topbar">
         Bienvenido a criaderograciadivina — Tu familia felina comienza aquí
         <a
-          href="#contacto"
+          href="/contacto"
           onClick={(e) => {
             e.preventDefault();
-            handleNavClick('catalog', 'contacto');
+            handleNavClick('/contacto');
           }}
         >
           Contáctanos
@@ -70,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
             href="/"
             onClick={(e) => {
               e.preventDefault();
-              handleNavClick('catalog');
+              handleNavClick('/');
             }}
             className="logo"
           >
@@ -113,11 +116,11 @@ export const Header: React.FC<HeaderProps> = ({
             <ul>
               <li>
                 <a
-                  href="#inicio"
-                  className={currentView === 'catalog' ? 'active' : ''}
+                  href="/"
+                  className={currentView === 'home' || currentView === 'catalog' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('catalog');
+                    handleNavClick('/');
                   }}
                 >
                   Inicio
@@ -126,11 +129,11 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li className="has-drop">
                 <a
-                  href="#razas"
-                  className={currentView === 'breeds' ? 'active' : ''}
+                  href="/razas"
+                  className={currentView === 'breeds' || currentView === 'breeds-index' || currentView.startsWith('breed') ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('catalog', 'razas');
+                    handleNavClick('/razas');
                   }}
                 >
                   Razas <span className="caret">▾</span>
@@ -138,54 +141,58 @@ export const Header: React.FC<HeaderProps> = ({
                 <ul className="drop">
                   <li>
                     <a
-                      href="#camadas-disponibles"
+                      href="/maine-coon"
+                      className={currentView === 'breed-maine-coon' ? 'font-bold text-[#b91c1c]' : ''}
                       onClick={(e) => {
                         e.preventDefault();
                         handleBreedClick('Maine Coon');
                       }}
                     >
-                      Maine Coon (19)
+                      Maine Coon (19) · 700 €
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#camadas-disponibles"
+                      href="/british-shorthair"
+                      className={currentView === 'breed-british-shorthair' ? 'font-bold text-[#b91c1c]' : ''}
                       onClick={(e) => {
                         e.preventDefault();
                         handleBreedClick('British Shorthair');
                       }}
                     >
-                      British Shorthair (20)
+                      British Shorthair (20) · 650 €
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#camadas-disponibles"
+                      href="/ragdoll"
+                      className={currentView === 'breed-ragdoll' ? 'font-bold text-[#b91c1c]' : ''}
                       onClick={(e) => {
                         e.preventDefault();
                         handleBreedClick('Ragdoll');
                       }}
                     >
-                      Ragdoll (9)
+                      Ragdoll (9) · 600 €
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#camadas-disponibles"
+                      href="/sphynx"
+                      className={currentView === 'breed-sphynx' ? 'font-bold text-[#b91c1c]' : ''}
                       onClick={(e) => {
                         e.preventDefault();
                         handleBreedClick('Sphynx');
                       }}
                     >
-                      Sphynx (7)
+                      Sphynx (7) · 600 €
                     </a>
                   </li>
-                  <li>
+                  <li className="border-t border-neutral-100 mt-1 pt-1">
                     <a
-                      href="#razas"
+                      href="/razas"
                       onClick={(e) => {
                         e.preventDefault();
-                        handleNavClick('breeds');
+                        handleNavClick('/razas');
                       }}
                     >
                       <strong>Ver monografías de razas →</strong>
@@ -196,10 +203,10 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="#gatitos"
+                  href="/#camadas-disponibles"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('catalog', 'camadas-disponibles');
+                    handleNavClick('/', 'camadas-disponibles');
                   }}
                 >
                   Gatitos
@@ -208,10 +215,11 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="#sobre-nosotros"
+                  href="/filosofia"
+                  className={currentView === 'philosophy' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('catalog', 'sobre-nosotros');
+                    handleNavClick('/filosofia');
                   }}
                 >
                   Sobre Nosotros
@@ -220,10 +228,11 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="#testimonios"
+                  href="/opiniones"
+                  className={currentView === 'testimonials' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('catalog', 'testimonios');
+                    handleNavClick('/opiniones');
                   }}
                 >
                   Testimonios
@@ -232,10 +241,10 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="#faq"
+                  href="/#faq"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('catalog', 'faq');
+                    handleNavClick('/', 'faq');
                   }}
                 >
                   FAQ
@@ -244,10 +253,11 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="#garantia-de-salud"
+                  href="/garantia-salud"
+                  className={currentView === 'health' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('health');
+                    handleNavClick('/garantia-salud');
                   }}
                 >
                   Garantía de Salud
@@ -256,25 +266,27 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="#vacunaciones"
+                  href="/politica-adopcion"
+                  className={currentView === 'policy' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('health');
+                    handleNavClick('/politica-adopcion');
                   }}
                 >
-                  Vacunaciones
+                  Envío y Entrega
                 </a>
               </li>
 
               <li>
                 <a
-                  href="#envio-y-entrega"
+                  href="/contacto"
+                  className={currentView === 'contact' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('policy');
+                    handleNavClick('/contacto');
                   }}
                 >
-                  Envío y Entrega
+                  Contacto
                 </a>
               </li>
             </ul>

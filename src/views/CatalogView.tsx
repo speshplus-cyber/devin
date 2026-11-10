@@ -12,6 +12,7 @@ interface CatalogViewProps {
   onEmailInquiry: (kitten: Kitten) => void;
   onOpenAdoptionModal: (kitten?: Kitten) => void;
   onNavigateToBreeds: () => void;
+  onNavigateToBreedPage?: (breed: BreedType) => void;
   onNavigateToPolicy?: () => void;
   onNavigateToContact?: () => void;
   onNavigateToTestimonials?: () => void;
@@ -28,6 +29,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   onEmailInquiry,
   onOpenAdoptionModal,
   onNavigateToBreeds,
+  onNavigateToBreedPage,
   onNavigateToPolicy,
   onNavigateToContact,
   onNavigateToTestimonials,
@@ -121,6 +123,10 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   }, [kittens, activeBreed, selectedSex]);
 
   const handleBreedTileClick = (breedName: string) => {
+    if (onNavigateToBreedPage && (breedName === 'Maine Coon' || breedName === 'British Shorthair' || breedName === 'Ragdoll' || breedName === 'Sphynx')) {
+      onNavigateToBreedPage(breedName as BreedType);
+      return;
+    }
     handleBreedChange(breedName);
     const elem = document.getElementById('camadas-disponibles');
     if (elem) {

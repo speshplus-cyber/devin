@@ -27,6 +27,7 @@ import { AdoptionFormModal } from './components/AdoptionFormModal';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { CatalogView } from './views/CatalogView';
 import { BreedsView } from './views/BreedsView';
+import { BreedLandingView } from './views/BreedLandingView';
 import { PhilosophyView } from './views/PhilosophyView';
 import { HealthPedigreeView } from './views/HealthPedigreeView';
 import { TestimonialsView } from './views/TestimonialsView';
@@ -35,13 +36,21 @@ import { PolicyView } from './views/PolicyView';
 import { AdminPanelView } from './views/AdminPanelView';
 import { AdminLoginView } from './views/AdminLoginView';
 import { isAuthenticated, getCurrentUser, logout, AdminSession } from './services/authService';
+import {
+  getRouteFromPathname,
+  updatePageSeo,
+  navigateTo,
+  RouteInfo,
+  BREED_TO_SLUG,
+} from './services/router';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<string>('catalog');
+  const [routeInfo, setRouteInfo] = useState<RouteInfo>(() => getRouteFromPathname());
   const [selectedBreedFilter, setSelectedBreedFilter] = useState<string>('Todas');
   const [selectedKitten, setSelectedKitten] = useState<Kitten | null>(null);
   const [adoptionModalOpen, setAdoptionModalOpen] = useState(false);
   const [adoptionTargetKitten, setAdoptionTargetKitten] = useState<Kitten | null>(null);
+  const [adoptionTargetBreed, setAdoptionTargetBreed] = useState<BreedType | undefined>(undefined);
 
   // Authentication state for protected administrative area
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => isAuthenticated());
@@ -53,6 +62,26 @@ export default function App() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => getStoredTestimonials());
   const [settings, setSettings] = useState<SiteSettings>(() => getStoredSettings());
   const [leads, setLeads] = useState<AdoptionLead[]>(() => getStoredLeads());
+
+  // URL route synchronization listener
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const current = getRouteFromPathname();
+      setRouteInfo(current);
+      updatePageSeo(current);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('app:navigate', handleLocationChange);
+
+    // Apply initial SEO on mount
+    updatePageSeo(routeInfo);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('app:navigate', handleLocationChange);
+    };
+  }, []);
 
   // Reload leads when returning to view or after submission
   const refreshLeads = () => {
@@ -124,41 +153,43 @@ export default function App() {
   const handleOpenWhatsApp = (customMessage?: string) => {
     const defaultMsg = selectedKitten
       ? `¡Hola! Me interesa la adopción del gatito ${selectedKitten.name}.`
+      : routeInfo.route === 'breed' && routeInfo.breed
+      ? `¡Hola! Me interesa la adopción de un gatito ${routeInfo.breed}.`
       : '¡Hola! Me gustaría información para la adopción de un gatito.';
     const text = encodeURIComponent(customMessage || defaultMsg);
     const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNumber}?text=${text}`, '_blank');
   };
 
-  const handleOpenAdoptionWithKitten = (kitten?: Kitten) => {
+  const handleOpenAdoptionWithKitten = (kitten?: Kitten, targetBreed?: BreedType) => {
     setAdoptionTargetKitten(kitten || null);
+    setAdoptionTargetBreed(targetBreed || (kitten ? (kitten.breed as BreedType) : undefined));
     setSelectedKitten(null); // close detail modal if open
     setAdoptionModalOpen(true);
   };
 
-  const handleNavigateToBreeds = (breed?: string) => {
-    if (breed) {
-      setSelectedBreedFilter(breed);
-    }
-    setCurrentView('breeds');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Central Navigation Handler (updates URL and document title)
+  const handleNavigate = (pathOrView: string) => {
+    let targetPath = pathOrView;
+    if (pathOrView === 'catalog' || pathOrView === 'home') targetPath = '/';
+    else if (pathOrView === 'breeds' || pathOrView === 'breeds-index') targetPath = '/razas';
+    else if (pathOrView === 'contact') targetPath = '/contacto';
+    else if (pathOrView === 'testimonials') targetPath = '/opiniones';
+    else if (pathOrView === 'health') targetPath = '/garantia-salud';
+    else if (pathOrView === 'philosophy') targetPath = '/filosofia';
+    else if (pathOrView === 'policy') targetPath = '/politica-adopcion';
+    else if (pathOrView === 'admin') targetPath = '/admin';
+
+    navigateTo(targetPath);
   };
 
-  const handleSelectBreedFilter = (breed: string) => {
-    setSelectedBreedFilter(breed);
-    setCurrentView('catalog');
-    setTimeout(() => {
-      const elem = document.getElementById('camadas-disponibles');
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }, 50);
+  const handleNavigateBreed = (breed: BreedType) => {
+    const slug = BREED_TO_SLUG[breed] || 'maine-coon';
+    navigateTo(`/${slug}`);
   };
 
   // If in admin view, verify authentication before rendering the Control Panel
-  if (currentView === 'admin') {
+  if (routeInfo.route === 'admin') {
     if (!isAdminAuthenticated) {
       return (
         <AdminLoginView
@@ -167,8 +198,7 @@ export default function App() {
             setAdminSession(session);
           }}
           onBackToWebsite={() => {
-            setCurrentView('catalog');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            handleNavigate('/');
           }}
         />
       );
@@ -190,39 +220,58 @@ export default function App() {
         onDeleteLead={handleDeleteLead}
         onResetDefaults={handleResetDefaults}
         onExitAdmin={() => {
-          setCurrentView('catalog');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          handleNavigate('/');
         }}
         onLogout={() => {
           logout();
           setIsAdminAuthenticated(false);
           setAdminSession(null);
-          setCurrentView('catalog');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          handleNavigate('/');
         }}
       />
     );
   }
 
+  const currentViewId =
+    routeInfo.route === 'breed' && routeInfo.breed
+      ? `breed-${BREED_TO_SLUG[routeInfo.breed]}`
+      : routeInfo.route === 'home'
+      ? 'catalog'
+      : routeInfo.route;
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#111827]">
-      {/* Top Navigation Bar with strict 3-zone contract */}
+      {/* Top Navigation Bar with real clean URLs */}
       <Header
-        currentView={currentView}
+        currentView={currentViewId}
         announcementText={settings.announcementText}
-        onNavigate={setCurrentView}
-        onSelectBreed={handleSelectBreedFilter}
-        onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
+        onNavigate={handleNavigate}
+        onSelectBreed={handleNavigateBreed}
+        onOpenAdoptionModal={() => handleOpenAdoptionWithKitten(undefined, routeInfo.breed)}
         onOpenEmail={handleOpenEmail}
         onOpenAdmin={() => {
-          setCurrentView('admin');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          handleNavigate('/admin');
         }}
       />
 
-      {/* Main View Display */}
+      {/* Main View Display: Dedicated Route Pages */}
       <main className="flex-1">
-        {currentView === 'catalog' && (
+        {/* Dedicated Google Ads Landing Page for a Specific Breed */}
+        {routeInfo.route === 'breed' && routeInfo.breed && (
+          <BreedLandingView
+            breed={routeInfo.breed}
+            kittens={kittens}
+            testimonials={testimonials}
+            settings={settings}
+            onSelectKitten={(k) => setSelectedKitten(k)}
+            onOpenAdoptionModal={(k) => handleOpenAdoptionWithKitten(k, routeInfo.breed)}
+            onNavigateHome={() => handleNavigate('/')}
+            onNavigateBreed={handleNavigateBreed}
+          />
+        )}
+
+        {/* Main Cattery Home Page / Full Catalog */}
+        {routeInfo.route === 'home' && (
           <CatalogView
             kittens={kittens}
             litters={litters}
@@ -232,52 +281,45 @@ export default function App() {
             onSelectBreed={setSelectedBreedFilter}
             onSelectKitten={(k) => setSelectedKitten(k)}
             onEmailInquiry={handleKittenEmailInquiry}
-            onOpenAdoptionModal={handleOpenAdoptionWithKitten}
-            onNavigateToBreeds={handleNavigateToBreeds}
-            onNavigateToPolicy={() => {
-              setCurrentView('policy');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            onNavigateToContact={() => {
-              setCurrentView('contact');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            onNavigateToTestimonials={() => {
-              setCurrentView('testimonials');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            onOpenAdoptionModal={(k) => handleOpenAdoptionWithKitten(k)}
+            onNavigateToBreeds={() => handleNavigate('/razas')}
+            onNavigateToBreedPage={handleNavigateBreed}
+            onNavigateToPolicy={() => handleNavigate('/politica-adopcion')}
+            onNavigateToContact={() => handleNavigate('/contacto')}
+            onNavigateToTestimonials={() => handleNavigate('/opiniones')}
           />
         )}
 
-        {currentView === 'breeds' && (
+        {/* General Breeds Directory */}
+        {routeInfo.route === 'breeds-index' && (
           <BreedsView
             kittens={kittens}
             initialBreed={selectedBreedFilter !== 'Todas' ? (selectedBreedFilter as BreedType) : 'Maine Coon'}
-            onFilterBreed={(breed) => handleSelectBreedFilter(breed)}
+            onFilterBreed={(breed) => handleNavigateBreed(breed)}
             onSelectKitten={(k) => setSelectedKitten(k)}
             onAdoptKitten={(k) => handleOpenAdoptionWithKitten(k)}
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
           />
         )}
 
-        {currentView === 'philosophy' && (
+        {/* Dedicated Philosophy & About Page */}
+        {routeInfo.route === 'philosophy' && (
           <PhilosophyView
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
-            onExploreKittens={() => {
-              setCurrentView('catalog');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            onExploreKittens={() => handleNavigate('/')}
           />
         )}
 
-        {currentView === 'health' && (
+        {/* Dedicated Health, Testing & Pedigree Page */}
+        {routeInfo.route === 'health' && (
           <HealthPedigreeView
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
             onOpenEmail={handleOpenEmail}
           />
         )}
 
-        {currentView === 'testimonials' && (
+        {/* Dedicated Verified Testimonials Page */}
+        {routeInfo.route === 'testimonials' && (
           <TestimonialsView
             testimonials={testimonials}
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
@@ -285,13 +327,15 @@ export default function App() {
           />
         )}
 
-        {currentView === 'policy' && (
+        {/* Dedicated Adoption Terms & Climate Shipping Page */}
+        {routeInfo.route === 'policy' && (
           <PolicyView
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
           />
         )}
 
-        {currentView === 'contact' && (
+        {/* Dedicated Contact & Scheduled Visit Page */}
+        {routeInfo.route === 'contact' && (
           <ContactView
             onOpenEmail={handleOpenEmail}
             onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
@@ -299,19 +343,18 @@ export default function App() {
         )}
       </main>
 
-      {/* Bottom Footer */}
+      {/* Bottom Footer with clean links */}
       <Footer
-        onNavigate={setCurrentView}
-        onSelectBreed={handleSelectBreedFilter}
-        onOpenAdoptionModal={() => handleOpenAdoptionWithKitten()}
+        onNavigate={handleNavigate}
+        onSelectBreed={handleNavigateBreed}
+        onOpenAdoptionModal={() => handleOpenAdoptionWithKitten(undefined, routeInfo.breed)}
         onOpenEmail={handleOpenEmail}
         onOpenAdmin={() => {
-          setCurrentView('admin');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          handleNavigate('/admin');
         }}
       />
 
-      {/* Contextual Floating WhatsApp Button for Clients who prefer WhatsApp */}
+      {/* Contextual Floating WhatsApp Button */}
       <WhatsAppFloatingButton
         onClick={() => handleOpenWhatsApp()}
         selectedKittenName={selectedKitten?.name}
@@ -329,8 +372,13 @@ export default function App() {
       {/* Adoption & Reservation Questionnaire Modal */}
       <AdoptionFormModal
         isOpen={adoptionModalOpen}
-        onClose={() => setAdoptionModalOpen(false)}
+        onClose={() => {
+          setAdoptionModalOpen(false);
+          setAdoptionTargetKitten(null);
+          setAdoptionTargetBreed(undefined);
+        }}
         selectedKitten={adoptionTargetKitten}
+        initialBreed={adoptionTargetBreed}
         onSuccess={() => {
           refreshLeads();
         }}

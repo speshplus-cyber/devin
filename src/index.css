@@ -1,3 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-surface: #ffffff;
+  --color-surface-card: #ffffff;
+  --color-surface-dim: #fef2f2;
+  --color-crimson: #b91c1c;
+  --color-crimson-dark: #7f1d1d;
+  --color-crimson-deep: #450a0a;
+  --color-ruby: #dc2626;
+  --color-whatsapp: #25D366;
+}
+
 :root {
   --crimson: #991b1b;
   --crimson-2: #7f1d1d;

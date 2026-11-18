@@ -12,8 +12,8 @@ export interface Kitten {
   pedigreeName: string;
   breed: BreedType;
   gender: 'Macho' | 'Hembra';
-  birthDate: string;
-  ageWeeks: number;
+  birthDate?: string;
+  ageWeeks?: number;
   colorManto: string;
   eyeColor: string;
   status: KittenStatus;
@@ -67,7 +67,7 @@ export interface Litter {
   code: string;
   litterName: string;
   breed: BreedType;
-  birthDate: string;
+  birthDate?: string;
   readyDate: string;
   sire: string;
   dam: string;

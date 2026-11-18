@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Kitten } from '../types';
 import { X, ShieldCheck, Mail, Sparkles, Award } from 'lucide-react';
 
@@ -17,6 +17,10 @@ export const KittenModal: React.FC<KittenModalProps> = ({
 }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  useEffect(() => {
+    setActiveImageIndex(0);
+  }, [kitten?.id]);
+
   if (!kitten) return null;
 
   return (
@@ -24,7 +28,8 @@ export const KittenModal: React.FC<KittenModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="kitten-modal-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
+      onClick={onClose}
+      className="fixed inset-0 z-[70] overflow-y-auto bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
     >
       <div
         className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-red-100 overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200"
@@ -120,20 +125,16 @@ export const KittenModal: React.FC<KittenModalProps> = ({
                   <span className="font-semibold text-xs sm:text-sm text-[#111827]">{kitten.gender}</span>
                 </div>
                 <div className="p-3 bg-red-50/40 rounded-lg border border-red-100">
-                  <span className="text-[11px] text-neutral-500 block">Edad Actual</span>
-                  <span className="font-semibold text-xs sm:text-sm text-[#111827]">{kitten.ageWeeks} semanas</span>
-                </div>
-                <div className="p-3 bg-red-50/40 rounded-lg border border-red-100">
-                  <span className="text-[11px] text-neutral-500 block">Fecha Nacimiento</span>
-                  <span className="font-semibold text-xs text-[#111827] truncate block">{kitten.birthDate}</span>
-                </div>
-                <div className="p-3 bg-red-50/40 rounded-lg border border-red-100 sm:col-span-2">
-                  <span className="text-[11px] text-neutral-500 block">Color & Patrón del Manto</span>
-                  <span className="font-semibold text-xs text-[#111827]">{kitten.colorManto}</span>
-                </div>
-                <div className="p-3 bg-red-50/40 rounded-lg border border-red-100">
                   <span className="text-[11px] text-neutral-500 block">Ojos</span>
                   <span className="font-semibold text-xs text-[#111827]">{kitten.eyeColor}</span>
+                </div>
+                <div className="p-3 bg-red-50/40 rounded-lg border border-red-100 col-span-2 sm:col-span-1">
+                  <span className="text-[11px] text-neutral-500 block">Estado</span>
+                  <span className="font-semibold text-xs text-[#111827]">{kitten.status}</span>
+                </div>
+                <div className="p-3 bg-red-50/40 rounded-lg border border-red-100 col-span-2 sm:col-span-3">
+                  <span className="text-[11px] text-neutral-500 block">Color & Patrón del Manto</span>
+                  <span className="font-semibold text-xs text-[#111827]">{kitten.colorManto}</span>
                 </div>
               </div>
 
@@ -226,7 +227,7 @@ export const KittenModal: React.FC<KittenModalProps> = ({
                 onClick={() => onAdoptRequest(kitten)}
                 className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3 px-4 text-xs sm:text-sm font-semibold text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-lg transition-colors shadow-sm cursor-pointer"
               >
-                <span>Solicitar Adopción (600 €)</span>
+                <span>Solicitar Adopción ({kitten.price})</span>
               </button>
             </div>
           </div>

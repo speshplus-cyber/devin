@@ -125,7 +125,7 @@ export const TestimonialsView: React.FC<TestimonialsViewProps> = ({
             onClick={onOpenAdoptionModal}
             className="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-transparent hover:bg-white/10 border border-white/40 rounded-full transition-colors cursor-pointer"
           >
-            Formulario de Adopción (600 €)
+            Formulario de Adopción (Desde 600 €)
           </button>
         </div>
       </div>

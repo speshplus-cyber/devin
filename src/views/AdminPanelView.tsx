@@ -59,47 +59,64 @@ interface AdminPanelViewProps {
 }
 
 const LOCAL_AVAILABLE_PHOTOS = [
-  '/photos/IMG_4465.jpeg',
-  '/photos/IMG_4473.jpeg',
-  '/photos/IMG_4480.jpeg',
-  '/photos/IMG_4491.jpeg',
+  '/photos/mc-spartacus-18.jpg',
+  '/photos/mc-anna-01.jpg',
+  '/photos/mc-bravo-02.jpg',
+  '/photos/mc-brucie-03.jpg',
+  '/photos/mc-catty-04.jpg',
+  '/photos/mc-chuco-05.jpg',
+  '/photos/mc-jacki-06.jpg',
+  '/photos/mc-lola-07.jpg',
+  '/photos/mc-lolita-08.jpg',
+  '/photos/mc-louie-09.jpg',
+  '/photos/mc-luna-10.jpg',
+  '/photos/mc-milo-11.jpg',
+  '/photos/mc-nikita-12.png',
+  '/photos/mc-pamela-13.jpg',
+  '/photos/mc-pringles-14.jpg',
+  '/photos/mc-rico-15.jpg',
+  '/photos/mc-snowy-16.jpg',
+  '/photos/mc-sonia-17.jpg',
+  '/photos/mc-stan-19.jpg',
+  '/photos/bsh-milo-09.jpg',
+  '/photos/bsh-astrid-01.jpg',
+  '/photos/bsh-babushka-02.jpg',
+  '/photos/bsh-bambi-03.jpg',
+  '/photos/bsh-fanny-04.jpg',
+  '/photos/bsh-gunner-05.jpg',
+  '/photos/bsh-maggie-06.png',
+  '/photos/bsh-marmalade-07.jpg',
+  '/photos/bsh-mickey-08.png',
+  '/photos/bsh-nutella-10.jpg',
+  '/photos/bsh-pablo-11.jpg',
+  '/photos/bsh-popie-12.png',
+  '/photos/bsh-raji-13.png',
+  '/photos/bsh-renzo-14.jpg',
+  '/photos/bsh-ricky-15.jpg',
+  '/photos/bsh-robert-16.jpg',
+  '/photos/bsh-romeo-17.jpg',
+  '/photos/bsh-ruda-18.jpg',
+  '/photos/bsh-smokey-19.png',
+  '/photos/bsh-toni-20.jpg',
+  '/photos/rag-jason-24.jpg',
+  '/photos/rag-alulu-21.jpg',
+  '/photos/rag-carreo-22.jpg',
+  '/photos/rag-cleo-23.jpg',
+  '/photos/rag-lola-25.jpg',
+  '/photos/rag-murphy-26.jpg',
+  '/photos/rag-nunes-27.jpg',
+  '/photos/rag-ollie-28.jpg',
+  '/photos/rag-toni-29.jpg',
+  '/photos/sph-desmond-32.png',
+  '/photos/sph-bambino-30.jpg',
+  '/photos/sph-collie-31.png',
+  '/photos/sph-layla-33.png',
+  '/photos/sph-lino-34.jpg',
+  '/photos/sph-phila-35.png',
+  '/photos/sph-scrubs-36.jpg',
   '/photos/IMG_4496.jpeg',
-  '/photos/IMG_4498.jpeg',
-  '/photos/IMG_4500.jpeg',
-  '/photos/IMG_4504.jpeg',
   '/photos/IMG_4505.jpeg',
-  '/photos/IMG_4508.jpeg',
-  '/photos/IMG_4510.jpeg',
-  '/photos/IMG_4511.jpeg',
-  '/photos/IMG_4512.jpeg',
-  '/photos/IMG_4513.jpeg',
-  '/photos/IMG_4515.jpeg',
-  '/photos/IMG_4516.jpeg',
-  '/photos/IMG_4518.jpeg',
-  '/photos/IMG_4519.jpeg',
-  '/photos/IMG_4521.jpeg',
-  '/photos/IMG_4530.jpeg',
-  '/photos/IMG_4547.jpeg',
-  '/photos/IMG_4587.jpeg',
-  '/photos/IMG_4589.jpeg',
-  '/photos/IMG_4591.jpeg',
-  '/photos/IMG_4595.jpeg',
   '/photos/IMG_4601.jpeg',
-  '/photos/IMG_4608.jpeg',
-  '/photos/IMG_4611.jpeg',
-  '/photos/IMG_4615.jpeg',
-  '/photos/IMG_4620.jpeg',
-  '/photos/IMG_4624.jpeg',
-  '/photos/IMG_4625.jpeg',
-  '/photos/IMG_4630.jpeg',
-  '/photos/IMG_4637.png',
-  '/photos/IMG_4653.jpeg',
-  '/photos/IMG_4656.jpeg',
-  '/photos/IMG_4672.jpeg',
-  '/photos/IMG_4684.jpeg',
-  '/photos/IMG_4685.jpeg',
-  '/photos/IMG_4686.jpeg',
-  '/photos/IMG_4687.jpeg',
 ];
 
 export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
@@ -142,14 +159,12 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
     pedigreeName: '',
     breed: 'Maine Coon',
     gender: 'Macho',
-    birthDate: '15/01/2026',
-    ageWeeks: 12,
     colorManto: 'Black Silver Classic Tabby',
     eyeColor: 'Ámbar / Oro intenso',
     status: 'Disponible',
     price: '600 €',
     featured: true,
-    images: ['/photos/IMG_4465.jpeg'],
+    images: ['/photos/mc-spartacus-18.jpg'],
     description: '',
     temperament: ['Afectuoso', 'Ronroneador', 'Sociable'],
   });
@@ -161,13 +176,12 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
     code: 'CAMADA-2026-X',
     litterName: 'Camada Estrellas',
     breed: 'Maine Coon',
-    birthDate: '10/02/2026',
     readyDate: 'Mayo 2026',
     sire: 'Ch. Gracia Divina Lord Balthazar',
     dam: 'Gracia Divina Lady Genevieve',
     kittensCount: 5,
     availableCount: 3,
-    image: '/photos/IMG_4473.jpeg',
+    image: '/photos/bsh-milo-09.jpg',
     description: 'Excelente camada con morfología de exposición y tipicidad excelente.',
   });
 
@@ -181,16 +195,20 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
     breed: 'Maine Coon',
     adoptionYear: '2025',
     rating: 5,
-    image: '/photos/IMG_4500.jpeg',
+    image: '/photos/rag-jason-24.jpg',
     text: '',
   });
 
   // Settings form state
   const [editableSettings, setEditableSettings] = useState<SiteSettings>(settings);
+  React.useEffect(() => {
+    setEditableSettings(settings);
+  }, [settings]);
 
   // Filter state for kittens tab
   const [kittenFilterQuery, setKittenFilterQuery] = useState('');
   const [photoPickerOpen, setPhotoPickerOpen] = useState(false);
+  const [confirmDialog, setConfirmDialog] = useState<{ message: string; onConfirm: () => void } | null>(null);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -205,8 +223,6 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       pedigreeName: 'Gracia Divina ',
       breed: 'Maine Coon',
       gender: 'Macho',
-      birthDate: '15/01/2026',
-      ageWeeks: 12,
       colorManto: '',
       eyeColor: 'Ámbar cobrizo',
       status: 'Disponible',
@@ -250,7 +266,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
   const handleSaveKitten = (e: React.FormEvent) => {
     e.preventDefault();
     if (!kittenFormData.name?.trim()) {
-      alert('Por favor ingrese el nombre del cachorro.');
+      showToast('Por favor ingrese el nombre del cachorro.');
       return;
     }
 
@@ -269,14 +285,12 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
         pedigreeName: kittenFormData.pedigreeName || `Gracia Divina ${kittenFormData.name}`,
         breed: kittenFormData.breed as BreedType,
         gender: kittenFormData.gender as 'Macho' | 'Hembra',
-        birthDate: kittenFormData.birthDate || '01/01/2026',
-        ageWeeks: Number(kittenFormData.ageWeeks) || 12,
         colorManto: kittenFormData.colorManto || 'Variedad estándar',
         eyeColor: kittenFormData.eyeColor || 'Ámbar',
         status: kittenFormData.status as KittenStatus,
         price: kittenFormData.price || '600 €',
         featured: Boolean(kittenFormData.featured),
-        images: kittenFormData.images?.length ? kittenFormData.images : ['/photos/IMG_4465.jpeg'],
+        images: kittenFormData.images?.length ? kittenFormData.images : ['/photos/mc-spartacus-18.jpg'],
         description: kittenFormData.description || 'Cachorro criado en ambiente familiar y libre de jaulas.',
         temperament: kittenFormData.temperament || ['Afectuoso', 'Noble'],
         sire: kittenFormData.sire || {
@@ -309,11 +323,14 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
   };
 
   const handleDeleteKitten = (id: string, name: string) => {
-    if (confirm(`¿Está seguro de que desea eliminar al cachorro "${name}" de la web?`)) {
-      const updated = kittens.filter((k) => k.id !== id);
-      onUpdateKittens(updated);
-      showToast(`Cachorro "${name}" eliminado de la web.`);
-    }
+    setConfirmDialog({
+      message: `¿Está seguro de que desea eliminar al cachorro "${name}" de la web?`,
+      onConfirm: () => {
+        const updated = kittens.filter((k) => k.id !== id);
+        onUpdateKittens(updated);
+        showToast(`Cachorro "${name}" eliminado de la web.`);
+      },
+    });
   };
 
   const handleToggleKittenStatus = (k: Kitten) => {
@@ -337,7 +354,6 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       code: `CAMADA-2026-${String.fromCharCode(65 + litters.length)}`,
       litterName: `Camada Letra ${String.fromCharCode(65 + litters.length)}`,
       breed: 'Maine Coon',
-      birthDate: '15/02/2026',
       readyDate: 'Mayo 2026',
       sire: 'Ch. Gracia Divina Lord Balthazar',
       dam: 'Gracia Divina Lady Genevieve',
@@ -369,7 +385,6 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
         code: litterFormData.code || 'CAMADA-NUEVA',
         litterName: litterFormData.litterName || 'Nueva Camada',
         breed: litterFormData.breed as BreedType,
-        birthDate: litterFormData.birthDate || '01/02/2026',
         readyDate: litterFormData.readyDate || 'Mayo 2026',
         sire: litterFormData.sire || 'Padre de linaje',
         dam: litterFormData.dam || 'Madre de linaje',
@@ -385,10 +400,13 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
   };
 
   const handleDeleteLitter = (id: string, name: string) => {
-    if (confirm(`¿Eliminar la camada "${name}"?`)) {
-      onUpdateLitters(litters.filter((l) => l.id !== id));
-      showToast('Camada eliminada.');
-    }
+    setConfirmDialog({
+      message: `¿Eliminar la camada "${name}"?`,
+      onConfirm: () => {
+        onUpdateLitters(litters.filter((l) => l.id !== id));
+        showToast('Camada eliminada.');
+      },
+    });
   };
 
   // --- TESTIMONIALS ACTIONS ---
@@ -416,7 +434,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
   const handleSaveTestimonial = (e: React.FormEvent) => {
     e.preventDefault();
     if (!testimonialFormData.adopterName || !testimonialFormData.text) {
-      alert('Por favor complete el nombre del adoptante y el testimonio.');
+      showToast('Por favor complete el nombre del adoptante y el testimonio.');
       return;
     }
     if (editingTestimonialId) {
@@ -444,10 +462,13 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
   };
 
   const handleDeleteTestimonial = (id: string) => {
-    if (confirm('¿Eliminar este testimonio?')) {
-      onUpdateTestimonials(testimonials.filter((t) => t.id !== id));
-      showToast('Testimonio eliminado.');
-    }
+    setConfirmDialog({
+      message: '¿Eliminar este testimonio?',
+      onConfirm: () => {
+        onUpdateTestimonials(testimonials.filter((t) => t.id !== id));
+        showToast('Testimonio eliminado.');
+      },
+    });
   };
 
   // --- SETTINGS ACTIONS ---
@@ -492,20 +513,23 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
       setShowAddUserModal(false);
       showToast('Nuevo usuario administrador registrado.');
     } else {
-      alert(result.error || 'Error al añadir el usuario.');
+      showToast(result.error || 'Error al añadir el usuario.');
     }
   };
 
   const handleRemoveAdmin = (targetEmail: string) => {
-    if (confirm(`¿Estás seguro de revocar el acceso administrativo para "${targetEmail}"?`)) {
-      const result = removeAuthorizedUser(targetEmail);
-      if (result.success) {
-        setAuthorizedUsers(getAuthorizedUsers());
-        showToast('Acceso revocado.');
-      } else {
-        alert(result.error || 'No se puede eliminar este usuario.');
-      }
-    }
+    setConfirmDialog({
+      message: `¿Estás seguro de revocar el acceso administrativo para "${targetEmail}"?`,
+      onConfirm: () => {
+        const result = removeAuthorizedUser(targetEmail);
+        if (result.success) {
+          setAuthorizedUsers(getAuthorizedUsers());
+          showToast('Acceso revocado.');
+        } else {
+          showToast(result.error || 'No se puede eliminar este usuario.');
+        }
+      },
+    });
   };
 
   // Filtered kittens for admin view
@@ -717,10 +741,13 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
 
             <button
               onClick={() => {
-                if (confirm('¿Restablecer todos los datos del sitio a los valores iniciales predeterminados?')) {
-                  onResetDefaults();
-                  showToast('Sitio web restaurado a los valores predeterminados.');
-                }
+                setConfirmDialog({
+                  message: '¿Restablecer todos los datos del sitio a los valores iniciales predeterminados?',
+                  onConfirm: () => {
+                    onResetDefaults();
+                    showToast('Sitio web restaurado a los valores predeterminados.');
+                  },
+                });
               }}
               className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 rounded bg-neutral-800/60 hover:bg-neutral-800 text-neutral-400 hover:text-neutral-300 transition-colors cursor-pointer text-[10px]"
             >
@@ -970,7 +997,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                         <tr key={k.id} className="hover:bg-red-50/30 transition-colors">
                           <td className="py-2.5 px-4">
                             <img
-                              src={k.images[0]}
+                              src={k.images?.[0] || '/photos/mc-spartacus-18.jpg'}
                               alt={k.name}
                               className="w-12 h-12 rounded-lg object-cover border border-neutral-200"
                             />
@@ -988,7 +1015,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                           </td>
                           <td className="py-2.5 px-4">
                             <div className="font-medium text-neutral-900">{k.breed}</div>
-                            <div className="text-neutral-500">{k.gender} · {k.ageWeeks} sem.</div>
+                            <div className="text-neutral-500">{k.gender}</div>
                           </td>
                           <td className="py-2.5 px-4 text-neutral-600 max-w-[150px] truncate">
                             {k.colorManto}
@@ -1086,7 +1113,6 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                         </p>
                       </div>
                       <div className="text-xs space-y-1 pt-2 border-t border-neutral-100 text-neutral-600">
-                        <div>Nacimiento: <strong>{litter.birthDate}</strong></div>
                         <div>Entrega estimada: <strong className="text-[#b91c1c]">{litter.readyDate}</strong></div>
                         <div>Disponibles: <strong>{litter.availableCount} de {litter.kittensCount}</strong></div>
                         <div className="text-[11px] text-neutral-500">Padres: {litter.sire} × {litter.dam}</div>
@@ -1246,10 +1272,13 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                           </select>
                           <button
                             onClick={() => {
-                              if (confirm('¿Eliminar esta solicitud?')) {
-                                onDeleteLead(lead.id);
-                                showToast('Solicitud eliminada.');
-                              }
+                              setConfirmDialog({
+                                message: '¿Eliminar esta solicitud?',
+                                onConfirm: () => {
+                                  onDeleteLead(lead.id);
+                                  showToast('Solicitud eliminada.');
+                                },
+                              });
                             }}
                             className="p-1.5 text-neutral-400 hover:text-red-700 cursor-pointer"
                             title="Eliminar solicitud"
@@ -1490,10 +1519,13 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   <button
                     type="button"
                     onClick={() => {
-                      if (confirm('¿Restablecer ajustes a los valores iniciales?')) {
-                        onResetDefaults();
-                        showToast('Ajustes restablecidos.');
-                      }
+                      setConfirmDialog({
+                        message: '¿Restablecer ajustes a los valores iniciales?',
+                        onConfirm: () => {
+                          onResetDefaults();
+                          showToast('Ajustes restablecidos.');
+                        },
+                      });
                     }}
                     className="px-4 py-2 text-xs text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded transition-colors cursor-pointer"
                   >
@@ -1707,7 +1739,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-neutral-700 mb-1">Raza</label>
                   <select
@@ -1732,18 +1764,6 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
                   </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">Edad (Semanas)</label>
-                  <input
-                    type="number"
-                    min={4}
-                    max={52}
-                    value={kittenFormData.ageWeeks || 12}
-                    onChange={(e) => setKittenFormData({ ...kittenFormData, ageWeeks: Number(e.target.value) })}
-                    className="w-full px-3 py-2 text-xs bg-white rounded border border-neutral-300 focus:outline-none focus:border-[#b91c1c]"
-                  />
                 </div>
               </div>
 
@@ -1795,7 +1815,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                     className="text-xs text-[#b91c1c] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                   >
                     <ImageIcon className="w-3.5 h-3.5" />
-                    <span>{photoPickerOpen ? 'Ocultar Galería' : 'Elegir de Galería Criadero (+40 fotos)'}</span>
+                    <span>{photoPickerOpen ? 'Ocultar Galería' : `Elegir de Galería Criadero (${LOCAL_AVAILABLE_PHOTOS.length} fotos)`}</span>
                   </button>
                 </div>
 
@@ -1803,7 +1823,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   type="text"
                   value={kittenFormData.images?.[0] || ''}
                   onChange={(e) => setKittenFormData({ ...kittenFormData, images: [e.target.value] })}
-                  placeholder="/photos/IMG_4465.jpeg o URL externa"
+                  placeholder="/photos/mc-spartacus-18.jpg o URL externa"
                   className="w-full px-3 py-2 text-xs bg-white rounded border border-neutral-300 focus:outline-none focus:border-[#b91c1c]"
                 />
 
@@ -1925,25 +1945,14 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold mb-1">Fecha Nacimiento</label>
-                  <input
-                    type="text"
-                    value={litterFormData.birthDate || ''}
-                    onChange={(e) => setLitterFormData({ ...litterFormData, birthDate: e.target.value })}
-                    className="w-full px-3 py-2 bg-white rounded border border-neutral-300"
-                  />
-                </div>
-                <div>
-                  <label className="block font-semibold mb-1">Entrega Estimada</label>
-                  <input
-                    type="text"
-                    value={litterFormData.readyDate || ''}
-                    onChange={(e) => setLitterFormData({ ...litterFormData, readyDate: e.target.value })}
-                    className="w-full px-3 py-2 bg-white rounded border border-neutral-300"
-                  />
-                </div>
+              <div>
+                <label className="block font-semibold mb-1">Entrega Estimada</label>
+                <input
+                  type="text"
+                  value={litterFormData.readyDate || ''}
+                  onChange={(e) => setLitterFormData({ ...litterFormData, readyDate: e.target.value })}
+                  className="w-full px-3 py-2 bg-white rounded border border-neutral-300"
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -1973,7 +1982,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   type="text"
                   value={litterFormData.image || ''}
                   onChange={(e) => setLitterFormData({ ...litterFormData, image: e.target.value })}
-                  placeholder="/photos/IMG_4473.jpeg"
+                  placeholder="/photos/bsh-milo-09.jpg"
                   className="w-full px-3 py-2 bg-white rounded border border-neutral-300"
                 />
               </div>
@@ -2087,7 +2096,7 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                   type="text"
                   value={testimonialFormData.image || ''}
                   onChange={(e) => setTestimonialFormData({ ...testimonialFormData, image: e.target.value })}
-                  placeholder="/photos/IMG_4500.jpeg"
+                  placeholder="/photos/rag-jason-24.jpg"
                   className="w-full px-3 py-2 bg-white rounded border border-neutral-300"
                 />
               </div>
@@ -2211,6 +2220,44 @@ export const AdminPanelView: React.FC<AdminPanelViewProps> = ({
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* IN-APP CONFIRMATION DIALOG */}
+      {confirmDialog && (
+        <div
+          className="fixed inset-0 z-[80] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
+          onClick={() => setConfirmDialog(null)}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-sm w-full p-6 space-y-4 border border-neutral-200 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start gap-3">
+              <ShieldAlert className="w-5 h-5 text-[#b91c1c] shrink-0 mt-0.5" />
+              <p className="text-sm font-medium text-neutral-800">{confirmDialog.message}</p>
+            </div>
+            <div className="flex justify-end gap-2 pt-2 border-t border-neutral-100">
+              <button
+                type="button"
+                onClick={() => setConfirmDialog(null)}
+                className="px-3.5 py-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900 rounded-lg border border-neutral-200 cursor-pointer"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const action = confirmDialog.onConfirm;
+                  setConfirmDialog(null);
+                  action();
+                }}
+                className="px-4 py-1.5 text-xs font-semibold text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-lg cursor-pointer"
+              >
+                Confirmar
+              </button>
+            </div>
           </div>
         </div>
       )}

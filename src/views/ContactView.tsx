@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FAQ_DATA } from '../data/catsData';
-import { Mail, MapPin, Clock, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { Mail, Clock, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { addStoredLead } from '../services/siteStore';
 
 interface ContactViewProps {
   onOpenEmail: (message?: string) => void;
@@ -17,7 +18,6 @@ export const ContactView: React.FC<ContactViewProps> = ({
     name: '',
     email: '',
     phone: '',
-    date: '',
     breed: 'Maine Coon',
     timeSlot: 'Mañanas (11:00 - 13:30)',
   });
@@ -25,6 +25,17 @@ export const ContactView: React.FC<ContactViewProps> = ({
   const handleVisitSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (visitForm.name && visitForm.email) {
+      addStoredLead({
+        fullName: visitForm.name,
+        email: visitForm.email,
+        phone: visitForm.phone || 'No indicado',
+        city: 'Visita Presencial',
+        breed: visitForm.breed,
+        housingType: 'Visita concertada',
+        experience: 'Solicitud desde página de contacto',
+        otherPets: 'Por confirmar',
+        notes: `Franja horaria preferida: ${visitForm.timeSlot}`,
+      });
       setVisitRequested(true);
     }
   };
@@ -38,8 +49,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
       `• Correo: ${visitForm.email}\n` +
       `• Teléfono: ${visitForm.phone}\n` +
       `• Raza de interés: ${visitForm.breed}\n` +
-      `• Franja horaria preferida: ${visitForm.timeSlot}\n` +
-      `• Fecha sugerida: ${visitForm.date || 'A coordinar'}\n\n` +
+      `• Franja horaria preferida: ${visitForm.timeSlot}\n\n` +
       `Quedo a la espera de su confirmación.\n\n` +
       `Un saludo cordial,\n${visitForm.name}`
     );
@@ -138,7 +148,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
                 onClick={onOpenAdoptionModal}
                 className="w-full py-2.5 px-4 bg-white hover:bg-red-50 text-[#b91c1c] text-xs font-semibold rounded-lg border border-red-200 transition-colors cursor-pointer"
               >
-                Completar Cuestionario de Adopción (600 €)
+                Completar Cuestionario de Adopción (Desde 600 €)
               </button>
             </div>
           </div>
@@ -259,13 +269,29 @@ export const ContactView: React.FC<ContactViewProps> = ({
                 <p className="text-xs sm:text-sm text-neutral-600 max-w-md mx-auto">
                   Gracias {visitForm.name}. Le enviaremos un correo a <strong className="text-[#b91c1c]">{visitForm.email}</strong> con las fechas disponibles y la ruta de acceso al criadero.
                 </p>
-                <div className="pt-2">
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <button
                     onClick={handleSendVisitEmail}
-                    className="flex items-center justify-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-lg mx-auto shadow-sm cursor-pointer"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-lg shadow-sm cursor-pointer"
                   >
                     <Mail className="w-4 h-4 text-white" />
                     <span>Enviar Detalles por Email a Criaderograciadivina@gmail.com</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setVisitRequested(false);
+                      setVisitForm({
+                        name: '',
+                        email: '',
+                        phone: '',
+                        breed: 'Maine Coon',
+                        timeSlot: 'Mañanas (11:00 - 13:30)',
+                      });
+                    }}
+                    className="px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#b91c1c] bg-red-50 hover:bg-red-100 rounded-lg border border-red-200 cursor-pointer"
+                  >
+                    Nueva Consulta
                   </button>
                 </div>
               </div>
@@ -275,7 +301,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
       </div>
 
       {/* Frequently Asked Questions (FAQ) Accordion */}
-      <div className="space-y-6 pt-8 border-t border-red-100">
+      <div id="faq" className="space-y-6 pt-8 border-t border-red-100">
         <div className="text-center max-w-2xl mx-auto">
           <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c]">
             Dudas Frecuentes

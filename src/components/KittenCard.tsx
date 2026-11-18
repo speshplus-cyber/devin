@@ -98,7 +98,7 @@ export const KittenCard: React.FC<KittenCardProps> = ({
               {kitten.name}
             </h3>
             <p className="text-xs text-white/95 drop-shadow-sm font-medium">
-              {kitten.gender} · {kitten.ageWeeks} semanas
+              {kitten.gender}
             </p>
           </div>
           <div className="text-right">
@@ -153,7 +153,7 @@ export const KittenCard: React.FC<KittenCardProps> = ({
               title="Solicitar adopción por email a Criaderograciadivina@gmail.com"
             >
               <Mail className="w-3.5 h-3.5 text-white" />
-              <span>Adoptar (600 €)</span>
+              <span>Adoptar ({kitten.price})</span>
             </button>
           ) : (
             <button

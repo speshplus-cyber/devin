@@ -83,6 +83,12 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (routeInfo.route === 'admin') {
+      setLeads(getStoredLeads());
+    }
+  }, [routeInfo.route]);
+
   // Reload leads when returning to view or after submission
   const refreshLeads = () => {
     setLeads(getStoredLeads());

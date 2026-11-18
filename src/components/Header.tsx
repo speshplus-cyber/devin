@@ -14,10 +14,10 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   currentView,
+  announcementText,
   onNavigate,
   onSelectBreed,
   onOpenAdoptionModal,
-  onOpenAdmin,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({
     <>
       {/* Top Announcement Bar */}
       <div className="topbar">
-        Bienvenido a criaderograciadivina — Tu familia felina comienza aquí
+        {announcementText || 'Bienvenido a criaderograciadivina — Tu familia felina comienza aquí'}
         <a
           href="/contacto"
           onClick={(e) => {
@@ -241,10 +241,10 @@ export const Header: React.FC<HeaderProps> = ({
 
               <li>
                 <a
-                  href="/#faq"
+                  href="/contacto#faq"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('/', 'faq');
+                    handleNavClick('/contacto', 'faq');
                   }}
                 >
                   FAQ

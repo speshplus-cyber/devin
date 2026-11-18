@@ -2907,18 +2907,22 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
 export const FAQ_DATA: FAQItem[] = [
   {
     question: '¿Qué incluye la adopción de cada gatito?',
-    answer: 'Todos nuestros cachorros (Sphynx y Ragdoll a 600 €, British Shorthair a 650 € y Maine Coon a 700 €) se entregan con: cartilla sanitaria oficial europea, microchip ya implantado a nombre del adoptante, vacunación completa (trivalente felina), desparasitaciones internas y externas al día, pedigrí oficial de raza, contrato de garantía vírica y genética de 2 años, y kit de bienvenida con pienso de alta gama y juguete con el aroma de su camada.'
+    answer: 'Todos nuestros cachorros (Sphynx y Ragdoll a 600 €, British Shorthair a 650 € y Maine Coon a 700 €) se entregan con: cartilla sanitaria oficial europea, microchip ya implantado a nombre del adoptante, vacunación completa (trivalente felina), desparasitaciones internas y externas al día, pedigrí oficial de raza, contrato de garantía vírica y genética de 2 años, y kit de bienvenida con pienso de alta gama y juguete con el aroma de su camada.',
+    category: 'Proceso de Reserva',
   },
   {
     question: '¿Realizáis envíos a toda España?',
-    answer: 'Sí. Realizamos entregas seguras en cualquier punto de España a través de transporte veterinario especializado puerta a puerta con climatización controlada y monitorización en tiempo real, garantizando la total tranquilidad del cachorro.'
+    answer: 'Sí. Realizamos entregas seguras en cualquier punto de España a través de transporte veterinario especializado puerta a puerta con climatización controlada y monitorización en tiempo real, garantizando la total tranquilidad del cachorro.',
+    category: 'Cuidados & Adaptación',
   },
   {
     question: '¿Cómo funciona el proceso de reserva?',
-    answer: 'Puedes contactarnos directamente vía WhatsApp o formulario web para indicarnos el gatito de tu interés. La reserva formal se efectúa con una señal que asegura que el gatito queda reservado para ti hasta el día de la entrega acordada.'
+    answer: 'Puedes contactarnos directamente vía WhatsApp o formulario web para indicarnos el gatito de tu interés. La reserva formal se efectúa con una señal que asegura que el gatito queda reservado para ti hasta el día de la entrega acordada.',
+    category: 'Proceso de Reserva',
   },
   {
     question: '¿Están testados los progenitores contra enfermedades genéticas?',
-    answer: 'Absolutamente. Todos nuestros reproductores cuentan con certificados negativos por ADN para HCM (miocardiopatía hipertrófica), PKD (poliquistosis renal), SMA y pruebas serológicas negativas a leucemia felina (FeLV) e inmunodeficiencia felina (FIV).'
+    answer: 'Absolutamente. Todos nuestros reproductores cuentan con certificados negativos por ADN para HCM (miocardiopatía hipertrófica), PKD (poliquistosis renal), SMA y pruebas serológicas negativas a leucemia felina (FeLV) e inmunodeficiencia felina (FIV).',
+    category: 'Salud & Garantías',
   }
 ];

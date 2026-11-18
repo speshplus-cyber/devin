@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import { Kitten, SiteSettings, Litter, Testimonial } from '../types';
+import React, { useState, useMemo, useRef } from 'react';
+import { Kitten, SiteSettings, Litter, Testimonial, BreedType } from '../types';
+import { addStoredLead } from '../services/siteStore';
 
 interface CatalogViewProps {
   kittens: Kitten[];
@@ -53,6 +54,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     }
   };
 
+  const contactFormRef = useRef<HTMLFormElement | null>(null);
   // Contact Form state
   const [contactName, setContactName] = useState('');
   const [contactSurname, setContactSurname] = useState('');
@@ -73,45 +75,48 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     'Sphynx',
   ];
 
-  // The 4 Signature Breeds with authentic photos and counts
+  // Helper to normalize strings for robust accent-insensitive comparison
+  const normalizeStr = (str: string) =>
+    str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+  const countByBreed = (breedName: string) =>
+    kittens.filter((k) => normalizeStr(k.breed) === normalizeStr(breedName)).length;
+
+  // The 4 Signature Breeds with authentic photos and live counts
   const signatureBreeds = [
     {
       name: 'Maine Coon',
       tagline: 'El gigante dócil del reino felino',
       desc: 'Imponente, noble y de carácter paciente y sociable. Con penachos de lince y manto majestuoso.',
-      avail: '19 gatitos disponibles · 700 € →',
+      avail: `${countByBreed('Maine Coon')} gatitos disponibles · 700 € →`,
       image: '/photos/mc-spartacus-18.jpg',
-      count: 19,
+      count: countByBreed('Maine Coon'),
     },
     {
       name: 'British Shorthair',
       tagline: 'El osito de terciopelo sereno',
       desc: 'Carita redonda, mofletes tiernos y pelaje crisp sumamente denso. Temperamento dulce y tranquilo.',
-      avail: '20 gatitos disponibles · 650 € →',
+      avail: `${countByBreed('British Shorthair')} gatitos disponibles · 650 € →`,
       image: '/photos/bsh-milo-09.jpg',
-      count: 20,
+      count: countByBreed('British Shorthair'),
     },
     {
       name: 'Ragdoll',
       tagline: 'Ojos azules zafiro y entrega total',
       desc: 'El gato peluche por excelencia: se relaja por completo en brazos y busca cariño constante.',
-      avail: '9 gatitos disponibles · 600 € →',
+      avail: `${countByBreed('Ragdoll')} gatitos disponibles · 600 € →`,
       image: '/photos/rag-jason-24.jpg',
-      count: 9,
+      count: countByBreed('Ragdoll'),
     },
     {
       name: 'Sphynx',
       tagline: 'Piel de terciopelo y amor infinito',
       desc: 'Sin pelo, de tacto cálido como melocotón. Extraordinariamente cariñoso, vivaz y apegado a la familia.',
-      avail: '7 gatitos disponibles · 600 € →',
+      avail: `${countByBreed('Sphynx')} gatitos disponibles · 600 € →`,
       image: '/photos/sph-desmond-32.png',
-      count: 7,
+      count: countByBreed('Sphynx'),
     },
   ];
-
-  // Helper to normalize strings for robust accent-insensitive comparison
-  const normalizeStr = (str: string) =>
-    str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 
   // Filtered kittens for the catalog section
   const displayedKittens = useMemo(() => {
@@ -134,19 +139,51 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     }
   };
 
-  const handleContactWhatsApp = (e: React.FormEvent) => {
-    e.preventDefault();
-    const text = contactKitten
-      ? `¡Hola! Me interesa la adopción del gatito ${contactKitten}.`
-      : '¡Hola! Me gustaría información para la adopción de un gatito.';
-
-    const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
-    window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`, '_blank');
-    setFormSentMessage('¡Abriendo WhatsApp para enviar tu consulta directamente al criador!');
+  const recordContactLead = () => {
+    const fullName = `${contactName} ${contactSurname}`.trim();
+    if (!fullName || !contactEmail) return;
+    addStoredLead({
+      fullName,
+      email: contactEmail,
+      phone: contactPhone || 'No indicado',
+      city: contactCity || 'No indicada',
+      breed: contactBreed || 'Sin especificar',
+      kittenName: contactKitten || undefined,
+      housingType: 'Formulario de contacto web',
+      experience: 'Consulta directa',
+      otherPets: 'Por confirmar',
+      notes: contactMessage || '',
+    });
   };
 
-  const handleContactEmail = (e: React.FormEvent) => {
+  const handleContactWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
+    recordContactLead();
+    const fullName = `${contactName} ${contactSurname}`.trim();
+    const lines = [
+      `¡Hola criaderograciadivina!`,
+      fullName ? `Soy ${fullName}.` : '',
+      contactKitten
+        ? `Me interesa la adopción del gatito ${contactKitten}.`
+        : contactBreed
+        ? `Me interesa información sobre la raza ${contactBreed}.`
+        : 'Me gustaría información para la adopción de un gatito.',
+      contactCity ? `Ciudad: ${contactCity}` : '',
+      contactEmail ? `Email: ${contactEmail}` : '',
+      contactPhone ? `Teléfono: ${contactPhone}` : '',
+      contactMessage ? `Mensaje: ${contactMessage}` : '',
+    ].filter(Boolean);
+
+    const cleanNumber = (settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '');
+    window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+    setFormSentMessage('¡Solicitud registrada! Abriendo WhatsApp para enviar tu consulta directamente al criador.');
+  };
+
+  const handleContactEmail = () => {
+    if (contactFormRef.current && !contactFormRef.current.reportValidity()) {
+      return;
+    }
+    recordContactLead();
     const fullName = `${contactName} ${contactSurname}`.trim() || 'Familia interesada';
     const subject = `Consulta de Adopción - criaderograciadivina - ${contactBreed || 'Gatito de Raza'} - ${fullName}`;
     const body =
@@ -162,7 +199,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
     const emailTo = settings.contactEmail || 'Criaderograciadivina@gmail.com';
     window.open(`mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
-    setFormSentMessage('¡Abriendo tu cliente de correo para enviar la solicitud oficial a ' + emailTo + '!');
+    setFormSentMessage('¡Solicitud registrada! Abriendo tu cliente de correo para enviar la solicitud oficial a ' + emailTo + '.');
   };
 
   return (
@@ -187,7 +224,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
             <h1>
               Nobleza, Pureza y Crianza Familiar
-              <em>55 Gatitos de Pura Raza Listos para Enamorarte</em>
+              <em>{kittens.length} Gatitos de Pura Raza Listos para Enamorarte</em>
             </h1>
 
             <p>
@@ -205,7 +242,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                   document.getElementById('camadas-disponibles')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Ver los 55 Gatitos Disponibles (Desde 600 €) ↓
+                Ver los {kittens.length} Gatitos Disponibles (Desde 600 €) ↓
               </a>
               <a
                 href={`https://wa.me/${(settings.whatsappNumber || '34632968208').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('¡Hola! Me gustaría información para la adopción de un gatito.')}`}
@@ -315,7 +352,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <span className="badge" style={{ background: 'var(--gold)', color: '#450a0a', fontWeight: 'bold' }}>
               Camadas 2026 Abiertas
             </span>
-            <h2>Nuestros 55 Gatitos Disponibles 🐾</h2>
+            <h2>Nuestros {kittens.length} Gatitos Disponibles 🐾</h2>
             <p>
               Tarifas transparentes: <strong>Sphynx y Ragdoll (600 €)</strong> · <strong>British Shorthair (650 €)</strong> · <strong>Maine Coon (700 €)</strong> con microchip, vacunas y garantías incluidas
             </p>
@@ -380,7 +417,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     marginLeft: '8px'
                   }}
                 >
-                  Ver todos los 55 ✕
+                  Ver todos los {kittens.length} ✕
                 </button>
               </div>
             )}
@@ -448,7 +485,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               }}
               className="btn btn-gold cursor-pointer"
             >
-              Ver los 55 gatitos disponibles
+              Ver los {kittens.length} gatitos disponibles
             </button>
           </div>
         </div>
@@ -537,7 +574,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <div className="promise" style={{ marginTop: '24px', background: '#fff' }}>
               <div className="stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', width: '100%' }}>
                 <div>
-                  <b>55</b>
+                  <b>{kittens.length}</b>
                   <span>Gatitos en Casa</span>
                 </div>
                 <div>
@@ -571,7 +608,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <div className="step-card">
               <div className="step-number">1</div>
               <h3>Elige tu Compañero</h3>
-              <p>Explora nuestras 55 fichas con fotos reales, sexo, pedigrí y temperamento. Elige el que conecte contigo.</p>
+              <p>Explora nuestras {kittens.length} fichas con fotos reales, sexo, pedigrí y temperamento. Elige el que conecte contigo.</p>
             </div>
 
             <div className="step-card">
@@ -682,7 +719,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
           </div>
 
           <div className="contact-grid">
-            <form className="form" onSubmit={handleContactWhatsApp}>
+            <form ref={contactFormRef} className="form" onSubmit={handleContactWhatsApp}>
               <h3>Formulario de Adopción</h3>
 
               {formSentMessage && (
@@ -757,10 +794,10 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                     onChange={(e) => setContactBreed(e.target.value)}
                   >
                     <option value="">Seleccionar raza...</option>
-                    <option value="Maine Coon">Maine Coon (19 disponibles · 700 €)</option>
-                    <option value="British Shorthair">British Shorthair (20 disponibles · 650 €)</option>
-                    <option value="Ragdoll">Ragdoll (9 disponibles · 600 €)</option>
-                    <option value="Sphynx">Sphynx (7 disponibles · 600 €)</option>
+                    <option value="Maine Coon">Maine Coon ({countByBreed('Maine Coon')} disponibles · 700 €)</option>
+                    <option value="British Shorthair">British Shorthair ({countByBreed('British Shorthair')} disponibles · 650 €)</option>
+                    <option value="Ragdoll">Ragdoll ({countByBreed('Ragdoll')} disponibles · 600 €)</option>
+                    <option value="Sphynx">Sphynx ({countByBreed('Sphynx')} disponibles · 600 €)</option>
                     <option value="No estoy seguro">No estoy seguro / Cualquier raza</option>
                   </select>
                 </label>
@@ -791,7 +828,6 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 <button
                   type="submit"
                   className="btn btn-wa"
-                  onClick={handleContactWhatsApp}
                 >
                   <svg viewBox="0 0 24 24">
                     <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 23.8 12c0-3.2-1.2-6.1-3.4-8.4z" />
@@ -871,7 +907,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               </div>
 
               <div className="note">
-                <strong>Razas Disponibles (55 Gatitos)</strong>
+                <strong>Razas Disponibles ({kittens.length} Gatitos)</strong>
                 <div className="pills">
                   {signatureBreeds.map((breed) => (
                     <span

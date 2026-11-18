@@ -108,13 +108,13 @@ export const PolicyView: React.FC<PolicyViewProps> = ({ onOpenAdoptionModal }) =
 
         <div className="bg-white rounded-2xl border border-red-100 p-6 sm:p-8 space-y-4 text-xs sm:text-sm text-neutral-700 leading-relaxed shadow-xs">
           <p>
-            El precio de adopción fijado para todos nuestros cachorros es de <strong>600 €</strong>, el cual incluye la totalidad de las vacunas, microchip oficial ISO, pasaporte europeo, pedigrí oficial emitido por federación, desparasitaciones y Welcome Pack de adaptación.
+            El precio de adopción fijado para nuestros cachorros parte desde <strong>600 €</strong> (Sphynx y Ragdoll 600 €, British Shorthair 650 € y Maine Coon 700 €), e incluye la totalidad de las vacunas, microchip oficial ISO, pasaporte europeo, pedigrí oficial emitido por federación, desparasitaciones y Welcome Pack de adaptación.
           </p>
           <div className="space-y-2">
             <h4 className="font-bold text-neutral-900 text-xs uppercase tracking-wider">Pasos para la Reserva:</h4>
             <ol className="list-decimal pl-5 space-y-1.5 text-xs text-neutral-600">
               <li>Aprobación previa del cuestionario de adopción responsable.</li>
-              <li>Abono del depósito de reserva (normalmente 180 €, correspondiente al 30% del importe total de 600 €).</li>
+              <li>Abono del depósito de reserva (30% del importe total de adopción según la raza elegida).</li>
               <li>Envío semanal de reportes fotográficos y en vídeo del desarrollo del cachorro.</li>
               <li>Abono de la cantidad restante en el momento de la entrega personal o previa al transporte en cabina.</li>
             </ol>
@@ -159,7 +159,7 @@ export const PolicyView: React.FC<PolicyViewProps> = ({ onOpenAdoptionModal }) =
           onClick={onOpenAdoptionModal}
           className="px-6 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#b91c1c] hover:bg-[#991b1b] rounded-lg transition-colors shadow-sm cursor-pointer"
         >
-          Iniciar Solicitud de Adopción (600 €)
+          Iniciar Solicitud de Adopción (Desde 600 €)
         </button>
       </div>
     </div>

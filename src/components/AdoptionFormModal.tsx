@@ -30,18 +30,20 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
     notes: selectedKitten ? `Interesado en el cachorro ${selectedKitten.name} (${selectedKitten.breed})` : '',
   });
 
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   React.useEffect(() => {
     if (isOpen) {
+      setSubmitted(false);
+      setErrors({});
       setFormData((prev) => ({
         ...prev,
         breed: (selectedKitten?.breed || initialBreed || prev.breed || 'Maine Coon') as BreedType,
-        notes: selectedKitten ? `Interesado en el cachorro ${selectedKitten.name} (${selectedKitten.breed})` : prev.notes,
+        notes: selectedKitten ? `Interesado en el cachorro ${selectedKitten.name} (${selectedKitten.breed})` : '',
       }));
     }
   }, [isOpen, selectedKitten, initialBreed]);
-
-  const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
 
   if (!isOpen) return null;
 
@@ -116,7 +118,8 @@ export const AdoptionFormModal: React.FC<AdoptionFormModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="adoption-form-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
+      onClick={onClose}
+      className="fixed inset-0 z-[70] overflow-y-auto bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
     >
       <div
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-red-100 overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200"

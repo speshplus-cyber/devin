@@ -778,7 +778,7 @@ svg {
 
 .feature:hover {
   transform: translateY(-3px);
-  border-color: var(--crimson-border);
+  border-color: var(--crimson);
 }
 
 .feature h3 {

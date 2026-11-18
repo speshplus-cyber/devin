@@ -47,6 +47,12 @@ export const BreedLandingView: React.FC<BreedLandingViewProps> = ({
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState<number>(0);
 
+  React.useEffect(() => {
+    setSelectedGenderFilter('Todos');
+    setOpenFaqIndex(0);
+    setActiveGalleryIndex(0);
+  }, [breed]);
+
   const normalizeStr = (str: string) =>
     str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 

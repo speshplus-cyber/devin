@@ -69,8 +69,8 @@ export const getStoredKittens = (): Kitten[] => {
     const raw = localStorage.getItem(STORAGE_KEYS.KITTENS);
     if (raw) {
       const parsed = JSON.parse(raw);
-      // Ensure the stored kittens list is valid and contains the 55 authentic kittens
-      if (Array.isArray(parsed) && parsed.length === KITTENS_DATA.length) {
+      // Ensure the stored kittens list is a valid non-empty array
+      if (Array.isArray(parsed) && parsed.length > 0) {
         return parsed;
       }
     }
